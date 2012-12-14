@@ -1,0 +1,248 @@
+<html>
+<head></head>
+<body>
+<style>
+a.field,
+a.field p {
+    color: #FFF;
+}
+div.field {
+min-height: 325px;
+margin-bottom: 30px;
+max-width: 305px;
+min-width: 240px;
+}
+#department {
+    background: #006666;
+}
+
+#interdisciplinary {
+    background: #333366;
+}
+
+#arts {
+    background: #993366;
+}
+
+.disciplines {
+    height:35px;
+}
+
+.ribbon {
+    margin-left:10px;
+    float:right;
+}
+        
+#humanities {
+    width: 30px;
+    height: 14px;
+    padding: 5px 0;
+    position: relative;
+    background: #dbb003;
+}
+#humanities::after {
+    content:"";
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border: 15px solid #dbb003;
+    left: 0;
+    border-bottom-color: transparent;
+}
+
+#natural {
+    width: 30px;
+    height: 14px;
+    padding: 5px 0;
+    position: relative;
+    background: #cc6600;
+}
+
+#natural::after {
+    content:"";
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border: 15px solid #cc6600;
+    left: 0;
+    border-bottom-color: transparent;
+}
+
+#social  {
+    width: 30px;
+    height: 14px;
+    padding: 5px 0;
+    position: relative;
+    background: #3399ff;
+}
+
+#social::after {
+    content:"";
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border: 15px solid #3399ff;
+    left: 0;
+    border-bottom-color: transparent;
+}
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+​</style>
+<h1>Test filter</h1>
+<div id="filterform"></div>
+<section class="row isotope" id="fields_container" style="position: relative; overflow: hidden; height: 355px;">
+            
+        <!-- Set classes for isotype.js filter buttons -->
+        <div class="four columns mobile-two mobile-field humanities social interdisciplinary isotope-item">
+        
+        <a href="http://flagship.dev/fields/africana-studies/" title="Africana Studies" class="field">
+        <div class="twelve columns field" id="interdisciplinary">
+        
+        <!-- Display ribbons for discipline taxonomy -->
+        <div class="row">    
+            <div class="twelve columns disciplines">
+                                    <span class="ribbon" id="humanities"></span>
+                                                    <span class="ribbon" id="social"></span>
+                                            </div>
+        </div>
+        
+            <h3>Africana Studies</h3>
+            <img src="http://flagship.dev/wp-content/uploads/2012/12/ACADEMICS-Fields-of-Study-FIN_031.jpg">
+            
+            <div class="row">
+            <div class="twelve columns">
+                <p>
+                    410.5216.6211                    <span class="offset-by-two">africana@jhu.edu</span>
+                </p>
+                <p>
+                                            <b>Majors:</b>&nbsp;Africana studies<br>
+                                                                <b>Minors:</b>&nbsp;Africana Studies<br>
+                                                                <b>Degrees Offered:</b>&nbsp;BA                                    </p>
+            </div>    
+            </div>
+            <span class="hide">ghana</span>
+        </div>
+        </a>
+        </div>
+            
+        <!-- Set classes for isotype.js filter buttons -->
+        <div class="four columns mobile-two mobile-field humanities social natural department isotope-item">
+        
+        <a href="http://flagship.dev/fields/anthropology/" title="Anthropology" class="field">
+        <div class="twelve columns field" id="department">
+        
+        <!-- Display ribbons for discipline taxonomy -->
+        <div class="row">    
+            <div class="twelve columns disciplines">
+                                    <span class="ribbon" id="humanities"></span>
+                                                    <span class="ribbon" id="social"></span>
+                                                    <span class="ribbon" id="natural"></span>
+                            </div>
+        </div>
+        
+            <h3>Anthropology</h3>
+            <img src="http://flagship.dev/wp-content/uploads/2012/12/ACADEMICS-Fields-of-Study-FIN_03.jpg">
+            
+            <div class="row">
+            <div class="twelve columns">
+                <p>
+                    410.516.6211                    <span class="offset-by-two">emailaddress@jhu.edu</span>
+                </p>
+                <p>
+                                            <b>Majors:</b>&nbsp;Major 1, Major 2<br>
+                                                                <b>Minors:</b>&nbsp;Minor 1, Minor 2<br>
+                                                                <b>Degrees Offered:</b>&nbsp;BA, MA, PhD                                    </p>
+            </div>    
+            </div>
+            <span class="hide">keyword one keyword two</span>
+        </div>
+        </a>
+        </div>
+            
+        <!-- Set classes for isotype.js filter buttons -->
+        <div class="four columns mobile-two mobile-field humanities arts isotope-item">
+        
+        <a href="http://flagship.dev/fields/dance/" title="Dance" class="field">
+        <div class="twelve columns field" id="arts">
+        
+        <!-- Display ribbons for discipline taxonomy -->
+        <div class="row">    
+            <div class="twelve columns disciplines">
+                                    <span class="ribbon" id="humanities"></span>
+                                                            </div>
+        </div>
+        
+            <h3>Dance</h3>
+            <img src="http://flagship.dev/wp-content/uploads/2012/12/ACADEMICS-Fields-of-Study-FIN_032.jpg">
+            
+            <div class="row">
+            <div class="twelve columns">
+                <p>
+                    410.516.6211                    <span class="offset-by-two">dance@jhu.edu</span>
+                </p>
+                <p>
+                                                                            </p>
+            </div>    
+            </div>
+            <span class="hide">modern ballet</span>
+        </div>
+        </a>
+        </div>
+    </section>​​​
+<script src="assets/javascripts/jquery.js"></script>
+<script>
+(function($) {
+    // custom css expression for a case-insensitive contains()
+    jQuery.expr[':'].Contains = function(a, i, m) {
+        return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+    };
+
+
+    function listFilter(header, list) { // header is any element, list is an unordered list
+        // create and add the filter form to the header
+        var form = $("<form>").attr({
+            "class": "filterform",
+            "action": "#"
+        }),
+            input = $("<input>").attr({
+                "class": "filterinput",
+                "type": "text"
+            });
+        $(form).append(input).appendTo(header);
+
+        $(input.filterinput).change(function() {
+            var filter = $(this).val();
+            if (filter) {
+                // this finds all links in a list that contain the input,
+                // and hide the ones not containing the input while showing the ones that do
+                $(list).find("a.field:not(:Contains(" + filter + "))").parent().hide();
+                $(list).find("a.field:Contains(" + filter + ")").parent().show();
+            } else {
+                $(list).find("div.mobile-field").show();
+            }
+            return false;
+        }).keyup(function() {
+            // fire the above change event after every letter
+            $(this).change();
+        });
+    }
+
+
+    //ondomready
+    $(function() {
+        listFilter($("#filterform"), $("#fields_container"));
+    });
+}(jQuery));</script>
+
+</body>
+</html>

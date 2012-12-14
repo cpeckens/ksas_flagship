@@ -1,0 +1,932 @@
+/******* Fonts ************/
+
+body {
+	font-family: "Myriad W01 Regular", Arial, sans-serif;
+	background: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Myriad W01 SmBd", Arial, sans-serif;
+}
+
+em, i {
+	font-family:"Myriad W01 It";
+}
+
+strong, b {
+	font-family:"Myriad W01 Bd";
+}
+
+.iconfont {
+	font-family: 'flagship-icon';
+}
+
+.copy h2 {
+	color: #336699;
+}
+
+p {
+	line-height: 1.3;
+	color: #333;
+}
+
+/******* Reusable Classes ************/
+
+.black {
+	background: rgba(0, 0, 0, .75);
+}
+
+.green,
+#department {
+	background: #006666;
+}
+
+.purple,
+#interdisciplinary {
+	background: #333366;
+}
+
+.fushia,
+#arts {
+	background: #993366;
+}
+
+.yellow,
+#humanities {
+	background: #dbb003;
+}
+
+.orange,
+#natural {
+	background: #cc6600;
+}
+
+.blue,
+#social {
+	background: #3399ff;
+}
+
+button {
+	border:none;
+	-webkit-border-radius:  7px;
+	-moz-border-radius: 	7px;
+	border-radius: 			7px;
+	font-family: "Myriad W01 SmBd", Arial, sans-serif;
+	color: #FFF;
+	font-size: 16px;
+	padding:8px 12px;
+	margin-right: 10px;
+	margin-bottom: 15px;
+	opacity: .9;
+}
+
+button:hover {
+	opacity: 1;
+}
+
+button a,
+button a:hover,
+button a:visited {
+	color: #fff;
+}
+
+.radius10 {
+	-webkit-border-radius:  10px;
+	-moz-border-radius: 	10px;
+	border-radius: 			10px;
+}
+
+.inline {
+	display: inline;
+}
+
+.block {
+	display:block;
+}
+
+.text-shadow {
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, .75);
+}
+/******* Navigation ************/
+nav ul {
+	list-style: none;
+}
+
+.nav-bar > li > a:first-child{
+	font-size: 18px;
+	color:#ccc;
+	padding: 0 24px;
+}
+
+#main_nav,
+#secondary_nav {
+	padding: 0;
+}
+#menu-main-menu {
+	background: rgba(0,0,0,.75);
+	-webkit-border-radius:  10px;
+	-moz-border-radius: 	10px;
+	border-radius: 			10px;
+	font-size: 18px;
+	height: 72px;
+	margin-bottom: 0;
+}
+#menu-main-menu > li.has-flyout > a:first-child:after { content: none; display: block; width: 0; height: 0; border:none; }
+
+#menu-main-menu > li {
+	line-height: 72px;
+	background: rgba(0,0,0,.75);
+}
+
+#menu-main-menu > li.active,
+#menu-main-menu > .current_page_parent,
+#menu-main-menu > .current_page_item { 
+	background: #255682; 
+}
+#menu-main-menu > li.active > a { color: white; cursor: default; }
+#menu-main-menu > li.active:hover { background: #3c6a98; cursor: default; }
+#menu-main-menu > li:hover { background: #3c6a98; }
+#menu-main-menu > li.logo:hover {background: url('../images/logo.png') no-repeat top;}
+#menu-main-menu > li.logo.active:hover { background: url('../images/logo.png') no-repeat top; }
+ul.sub-nav > li,
+ul.sub-nav .current_page_parent a {
+	display:none;
+}
+
+
+
+ul.sub-nav li.current_page_parent,
+ul.sub-nav li.current_page_parent > li,
+ul.sub-nav li.current_page_parent ul.sub-menu li > a   {
+	display: block !important;
+}
+.sub-menu { 
+	padding: 20px; 
+	margin: 0; 
+	border: none; 
+	position: relative; 
+	width: 100%; 
+	z-index: 40; 
+	-webkit-box-shadow: none; 
+	-moz-box-shadow: none; 
+	box-shadow: none; /* remove margin on any first-child element */ /* remove margin on last element */ }
+	
+ul.sub-menu  { 
+	-webkit-border-radius:  10px;
+	-moz-border-radius: 	10px;
+	border-radius: 			10px;
+	padding: 0; 
+	list-style: none;
+	background: rgba(51, 102, 153, .9);
+	height: 72px; 
+}
+
+ul.sub-menu > li { 
+	float:left;
+	display: block;
+	position: relative;
+	padding:0;
+	margin:0;
+	line-height: 72px;
+	
+}
+
+
+ul.sub-menu li a { 
+	border: none;
+	 border-width: none; 
+	 color: #FFF; 
+	 display: inline; 
+	 font-size: 18px; 	
+	 height: auto; 
+	 -webkit-box-shadow: none;
+	 -moz-box-shadow: none; 
+	 box-shadow: none; }
+
+ul.sub-menu li a:hover { 
+	background: none; 
+	color: #000;
+}
+
+ul.sub-menu li.active { 
+	margin-top: 0; 
+	border-top: none; 
+	border-left: none; 
+}
+
+ul.sub-menu > li > a:first-child {
+	position: relative; 
+	padding: 0 20px;
+}
+ul.sub-menu li.current_page_item a { 
+	background: none; 
+	border: none; 
+	color: #000; 
+	height: auto; 
+	margin: 0; 
+	position: static; 
+	top: 0; 
+	-webkit-box-shadow: 0 0 0; 
+	-moz-box-shadow: 0 0 0; 
+	box-shadow: 0 0 0; }
+
+.external:before {
+	content: "\e007";
+	font-family: 'flagship-icon';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	line-height: 68px;
+	color:#FFF;
+	-webkit-font-smoothing: antialiased;
+	float:right;
+	display:inline;
+}
+
+
+
+/******* Header ************/
+
+#menu-main-menu li.logo {
+	background: url('../images/logo.png') no-repeat top;
+	width: 237px;
+	height: 133px;
+	margin-top:-80px;
+}
+#menu-main-menu > li.logo.current_page_item {
+	background: url('../images/logo.png') no-repeat top;
+}
+li.logo a {
+	text-indent: -9999px;
+}
+
+#search-bar {
+	background: #333;
+	-webkit-border-radius:  10px;
+	-moz-border-radius: 	10px;
+	border-radius: 			10px;
+	color: #ccc;
+	text-transform: uppercase;
+	font-family:"Myriad W01 Bd";
+	margin-top:15px;
+}
+
+#search-bar .columns {
+	padding:0;
+}
+
+#search-bar a {
+	color:#FFF;
+	font-size: 9px;
+    letter-spacing: 1px;
+}
+
+#search-bar .links {
+	margin-top: 9px;
+	padding-left:10px;
+}
+
+#search-bar input[type="text"] {
+    height: 31px;
+    margin-bottom: 0px;
+    background: rgba(255,255,255,0.75);
+    -webkit-border-top-right-radius: 	7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius-topright: 		7px;
+    -moz-border-radius-bottomright: 	7px;
+    border-top-right-radius: 			7px;
+    border-bottom-right-radius: 		7px;
+    display: inline;
+    float:left;
+    width:82%;
+    border:none;
+}
+
+#search-bar input[type="submit"] {
+	background: #666;
+	height: 31px;
+	width: 30px;
+	font-family: 'flagship-icon';
+	-webkit-border-top-left-radius: 	7px;
+	-webkit-border-bottom-left-radius: 	7px;
+	-moz-border-radius-topleft: 		7px;
+	-moz-border-radius-bottomleft: 		7px;
+	border-top-left-radius: 			7px;
+	border-bottom-left-radius: 			7px;
+	font-size: 16px;
+	border:none;
+	float:left;
+	padding:0;
+	color:#ccc;
+}
+/******* Footer ************/
+footer {
+	background: #000;
+	padding-top: 25px;
+}
+
+
+footer a,
+.inline-list li a {
+	color:#CCC;
+}
+#social-media {
+	margin-top:9px;
+}
+#social-media a {
+	content:none;
+	color:#333;
+	background: #555;
+	-webkit-border-radius:  50%;
+	-moz-border-radius: 	50%;
+	border-radius: 			50%;
+	padding:10px;
+	margin-right:10px;
+	font-size:18px
+}
+
+#social-media a:hover {
+	color:#333;
+	background: #CCC;
+}
+
+#quicklinks {
+	padding: 0;
+	background: none;
+}
+
+#quicklinks .nav-bar {
+	margin-top:0;
+	background: none;
+}
+
+#quicklinks li.has-flyout {
+	background: #d07b00;
+	font-family:"Myriad W01 Bd";
+	color: #FFF;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+#quicklinks .flyout { 
+	background: #f2f2f2;
+	padding: 15px 0; margin: 0; 
+	border: 1px solid #d9d9d9; 
+	position: absolute; 
+	left: 0px; 
+	width: 180px; 
+	z-index: 40; 
+	-webkit-box-shadow: none; 
+	-moz-box-shadow: none; 
+	box-shadow: none;
+	 
+}
+
+#quicklinks ul.flyout li { 
+	border-left: none; 
+}
+
+#quicklinks ul.flyout li a { 
+	background: #f2f2f2; 
+	border-bottom: 1px solid #e6e6e6; 
+	font-family: "Myriad W01 Regular", Arial, sans-serif;
+	color: #555; 
+	display: block; 
+	font-size: 12px; 
+	text-transform: none;
+	height: auto; 
+	line-height: 1; 
+	padding: 15px 0 15px 10px; 
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; 
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; 
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; 
+}
+
+#quicklinks ul.flyout li a:hover { 
+	background: #ffcc99; 
+	color: #333; 
+}
+
+#quicklinks .nav-bar > li.has-flyout > a:first-child::after {
+	content: none;
+}
+#menu-footer-links {
+	margin-top: 15px;
+}
+#menu-footer-links a {
+	font-size:12px;
+}
+/* CSS for jQuery Orbit Plugin 1.4.0 Maintained for Foundation. foundation.zurb.com Free to use under the MIT license. http://www.opensource.org/licenses/mit-license.php
+
+/*******Backgrounds & Wrappers*********/
+.wrapper {
+	background: rgba(255,255,255, 0.95);
+	-webkit-border-radius:  10px;
+	-moz-border-radius: 	10px;
+	border-radius: 			10px;
+}
+
+body.home {
+	color:#FFF;
+}
+
+body.fields,
+body.academics {
+	background: url('../images/bg-fieldsofstudy.jpg') no-repeat top center;
+}
+body.home h1,
+body.home h2,
+body.home h3,
+body.home h4,
+body.fields h3
+ {
+	color:#FFF;
+}
+
+
+/******* Home ************/
+#evergreen {
+	min-height: 325px;
+}
+
+#field_search,
+#field_search label {
+	font-family: "Myriad W01 SmBd", Arial, sans-serif;
+	color: #FFF;
+	font-size: 16px;
+}
+
+#field_search label {
+	margin-top: 6px;
+	display: inline;
+}
+
+#field_search input[type="text"] {
+    height: 35px;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.2);
+    -webkit-border-top-right-radius: 	7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius-topright: 		7px;
+    -moz-border-radius-bottomright: 	7px;
+    border-top-right-radius: 			7px;
+    border-bottom-right-radius: 		7px;
+    display: inline;
+    float:left;
+    width:94%;
+    border:none;
+}
+
+#field_search input[type="submit"] {
+	background: #333;
+	height: 35px;
+	width: 38px;
+	font-family: 'flagship-icon';
+	-webkit-border-top-left-radius: 	7px;
+	-webkit-border-bottom-left-radius: 	7px;
+	-moz-border-radius-topleft: 		7px;
+	-moz-border-radius-bottomleft: 		7px;
+	border-top-left-radius: 			7px;
+	border-bottom-left-radius: 			7px;
+	font-size: 16px;
+	border:none;
+	float:left;
+	padding:0;
+	color:#ccc;
+}
+
+
+#field_search .tabs {
+	border-bottom:none;
+}
+#field_search .tabs dd.active, 
+#field_search .tabs li.active {
+	border-top:none;
+	margin-top: 0;
+	-webkit-border-top-left-radius: 	7px;
+	-webkit-border-top-right-radius: 	7px;
+	-moz-border-radius-topleft: 		7px;
+	-moz-border-radius-topright: 		7px;
+	border-top-left-radius: 			7px;
+	border-top-right-radius: 			7px;
+	height:40px;
+	padding:10px;
+	text-transform: uppercase;
+	font-size:18px;
+	letter-spacing: 1px;
+}
+
+#field_search tabs dd {
+	padding: 20px 20px 0 20px;
+}
+
+#field_search ul.tabs-content.contained {
+	background: rgba(0,0,0,.75);
+	-webkit-border-radius: 			7px;
+	-webkit-border-top-left-radius: 0;
+	-moz-border-radius: 			7px;
+	-moz-border-radius-topleft:		0;
+	border-radius: 					7px;
+	border-top-left-radius: 		0;
+	border:none;
+}
+
+#field_search ul.tabs-content.contained > li {
+	border:none;
+}
+
+#news_feed {
+	padding: 15px 0;
+	margin-bottom:60px;
+}
+
+#news_feed h4 {
+	margin-bottom:0;
+}
+#news_feed summary {
+	margin-bottom: 20px;
+}
+
+/******* Fields of Study ******/
+a.field,
+a.field p {
+	color: #FFF;
+}
+div.field {
+min-height: 325px;
+margin-bottom: 30px;
+max-width: 305px;
+min-width: 240px;
+}
+
+
+#interdisciplinary {
+	background: #333366;
+}
+
+#arts {
+	background: #993366;
+}
+
+.disciplines {
+	height:35px;
+}
+
+.ribbon {
+	margin-left:10px;
+	float:right;
+}
+		
+#humanities {
+	width: 30px;
+	height: 14px;
+	padding: 5px 0;
+	position: relative;
+}
+#humanities::after {
+	content:"";
+	position: absolute;
+	top: 100%;
+	width: 0;
+	height: 0;
+	border: 15px solid #dbb003;
+	left: 0;
+	border-bottom-color: transparent;
+}
+
+#natural {
+	width: 30px;
+	height: 14px;
+	padding: 5px 0;
+	position: relative;
+}
+
+#natural::after {
+	content:"";
+	position: absolute;
+	top: 100%;
+	width: 0;
+	height: 0;
+	border: 15px solid #cc6600;
+	left: 0;
+	border-bottom-color: transparent;
+}
+
+#social  {
+	width: 30px;
+	height: 14px;
+	padding: 5px 0;
+	position: relative;
+}
+
+#social::after {
+	content:"";
+	position: absolute;
+	top: 100%;
+	width: 0;
+	height: 0;
+	border: 15px solid #3399ff;
+	left: 0;
+	border-bottom-color: transparent;
+}
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+
+#fields_search fieldset {
+	background: rgba(0,0,0,0.15);
+	padding-bottom:30px;
+	border:none;
+}
+
+#field_search,
+#field_search label {
+	font-family: "Myriad W01 SmBd", Arial, sans-serif;
+	color: #FFF;
+	font-size: 16px;
+}
+
+#field_search label {
+	margin-top: 6px;
+	display: inline;
+}
+
+#fields_search input[type="text"] {
+    height: 56px;
+    margin-bottom: 10px;
+    -webkit-border-top-right-radius: 	7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius-topright: 		7px;
+    -moz-border-radius-bottomright: 	7px;
+    border-top-right-radius: 			7px;
+    border-bottom-right-radius: 		7px;
+    display: inline;
+    float:left;
+    width:91%;
+    background: #666;
+	color:#ccc;
+	font-family:"Myriad W01 It";
+	font-size: 16px;
+	border:none;
+
+}
+
+#fields_search input[type="submit"] {
+	background: #333;
+	height: 56px;
+	width: 45px;
+	font-family: 'flagship-icon';
+	-webkit-border-top-left-radius: 	7px;
+	-webkit-border-bottom-left-radius: 	7px;
+	-moz-border-radius-topleft: 		7px;
+	-moz-border-radius-bottomleft: 		7px;
+	border-top-left-radius: 			7px;
+	border-bottom-left-radius: 			7px;
+	font-size: 26px;
+	border:none;
+	float:left;
+	padding:0;
+	color:#ccc;
+}
+
+/******* Icons ******/
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'flagship-icon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: 'flagship-icon';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-location:before {
+	content: "\e000";
+}
+.icon-calendar:before {
+	content: "\e001";
+}
+.icon-printer:before {
+	content: "\e002";
+}
+.icon-home:before {
+	content: "\e003";
+}
+.icon-search:before {
+	content: "\e004";
+}
+.icon-user:before {
+	content: "\e005";
+}
+.icon-new-tab:before {
+	content: "\e006";
+}
+.icon-new-tab-2:before {
+	content: "\e007";
+}
+
+
+.icon-new-tab-2:before {
+	content: "\e007";
+}
+.icon-facebook:before {
+	content: "\e008";
+}
+.icon-vimeo:before {
+	content: "\e009";
+}
+.icon-github:before {
+	content: "\e00a";
+}
+.icon-reddit:before {
+	content: "\e00b";
+}
+.icon-wordpress:before {
+	content: "\e00c";
+}
+.icon-flickr:before {
+	content: "\e00d";
+}
+.icon-feed:before {
+	content: "\e00e";
+}
+.icon-twitter:before {
+	content: "\e00f";
+}
+.icon-bookmark:before {
+	content: "\e010";
+}
+.icon-phone:before {
+	content: "\e011";
+}
+.icon-phone-2:before {
+	content: "\e012";
+}
+.icon-mail:before {
+	content: "\e013";
+}
+.icon-minus:before {
+	content: "\e014";
+}
+.icon-plus:before {
+	content: "\e015";
+}
+.icon-share:before {
+	content: "\e016";
+}
+.icon-share-2:before {
+	content: "\e017";
+}
+.icon-bookmark-2:before {
+	content: "\e018";
+}
+.icon-arrow-up-left:before {
+	content: "\e019";
+}
+.icon-arrow-up:before {
+	content: "\e01a";
+}
+.icon-arrow-up-right:before {
+	content: "\e01b";
+}
+.icon-arrow-right:before {
+	content: "\e01c";
+}
+.icon-arrow-down-right:before {
+	content: "\e01d";
+}
+.icon-arrow-down:before {
+	content: "\e01e";
+}
+.icon-arrow-down-left:before {
+	content: "\e01f";
+}
+.icon-arrow-left:before {
+	content: "\e020";
+}
+.icon-download:before {
+	content: "\e021";
+}
+.icon-thumbs-up:before {
+	content: "\e022";
+}
+.icon-thumbs-down:before {
+	content: "\e023";
+}
+.icon-file-pdf:before {
+	content: "\e024";
+}
+.icon-file-word:before {
+	content: "\e025";
+}
+.icon-file-excel:before {
+	content: "\e026";
+}
+.icon-file-zip:before {
+	content: "\e027";
+}
+.icon-file-openoffice:before {
+	content: "\e028";
+}
+.icon-file-powerpoint:before {
+	content: "\e029";
+}
+
+@media only screen and (min-width: 767px) {
+		#menu-main-menu ul.flyout {
+			display: none !important;
+		}
+		#menu-main-menu > li {
+			background: none;
+			}
+}
+@media only screen and (max-width: 767px) {
+		#menu-main-menu {
+			background: none;
+			min-height: 540px;
+		}
+		#menu-main-menu > li {
+			background: rgba(0,0,0,.75);
+		}
+		li.logo {
+			display:none;
+		}
+		#menu-main-menu li.current_page_parent ul.flyout {
+			display: block !important;
+		}
+		#menu-main-menu ul.flyout {
+			background:none;
+			border:none;
+		}
+		#menu-main-menu ul.flyout li a {
+			background: none;
+			color: #ccc;
+			box-shadow:none;
+			-webkit-box-shadow:none;
+			-moz-box-shadow:none;
+			text-indent:20px;
+			border:none;
+		}
+		
+		#menu-main-menu ul.flyout li a:hover {
+			background: #666;
+		}
+}
+@media only screen and (max-width: 540px) {
+		.mobile-field {
+			clear:left; 
+		}
+		body.fields .row .mobile-two { 
+			width:100% !important; 
+		}
+}
+/*******Attributions*******/
+/*
+Icon Set:	IcoMoon - Free -- http://keyamoon.com/icomoon/
+License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
+Icon Set:	Broccolidry -- http://dribbble.com/shots/587469-Free-16px-Broccolidryiconsaniconsetitisfullof-icons
+License:	Aribitrary -- http://licence.visualidiot.com/
+*/
