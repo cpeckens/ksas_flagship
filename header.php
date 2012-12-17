@@ -32,6 +32,12 @@
 
 <body class="<?php echo the_slug(); ?>">
 	<header>
+		<div class="row show-for-small">
+			<div class="three columns centered">
+			<div class="mobile-logo"><a href="<?php site_url();?>">Home</a></div>
+			</div>
+		</div>
+	
 		<div class="row">
 			<div id="search-bar" class="offset-by-eight four columns">
 				<div class="row">
@@ -52,23 +58,24 @@
 		<div class="row">
 			<?php wp_nav_menu( array( 
 				'theme_location' => 'main_nav', 
-				'menu_class' => 'nav-bar', 
+				'menu_class' => '', 
 				'fallback_cb' => 'foundation_page_menu', 
 				'container' => 'nav',
 				'container_id' => 'main_nav', 
 				'container_class' => 'twelve columns',
-				'depth' => 2,
-				'walker' => new foundation_toplevel_navigation() )); ?> 
+				'depth' => 2 )); ?> 
 		</div>
-		<div class="row">
-		<?php wp_nav_menu( array( 
-				'theme_location' => 'main_nav', 
-				'menu_class' => 'sub-nav', 
-				'fallback_cb' => 'foundation_page_menu', 
-				'container' => 'nav',
-				'container_id' => 'secondary_nav', 
-				'container_class' => 'twelve columns hide-for-medium-down',
-				'depth' => 2) ); ?> 
-		</div>
+		<div class="row show-for-small">
 
-	</header>
+			<?php wp_nav_menu( array( 
+				'theme_location' => 'main_nav', 
+				'menu_class' => '', 
+				'fallback_cb' => 'foundation_page_menu', 
+				'container' => 'div',
+				'container_id' => 'mobile_nav', 
+				'container_class' => 'twelve columns',
+				'depth' => 2,
+				'walker' => new mobile_select_menu(),
+				'items_wrap' => '<select onchange="window.open(this.options[this.selectedIndex].value,\'_top\')">%3$s</select>', )); ?> 
+		</div>	
+		</header>

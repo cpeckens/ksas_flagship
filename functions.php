@@ -99,61 +99,28 @@ function foundation_page_menu_class($ulclass) {
 
 add_filter('wp_page_menu','foundation_page_menu_class');
 	
-// Menu output mods
-class foundation_toplevel_navigation extends Walker_Nav_Menu
-{
-      function start_el(&$output, $item, $depth, $args)
-      {
-			global $wp_query;
-			$indent = ( $depth ) ? str_repeat( "", $depth ) : '';
-			
-			$class_names = $value = '';
-			
-			// If the item has children, add the dropdown class for bootstrap
-			if ( $args->has_children ) {
-				$class_names = "has-flyout ";
-			}
-						
-			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-			
-			$class_names .= join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-			$class_names = ' class="'. esc_attr( $class_names ) . '"';
-           
-           	$output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+class mobile_select_menu extends Walker_Nav_Menu{
+    function start_lvl(&$output, $depth){
+      $indent = str_repeat("\t", $depth); // don't output children opening tag (`<ul>`)
+    }
 
-           	$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-           	$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-           	$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-           	$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-           	// if the item has children add these two attributes to the anchor tag
-           	if ( $args->has_children ) {
-				$attributes .= 'data-toggle="dropdown"';
-			}
+    function end_lvl(&$output, $depth){
+      $indent = str_repeat("\t", $depth); // don't output children closing tag
+    }
 
-            $item_output = $args->before;
-            $item_output .= '<a'. $attributes .'>';
-            $item_output .= $args->link_before .apply_filters( 'the_title', $item->title, $item->ID );
-            $item_output .= $args->link_after;
-            $item_output .= '</a>';
-            $item_output .= $args->after;
+    function start_el(&$output, $item, $depth, $args){
+      // add spacing to the title based on the depth
+      $item->title = str_repeat("&nbsp;", $depth * 4).$item->title;
 
-            $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-            }
-            
-function start_lvl(&$output, $depth) {
-	$output .= "\n<ul class=\"flyout hide\">\n";
-}
-            
-      	function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output )
-      	    {
-      	        $id_field = $this->db_fields['id'];
-      	        if ( is_object( $args[0] ) ) {
-      	            $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
-      	        }
-      	        return parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
-      	    }
-      	
-            
+      parent::start_el(&$output, $item, $depth, $args);
+
+      // no point redefining this method too, we just replace the li tag...
+      $output = str_replace('<li', '<option value="'. esc_attr( $item->url        ) .'"', $output);
+    }
+
+    function end_el(&$output, $item, $depth){
+      $output .= "</option>\n"; // replace closing </li> with the option tag
+    }
 }
 
 /*******************CSS HELPERS******************/
