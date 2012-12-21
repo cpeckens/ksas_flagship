@@ -30,7 +30,7 @@ Template Name: Fields of Study
 					
 					<div class="row">		
 						<input type="submit" class="icon-search" placeholder="Search by major/minor, interests, department name..."value="&#xe004;" />
-						<input type="text" name="search" value="<?php if (isset($_POST['home_search'])) { echo($_POST['home_search']); } ?>" id="id_search" class="eleven columns" /> 
+						<input type="text" name="search" value="<?php if (isset($_POST['home_search'])) { echo($_POST['home_search']); } ?>" id="id_search"  /> 
 					</div>
 					
 					<div class="row">
@@ -98,6 +98,9 @@ Template Name: Fields of Study
 								<?php endif; ?>
 								<?php if (get_post_meta($post->ID, 'ecpt_degreesoffered', true)) : ?>
 									<b>Degrees Offered:</b>&nbsp;<?php echo get_post_meta($post->ID, 'ecpt_degreesoffered', true); ?>
+								<?php endif; ?>
+								<?php if (get_post_meta($post->ID, 'ecpt_pcitext', true)) : ?>
+									<?php echo get_post_meta($post->ID, 'ecpt_pcitext', true); ?>
 								<?php endif; ?>
 							</p>
 						</div>	

@@ -11,12 +11,12 @@
 		<?php while ($flagship_evergreen_query->have_posts()) : $flagship_evergreen_query->the_post(); ?>
 			<!-- Set background image. Resolution varies based on size -- Desktop, Tablet, Mobile -->
 				<style>
-					body { background: rgba(0,0,0,1) url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
+					body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
 					@media only screen and (max-width: 768px) { 
 						body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
 						}
 					@media only screen and (max-width: 420px) { 
-						body { background: url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
+						body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
 						}
 				</style>
 				
@@ -36,8 +36,7 @@
 
 	  	<div class="row">	
 		<!-- Search Bar -->
-		<label class="one column hide-for-medium-down">SEARCH:</label>
-		<div class="eleven mobile-three columns">
+		<div class="twelve columns">
 			<input type="submit" class="icon-search" value="&#xe004;" />
 		    <input type="text" name="home_search" id="field_search" placeholder="Search fields of study by major, minor, interests, or name" />
 		</div>

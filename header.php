@@ -65,7 +65,7 @@
 				'container_class' => 'twelve columns',
 				'depth' => 2 )); ?> 
 		</div>
-		<div class="row show-for-small">
+		<div class="row show-for-small black radius10" id="mobile_nav_container">
 
 			<?php wp_nav_menu( array( 
 				'theme_location' => 'main_nav', 

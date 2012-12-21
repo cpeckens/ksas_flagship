@@ -36,6 +36,9 @@ p {
 	background: rgba(0, 0, 0, .75);
 }
 
+.white {
+	color:#FFF;
+}
 .green,
 #department {
 	background: #006666;
@@ -106,6 +109,34 @@ button a:visited {
 
 .text-shadow {
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, .75);
+}
+
+ul, ol {
+	list-style-position: inside;
+	list-style:square;
+}
+.panel {
+	background: #3366cc;
+	border:none;
+	color: #FFF;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.panel ul {
+	list-style: none;
+}
+
+.panel li:before {
+    content:"\25FE";
+    font-size:20px;
+    padding-right: 3px;
+    vertical-align:middle;
+}
+
+.floatleft {
+	float:left;
+	margin-right: 15px;
 }
 /******* Navigation ************/
 nav ul {
@@ -220,7 +251,10 @@ nav ul {
 #main_nav ul li ul li.current_page_item a {
 	color: #000;
 }
-
+#mobile_nav_container {
+	padding: 15px 0;
+	margin-top: 15px;	
+}
 li.external a::after {
 	content: "\e007";
 	font-family: 'flagship-icon';
@@ -442,7 +476,7 @@ body.home {
 
 body.fields,
 body.academics {
-	background: url('../images/bg-fieldsofstudy.jpg') no-repeat top center;
+	background: #000 url('../images/bg-fieldsofstudy.jpg') no-repeat top center;
 }
 body.home h1,
 body.home h2,
@@ -483,7 +517,7 @@ body.fields h3
     border-bottom-right-radius: 		7px;
     display: inline;
     float:left;
-    width:94%;
+    width:88%;
     border:none;
 }
 
@@ -732,6 +766,22 @@ min-width: 240px;
 	color:#ccc;
 }
 
+/******* FIELDS OF STUDY LANDING PAGES ******/
+p.contact {
+	font-size: 16px;
+	margin-bottom: 40px;
+}
+
+p.contact span {
+	margin-right: 10px;
+}
+
+p.contact [class^="icon-"]:before,
+p.contact [class*=" icon-"]:before {
+	padding-right: 4px;
+	vertical-align: middle;
+	font-size: 18px;
+}
 /******* Icons ******/
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
@@ -777,11 +827,6 @@ min-width: 240px;
 .icon-new-tab-2:before {
 	content: "\e007";
 }
-
-
-.icon-new-tab-2:before {
-	content: "\e007";
-}
 .icon-facebook:before {
 	content: "\e008";
 }
@@ -806,15 +851,6 @@ min-width: 240px;
 .icon-twitter:before {
 	content: "\e00f";
 }
-.icon-bookmark:before {
-	content: "\e010";
-}
-.icon-phone:before {
-	content: "\e011";
-}
-.icon-phone-2:before {
-	content: "\e012";
-}
 .icon-mail:before {
 	content: "\e013";
 }
@@ -830,7 +866,7 @@ min-width: 240px;
 .icon-share-2:before {
 	content: "\e017";
 }
-.icon-bookmark-2:before {
+.icon-bookmark:before {
 	content: "\e018";
 }
 .icon-arrow-up-left:before {
@@ -884,6 +920,18 @@ min-width: 240px;
 .icon-file-powerpoint:before {
 	content: "\e029";
 }
+.icon-play:before {
+	content: "\e02a";
+}
+.icon-mobile:before {
+	content: "\e02b";
+}
+.icon-phone:before {
+	content: "\e012";
+}
+.icon-youtube:before {
+	content: "\e02c";
+}
 @media only screen and (max-width: 975px) {
 #main_nav ul li {
 	padding: 0 7px;
@@ -924,10 +972,15 @@ min-width: 240px;
 			width:100% !important; 
 		}
 }
+
+@media only screen and (max-width: 480px) {
+	button {
+		font-size: 14px;
+	}
+	#main_nav {display: none !important;}
+}
 /*******Attributions*******/
-/*
+/* 
 Icon Set:	IcoMoon - Free -- http://keyamoon.com/icomoon/
 License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
-Icon Set:	Broccolidry -- http://dribbble.com/shots/587469-Free-16px-Broccolidryiconsaniconsetitisfullof-icons
-License:	Aribitrary -- http://licence.visualidiot.com/
 */
