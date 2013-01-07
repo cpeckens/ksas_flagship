@@ -9,7 +9,9 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: "Myriad W01 SmBd", Arial, sans-serif;
 }
 
-em, i {
+em, i,
+blockquote,
+blockquote p {
 	font-family:"Myriad W01 It";
 }
 
@@ -30,6 +32,16 @@ p {
 	color: #333;
 }
 
+h6 {
+	font-size:10px;
+	color:#666;
+	font-family:"Myriad W01 Bd";
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 3px;
+
+}
+
 /******* Reusable Classes ************/
 
 .black {
@@ -38,6 +50,14 @@ p {
 
 .white {
 	color:#FFF;
+}
+
+.sky_blue {
+	color: #6699cc;
+}
+
+.grey_bg {
+	background: #666;
 }
 .green,
 #department {
@@ -99,12 +119,34 @@ button a:visited {
 	border-radius: 			10px;
 }
 
+.radius-left {
+	-webkit-border-top-left-radius: 	10px;
+	-webkit-border-bottom-left-radius: 	10px;
+	-moz-border-radius-topleft: 		10px;
+	-moz-border-radius-bottomleft: 		10px;
+	border-top-left-radius: 			10px;
+	border-bottom-left-radius: 			10px;
+}
+
+.radius-topright {
+	-webkit-border-top-right-radius: 	10px;
+	-moz-border-radius-topright: 		10px;
+	border-top-right-radius: 			10px;
+}
 .inline {
 	display: inline;
 }
 
+.offset-top {
+	margin-top:-30px;
+	zoom: 1;
+}
 .block {
 	display:block;
+}
+
+.no-gutter {
+	padding: 0;
 }
 
 .text-shadow {
@@ -116,7 +158,7 @@ ul, ol {
 	list-style:square;
 }
 .panel {
-	background: #3366cc;
+	background: #3478b6;
 	border:none;
 	color: #FFF;
 	font-size: 14px;
@@ -134,9 +176,67 @@ ul, ol {
     vertical-align:middle;
 }
 
+#landing .panel li a,
+.panel li a {
+	color:#fff;
+}
+
+#landing .panel li a:hover, 
+.panel li a:hover {
+	color:#ffcc66;
+}
+
 .floatleft {
 	float:left;
 	margin-right: 15px;
+}
+
+.video_thumb .icon-play:before {
+	position: absolute;
+	top:20%;
+	color:#336699;
+	left:36%;
+	font-size: 74px;
+}
+
+.video_thumb h3,
+#landing .video_thumb h3 {
+	margin: 5px 15px;
+	color: #fff;
+	font-size:16px;
+}
+
+.video_thumb p,
+#landing .video_thumb p {
+	margin: 5px 15px;
+	padding-bottom: 15px;
+	color: #fff;
+	font-size:12px;
+}
+
+blockquote {
+	border-left:none;
+	padding: 9px 40px 0 10px;
+}
+blockquote,
+blockquote p {
+	color: #555;
+	font-size: 16px;
+}
+blockquote:before {
+	content: "\e011";
+	font-family: 'flagship-icon';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	font-size: 80px;
+	position: absolute;
+	bottom:20%;
+	right: 8%;
+	opacity: .25;
+	color: #336699;	
 }
 /******* Navigation ************/
 nav ul {
@@ -245,10 +345,12 @@ nav ul {
 
 #main_nav ul li.logo.current_page_item,
 #main_nav ul li ul li.current_page_item,
-#main_nav ul li ul li:hover {
+#main_nav ul li ul li:hover,
+#main_nav ul li ul li.current_page_ancestor {
 	background: none;
 }
-#main_nav ul li ul li.current_page_item a {
+#main_nav ul li ul li.current_page_item a,
+#main_nav ul li ul li.current_page_ancestor a {
 	color: #000;
 }
 #mobile_nav_container {
@@ -289,7 +391,7 @@ li.external a::after:hover {
 	background: url('../images/logo.png') no-repeat top;
 	width: 237px;
 	height: 133px;
-	margin-top:-80px;
+	margin-top:-61px;
 	text-indent: -9999px;
 	position: absolute;
 }
@@ -460,31 +562,31 @@ footer a,
 #menu-footer-links a {
 	font-size:12px;
 }
-/* CSS for jQuery Orbit Plugin 1.4.0 Maintained for Foundation. foundation.zurb.com Free to use under the MIT license. http://www.opensource.org/licenses/mit-license.php
 
 /*******Backgrounds & Wrappers*********/
 .wrapper {
 	background: rgba(255,255,255, 0.95);
-	-webkit-border-radius:  10px;
-	-moz-border-radius: 	10px;
-	border-radius: 			10px;
+}
+
+.sidebar_bg {
+	background: #cecece;
 }
 
 body.home {
 	color:#FFF;
 }
 
-body.fields,
-body.academics {
+body.academics,
+body.single-studyfields {
 	background: #000 url('../images/bg-fieldsofstudy.jpg') no-repeat top center;
 }
 body.home h1,
 body.home h2,
 body.home h3,
 body.home h4,
-body.fields h3
+.isotope h3
  {
-	color:#FFF;
+	color:#F7f7f7;
 }
 
 
@@ -767,9 +869,34 @@ min-width: 240px;
 }
 
 /******* FIELDS OF STUDY LANDING PAGES ******/
-p.contact {
-	font-size: 16px;
+#field_image {
+	font-family: "Myriad W01 SmBd", Arial, sans-serif;
+}
+
+#field_image p {
+	line-height: 1.7em;
+}
+
+#field_image h3 {
+	font-size: 30px;
+	margin: 30px 0 15px 0;
+}
+#field_image,
+#field_image .black {
+	min-height: 280px;
+}
+
+#landing h2,
+#landing h3,
+#landing a  {
+	font-family: "Myriad W01 Regular", Arial, sans-serif;
+	color: #3478b6;	
+}
+p.contact,
+#landing p.contact a {
+	font-size: 14px;
 	margin-bottom: 40px;
+	color: #000;	
 }
 
 p.contact span {
@@ -781,6 +908,47 @@ p.contact [class*=" icon-"]:before {
 	padding-right: 4px;
 	vertical-align: middle;
 	font-size: 18px;
+	color:#3478b6;
+}
+
+ul.nav {
+	list-style: none;
+}
+
+ul.nav li {
+	border-top: 1px solid #999;
+	font-size:16px;
+	padding: 10px 0 8px 30px;
+	letter-spacing: 1px;
+}
+
+ul.nav li [class^="icon-"]:before,
+ul.nav li [class*="icon-"]:before {
+	margin-right: 10px;
+	color: #999;
+	vertical-align: middle;
+}
+
+#landing ul.nav li a {
+	font-family: "Myriad W01 SmBd", Arial, sans-serif;
+	color:#336699;
+}
+
+ul.nav:last-child {
+	border-bottom: 1px solid #999;
+}
+
+.jumpmenu form {
+    margin: 0 0 30px 30px;
+}
+
+.jumpmenu select {
+    background: #3478b6;
+    border: #666;
+    color: #FFF;
+    font-size: 14px;
+    text-indent: 15px;
+    height: 35px;
 }
 /******* Icons ******/
 
@@ -932,6 +1100,15 @@ p.contact [class*=" icon-"]:before {
 .icon-youtube:before {
 	content: "\e02c";
 }
+
+.icon-arrow-right-2:before {
+	content: "\e010";
+}
+
+.icon-comments:before {
+	content: "\e011";
+}
+
 @media only screen and (max-width: 975px) {
 #main_nav ul li {
 	padding: 0 7px;

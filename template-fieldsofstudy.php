@@ -10,7 +10,7 @@ Template Name: Fields of Study
 		'orderby' => 'title',
 		'order' => 'ASC',
 		'posts_per_page' => '-1')); ?>
-<div class="row wrapper">
+<div class="row wrapper radius10">
 <div class="twelve columns">
 	<section class="row">
 	

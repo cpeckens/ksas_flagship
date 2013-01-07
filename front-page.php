@@ -7,7 +7,7 @@
 ?>		
 
 <div class="row">
-	<section class="six columns end" id="evergreen">
+	<section class="seven columns end offset-top" id="evergreen">
 		<?php while ($flagship_evergreen_query->have_posts()) : $flagship_evergreen_query->the_post(); ?>
 			<!-- Set background image. Resolution varies based on size -- Desktop, Tablet, Mobile -->
 				<style>

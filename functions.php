@@ -131,6 +131,10 @@ function the_slug() {
     return $slug; 
 }
 
-
+function add_flagship_categories() {
+		wp_insert_term('Homepage', 'category',  array('description'=> '','slug' => 'homepage'));
+		wp_insert_term('Dept Spotlight', 'category',  array('description'=> '','slug' => 'deptspotlight'));
+	}
+add_action('init', 'add_flagship_categories');
 
 ?>

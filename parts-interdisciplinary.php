@@ -50,20 +50,16 @@
 				
 				<?php if ( get_post_meta($post->ID, 'ecpt_section1', true) ) :  echo get_post_meta($post->ID, 'ecpt_section1', true);  endif; ?>
 				
-				<?php if ( get_post_meta($post->ID, 'ecpt_section2heading', true) ) : ?><h3><?php echo get_post_meta($post->ID, 'ecpt_section2heading', true) ?></h3><?php else : ?>
-					<h3>What can you do with your degree?</h3>
-				<?php endif; ?>
+				<?php if ( get_post_meta($post->ID, 'ecpt_section2heading', true) ) : ?><h3><?php echo get_post_meta($post->ID, 'ecpt_section2heading', true) ?></h3><?php endif; ?>
 				
 				<?php if ( get_post_meta($post->ID, 'ecpt_section2content', true) ) :  echo get_post_meta($post->ID, 'ecpt_section2content', true);  endif; ?>
 				
-				<?php if ( get_post_meta($post->ID, 'ecpt_section3heading', true) ) : ?><h3><?php echo get_post_meta($post->ID, 'ecpt_section3heading', true) ?></h3><?php else : ?>
-					<h3>Related Programs and Centers</h3>
-				<?php endif; ?>
+				<?php if ( get_post_meta($post->ID, 'ecpt_section3heading', true) ) : ?><h3><?php echo get_post_meta($post->ID, 'ecpt_section3heading', true) ?></h3><?php endif; ?>
 				<?php if ( get_post_meta($post->ID, 'ecpt_section3content', true) ) :  echo get_post_meta($post->ID, 'ecpt_section3content', true);  endif; ?>
 				
 		<?php endwhile; endif; ?>	
 		</section>
-	</div>	<!-- End main content (left) section -->
+	</div>	
 	
 	<div class="four columns"> <!-- Begin Sidebar -->
 	<!--Begin Jump to department -->
@@ -80,7 +76,7 @@
 						'meta_query' => array(
 							array(
 							    'key' => 'ecpt_structure',
-							    'value' => 'department',
+							    'value' => 'interdisciplinary',
 							    'compare' => 'IN'
 							))
 					)); ?>
@@ -98,18 +94,6 @@
 				<?php if ( get_post_meta($post->ID, 'ecpt_homepage', true) ) : ?>
 					<li><span class="icon-arrow-right-2"></span><a href="http://<?php echo get_post_meta($post->ID, 'ecpt_homepage', true); ?>">Department Website</a></li>
 				<?php endif; ?>
-
-				<?php if ( get_post_meta($post->ID, 'ecpt_facultypage', true) ) : ?>
-					<li><span class="icon-arrow-right-2"></span><a href="http://<?php echo get_post_meta($post->ID, 'ecpt_facultypage', true); ?>">Faculty</a></li>
-				<?php endif; ?>
-
-				<?php if ( get_post_meta($post->ID, 'ecpt_undergraduatepage', true) ) : ?>
-					<li><span class="icon-arrow-right-2"></span><a href="http://<?php echo get_post_meta($post->ID, 'ecpt_undergraduatepage', true); ?>">Undergraduate</a></li>
-				<?php endif; ?>
-
-				<?php if ( get_post_meta($post->ID, 'ecpt_graduatepage', true) ) : ?>
-					<li><span class="icon-arrow-right-2"></span><a href="http://<?php echo get_post_meta($post->ID, 'ecpt_graduatepage', true); ?>">Graduate</a></li>
-				<?php endif; ?>
 			<?php endwhile; endif; ?>	
 			</ul>
 		</div> <!--End Dept Nav Links -->
@@ -117,23 +101,21 @@
 		<?php
 			//Get the academic department slug 
 			global $wp_query;
-			foreach(get_the_terms($wp_query->post->ID, 'academicdepartment') as $term);
+			foreach(get_the_terms($wp_query->post->ID, 'affiliation') as $term);
 			$dept_slug = $term->slug;
 			
 			//Query department extras for that slug
 			$dept_extra_query = new WP_Query(array(
-						'post_type' => array('deptextra', 'post'),
+						'post_type' => 'deptextra',
 						'orderby' => 'rand',
 						'posts_per_page' => '1',
-						'academicdepartment' => $dept_slug
+						'affiliation' => $dept_slug
 						));
 						 
 			//If there are results
 			if ( $dept_extra_query->have_posts() ) : while ( $dept_extra_query->have_posts() ) : $dept_extra_query->the_post();
 			
 			$format = get_post_format();  //Determine post format
-			if ( false === $format )
-				$format = 'standard';
 				if ( $format == 'video' ) : locate_template('parts-extras-video.php', true, false); endif;
 				if ( $format == 'quote' ) : locate_template('parts-extras-quote.php', true, false); endif;
 				if ( $format == 'standard' ) : locate_template('parts-extras-news.php', true, false); endif;
