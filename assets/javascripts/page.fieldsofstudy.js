@@ -1,22 +1,45 @@
 var $j = jQuery.noConflict();
 
 
-//***********FIELDS OF STUDY SCRUPTS***********
+//***********FIELDS OF STUDY SCRIPTS***********
+
 $j(function() {
 	//set isotope variables
-   var $container = $j('#fields_container');
+   var $container = $j('#fields_container'),
+   		filters = {};
 
    $container.isotope({
         itemSelector: '.mobile-field',
         layoutMode : 'fitRows'
     });
 
-    //Create filter buttons
-$j('#filters a').click(function(){
-  var selector = $j(this).attr('data-filter');
-  $container.isotope({ filter: selector });
-  return false;
-});
+    // filter buttons
+    $j('.filter a').click(function(){
+      var $this = $(this);
+      // don't proceed if already selected
+      if ( $this.hasClass('selected') ) {
+        return;
+      }
+      
+      var $optionSet = $this.parents('.option-set');
+      // change selected class
+      $optionSet.find('.selected').removeClass('selected');
+      $this.addClass('selected');
+      
+      // store filter value in object
+      // i.e. filters.color = 'red'
+      var group = $optionSet.attr('data-filter-group');
+      filters[ group ] = $this.attr('data-filter-value');
+      // convert object into array
+      var isoFilters = [];
+      for ( var prop in filters ) {
+        isoFilters.push( filters[ prop ] )
+      }
+      var selector = isoFilters.join('');
+      $container.isotope({ filter: selector });
+
+      return false;
+    });
 	//Setup quicksearch
     $j('#id_search').quicksearch('div.mobile-field', {
     	delay: 100,
@@ -33,7 +56,4 @@ $j('#filters a').click(function(){
             $container.isotope({ filter: '.quicksearch-match' }).isotope(); 
         }, 100 );
     });
-    
-
-
-});
+  });

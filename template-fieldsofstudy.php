@@ -27,12 +27,12 @@ Template Name: Fields of Study
 					<div class="row">
 						<h5>Search fields of study:</h5>
 					</div>
-					<div class="row">
+					<div class="row filter option-set" data-filter-group="program_type">
 						<label>Program Type:</label>
-						<input type="radio" name="program_type" value="all_types" checked>View all
-						<input type="radio" name="program_type" value="undergraduate">Undergraduate
-						<input type="radio" name="program_type" value="full_time_grad">Graduate (full-time)
-						<input type="radio" name="program_type" value="part_time_grad">Graduate (part-time)
+						<button class="radio"><a href="#" data-filter="" class="selected">View all</a></button>
+						<button class="radio"><a href="#" data-filter="undergraduate">Undergraduate</a></button>
+						<button class="radio"><a href="#" data-filter="full_time_grad">Graduate (full-time)</a></button>
+						<button class="radio"><a href="#" data-filter="part_time_grad">Graduate (part-time)</a></button>
 					</div>
 					<div class="row">		
 						<input type="submit" class="icon-search" placeholder="Search by major/minor, interests, department name..."value="&#xe004;" />
@@ -43,8 +43,8 @@ Template Name: Fields of Study
 						<h5>Filter fields of study:</h5>
 					</div>
 
-					<div class="row" id="filters">
-						<button class="bright_blue_bg"><a href="#" data-filter="*">View All</a></button>
+					<div class="row filter option-set" data-filter-group="structure">
+						<button class="bright_blue_bg"><a href="#" data-filter="" class="selected">View All</a></button>
 						<button class="green_bg"><a href="#" data-filter=".department">Departments</a></button>
 						<button class="purple_bg"><a href="#" data-filter=".interdisciplinary">Interdisciplinary</a></button>
 						<button class="fushia"><a href="#" data-filter=".arts">The Arts</a></button>
@@ -70,6 +70,7 @@ Template Name: Fields of Study
 						$program_type_names[] = $program_type->slug;
 					}
 				$program_type_name = join( " ", $program_type_names );
+			endif;
 	?>
 		
 		<!-- Set classes for isotype.js filter buttons -->

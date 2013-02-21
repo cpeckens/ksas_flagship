@@ -1861,7 +1861,12 @@ a[href$=".pptx"]:after {
 .icon-newspaper:before {
 	content: "\e02f";
 }
-
+.icon-circle-blank:before {
+	content: "\f10c";
+}
+.icon-circle:before {
+	content: "\f111";
+}
 
 @media only screen and (max-width: 975px) {
 #main_nav ul li {
