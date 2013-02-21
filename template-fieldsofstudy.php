@@ -63,10 +63,17 @@ Template Name: Fields of Study
 		//Pull discipline array (humanities, natural, social)
 		$discipline_array = get_post_meta($post->ID, 'ecpt_discipline', true);
 		$discipline = array_values($discipline_array);
+		$program_types = get_the_terms( $post->ID, 'program_types' );
+			if ( $program_types && ! is_wp_error( $program_types ) ) : 
+				$program_type_names = array();
+					foreach ( $program_types as $program_type ) {
+						$program_type_names[] = $program_type->slug;
+					}
+				$program_type_name = join( " ", $program_type_names );
 	?>
 		
 		<!-- Set classes for isotype.js filter buttons -->
-		<div class="four columns mobile-two mobile-field <?php echo $discipline[0] . ' '; if ( isset($discipline[1] )) { echo $discipline[1] . ' ';  } if ( isset($discipline[2] )) { echo $discipline[2] . ' ';  } echo get_post_meta($post->ID, 'ecpt_structure', true); ?>">
+		<div class="four columns mobile-two mobile-field <?php echo $discipline[0] . ' '; if ( isset($discipline[1] )) { echo $discipline[1] . ' ';  } if ( isset($discipline[2] )) { echo $discipline[2] . ' ';  } echo get_post_meta($post->ID, 'ecpt_structure', true); echo $program_type_name; ?>">
 		
 			<a href="<?php the_permalink();?>" title="<?php the_title(); ?>" class="field">
 				<div class="twelve columns field" id="<?php echo get_post_meta($post->ID, 'ecpt_structure', true); ?>">
