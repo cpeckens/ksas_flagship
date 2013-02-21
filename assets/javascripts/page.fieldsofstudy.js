@@ -14,8 +14,8 @@ $j(function() {
     });
 
     // filter buttons
-    $j('.filter a').click(function(){
-      var $this = $(this);
+    $j('.filter button a').click(function(){
+      var $this = $j(this);
       // don't proceed if already selected
       if ( $this.hasClass('selected') ) {
         return;
@@ -29,7 +29,7 @@ $j(function() {
       // store filter value in object
       // i.e. filters.color = 'red'
       var group = $optionSet.attr('data-filter-group');
-      filters[ group ] = $this.attr('data-filter-value');
+      filters[ group ] = $this.attr('data-filter');
       // convert object into array
       var isoFilters = [];
       for ( var prop in filters ) {

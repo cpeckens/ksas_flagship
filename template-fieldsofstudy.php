@@ -24,17 +24,16 @@ Template Name: Fields of Study
 		<div class="seven columns" id="fields_search">
 			<form action="#">
 				<fieldset class="radius10">
-					<div class="row">
-						<h5>Search fields of study:</h5>
-					</div>
+
 					<div class="row filter option-set" data-filter-group="program_type">
-						<label>Program Type:</label>
+						<h5>Choose program type:</h5>
 						<button class="radio"><a href="#" data-filter="" class="selected">View all</a></button>
-						<button class="radio"><a href="#" data-filter="undergraduate">Undergraduate</a></button>
-						<button class="radio"><a href="#" data-filter="full_time_grad">Graduate (full-time)</a></button>
-						<button class="radio"><a href="#" data-filter="part_time_grad">Graduate (part-time)</a></button>
+						<button class="radio"><a href="#" data-filter=".undergrad_program">Undergraduate</a></button>
+						<button class="radio"><a href="#" data-filter=".full_time_program">Graduate (full-time)</a></button>
+						<button class="radio"><a href="#" data-filter=".part_time_program">Graduate (part-time)</a></button>
 					</div>
-					<div class="row">		
+					<div class="row">
+						<h5>Search by keyword:</h5>		
 						<input type="submit" class="icon-search" placeholder="Search by major/minor, interests, department name..."value="&#xe004;" />
 						<input type="text" name="search" value="<?php if (isset($_POST['home_search'])) { echo($_POST['home_search']); } ?>" id="id_search"  /> 
 					</div>
@@ -63,7 +62,7 @@ Template Name: Fields of Study
 		//Pull discipline array (humanities, natural, social)
 		$discipline_array = get_post_meta($post->ID, 'ecpt_discipline', true);
 		$discipline = array_values($discipline_array);
-		$program_types = get_the_terms( $post->ID, 'program_types' );
+		$program_types = get_the_terms( $post->ID, 'program_type' );
 			if ( $program_types && ! is_wp_error( $program_types ) ) : 
 				$program_type_names = array();
 					foreach ( $program_types as $program_type ) {
@@ -74,7 +73,7 @@ Template Name: Fields of Study
 	?>
 		
 		<!-- Set classes for isotype.js filter buttons -->
-		<div class="four columns mobile-two mobile-field <?php echo $discipline[0] . ' '; if ( isset($discipline[1] )) { echo $discipline[1] . ' ';  } if ( isset($discipline[2] )) { echo $discipline[2] . ' ';  } echo get_post_meta($post->ID, 'ecpt_structure', true); echo $program_type_name; ?>">
+		<div class="four columns mobile-two mobile-field <?php echo $discipline[0] . ' '; if ( isset($discipline[1] )) { echo $discipline[1] . ' ';  } if ( isset($discipline[2] )) { echo $discipline[2] . ' ';  } echo get_post_meta($post->ID, 'ecpt_structure', true);?> <?php echo $program_type_name; ?>">
 		
 			<a href="<?php the_permalink();?>" title="<?php the_title(); ?>" class="field">
 				<div class="twelve columns field" id="<?php echo get_post_meta($post->ID, 'ecpt_structure', true); ?>">
@@ -121,8 +120,6 @@ Template Name: Fields of Study
 		</div>
 	</div>
 </section>
-
-
 </div>
 </div> <!-- End content wrapper -->
 <?php get_footer(); ?>

@@ -1140,6 +1140,29 @@ min-width: 240px;
 	color:#ccc;
 }
 
+button a.selected {
+	text-shadow: 1px 1px 1px #000;
+}
+
+button.radio {
+	background-color: transparent;
+	font-size: 14px;
+	opacity: 1;
+	padding: 5px;
+	margin-right: 0;
+}
+
+button.radio a {
+	color: #333;
+ padding:5px;
+}
+
+button.radio a.selected,
+button.radio a:hover {
+ -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px;
+ background-color: #3478b6;
+ color: #FFF;
+}
 /******* FIELDS OF STUDY LANDING PAGES ******/
 #field_image {
 	font-family: "Myriad W01 SmBd", Arial, sans-serif;
