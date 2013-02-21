@@ -7,7 +7,7 @@
 ?>		
 
 <div class="row">
-	<section class="seven columns end offset-top" id="evergreen">
+	<section class="seven columns end offset-top" id="evergreen" role="main">
 		<?php while ($flagship_evergreen_query->have_posts()) : $flagship_evergreen_query->the_post(); ?>
 			<!-- Set background image. Resolution varies based on size -- Desktop, Tablet, Mobile -->
 				<style>
@@ -19,16 +19,22 @@
 						body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
 						}
 				</style>
-				
-				<h1 class="text-shadow"><?php the_title(); ?></h1>
-				<span class="text-shadow"><?php the_content();?></span>
-		<?php endwhile; ?>
+				<a href="#" data-reveal-id="modal_<?php the_id(); ?>_caption">
+					<h1 class="text-shadow"><?php the_title(); ?></h1>
+					<span class="text-shadow"><?php the_content();?></span>
+				</a>
+				<div id="modal_<?php the_id(); ?>_caption" class="reveal-modal radius10">
+						<h4>About the Photo</h4>
+						<p class="white"><?php echo get_post_meta($post->ID, 'ecpt_caption_credit', true); ?></p>
+					<a class="close-reveal-modal">&#215;</a>
+				</div>
 	</section>
 </div>
 
-<section class="row" id="field_search">
+<?php endwhile; ?>
+<section class="row" id="field_search" role="form">
 <dl class="tabs contained">
-  <dd class="active black">Fields of Study</dd>
+  <dd class="active black_bg">Fields of Study</dd>
 </dl>
 <ul class="tabs-content contained">
   <li class="active">
@@ -44,38 +50,38 @@
 	
 	<div class="row" id="filters">
 			<label class="one column">EXPLORE:</label>
-			<button class="blue"><a href="academics/fields" data-filter="*">View All</a></button>
-			<button class="green"><a href="academics/fields?filter=department" data-filter=".department">Departments</a></button>
-			<button class="purple"><a href="academics/fields?filter=interdisciplinary" data-filter=".interdisciplinary">Interdisciplinary</a></button>
+			<button class="bright_blue_bg"><a href="academics/fields" data-filter="*">View All</a></button>
+			<button class="green_bg"><a href="academics/fields?filter=department" data-filter=".department">Departments</a></button>
+			<button class="purple_bg"><a href="academics/fields?filter=interdisciplinary" data-filter=".interdisciplinary">Interdisciplinary</a></button>
 			<button class="fushia"><a href="academics/fields?filter=arts" data-filter=".arts">The Arts</a></button>
-			<button class="yellow"><a href="academics/fields?filter=humanities" data-filter=".humanities">Humanities</a></button>
-			<button class="orange"><a href="academics/fields?filter=natural" data-filter=".natural">Natural Sciences</a></button>
-			<button class="blue"><a href="academics/fields?filter=social" data-filter=".social">Social Sciences</a></button>
+			<button class="yellow_bg"><a href="academics/fields?filter=humanities" data-filter=".humanities">Humanities</a></button>
+			<button class="orange_bg"><a href="academics/fields?filter=natural" data-filter=".natural">Natural Sciences</a></button>
+			<button class="bright_blue_bg"><a href="academics/fields?filter=social" data-filter=".social">Social Sciences</a></button>
 	</div>	    
 	</form>
   </li>
 </ul>
 </section>
 
-<section class="row black radius10" id="news_feed">
-	<article class="four columns">
-		<a href="#" class="th"><img src="http://placehold.it/305x200"></a>
-		<h4>Headline Goes here</h4>
-		<summary>This is the subhead</summary>
-		<source>Arts & Sciences Magazine></article>
-	</article>
-	<article class="four columns">
-		<a href="#" class="th"><img src="http://placehold.it/305x200"></a>
-		<h4>Headline Goes here</h4>
-		<summary>This is the subhead</summary>
-		<source>Arts & Sciences Magazine></article>
-	</article>
-	<article class="four columns">
-		<a href="#" class="th"><img src="http://placehold.it/305x200"></a>
-		<h4>Headline Goes here</h4>
-		<summary>This is the subhead</summary>
-		<source>Arts & Sciences Magazine></article>
-	</article>
+<section class="row black_bg radius10" id="news_feed" role="complementary">
+<?php
+	//Query news and department extras for Homepage category
+	$homepage_query = new WP_Query(array(
+				'post_type' => array('deptextra', 'post'),
+				'category_name' => 'homepage',
+				'posts_per_page' => '3'				
+				));
+				 
+	//If there are results
+	if ( $homepage_query->have_posts() ) : while ( $homepage_query->have_posts() ) : $homepage_query->the_post();
+	
+	$format = get_post_format();  //Determine post format
+	if ( false === $format ) {
+		$format = 'standard'; }
+		if ( $format == 'video' ) : locate_template('parts-home-video.php', true, false); endif;
+		if ( $format == 'standard' ) : locate_template('parts-home-news.php', true, false); endif;
+?>
+<?php endwhile; endif; ?>
 </section>
 
 <?php get_footer(); ?>

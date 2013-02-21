@@ -1,5 +1,5 @@
   <footer>
-  	<div class="row">
+  	<div class="row" role="navigation">
 		<?php wp_nav_menu( array( 
 		'theme_location' => 'quick_links', 
 		'menu_class' => 'nav-bar', 

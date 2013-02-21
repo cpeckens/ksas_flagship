@@ -22,7 +22,6 @@
   <?php wp_enqueue_script('jquery'); ?> 
   <?php wp_head(); ?>
 
-
   <!-- IE Fix for HTML5 Tags -->
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -43,24 +42,38 @@ if( is_page() ) {
         $parent = get_page( $id );
 	$ancestorslug = $parent->post_name;
 }
+
 ?>
 
 <body <?php body_class($ancestorslug); ?>>
 	<header>
-		<div class="row show-for-small">
+		<div class="row show-for-small" role="banner">
 			<div class="three columns centered">
-			<div class="mobile-logo"><a href="<?php site_url();?>">Home</a></div>
+			<div class="mobile-logo"><a href="<?php echo network_site_url(); ?>">Home</a></div>
 			</div>
 		</div>
 	
 		<div class="row">
-			<div id="search-bar" class="offset-by-eight four columns">
+			<div id="search-bar" class="offset-by-eight four columns" role="search">
 				<div class="row">
 					<div class="six columns">
+					
+					<form method="GET" target="results" action="<?php site_url();?>/search">
+						<input type="submit" class="icon-search" value="&#xe004;" />
+						<input type="text" placeholder="Search this site" />
+						<input type="hidden" name="site" value="krieger_collection.KSAS_collection" />
+						<input type="hidden" name="client" value="ksas-frontend" />
+						<input type="hidden" name="output" value="xml_no_dtd" />
+						<input type="hidden" name="proxystylesheet" value="ksas-frontend" />
+						<input type="hidden" name="filter" value="p" />
+						<input type="hidden" name="getfields" value="*" />
+					</form>
+<!--
 						<form>
 							<input type="submit" class="icon-search" value="&#xe004;" />
 							<input type="text" placeholder="Search" />
 						</form>
+-->
 					</div>
 					<div class="six columns links">
 						<a href="#">Directory</a> | 
@@ -70,17 +83,16 @@ if( is_page() ) {
 				</div>	
 			</div>	<!-- End #search-bar	 -->
 		</div>
-		<div class="row">
+		<div class="row" role="navigation">
 			<?php wp_nav_menu( array( 
 				'theme_location' => 'main_nav', 
 				'menu_class' => '', 
-				'fallback_cb' => 'foundation_page_menu', 
 				'container' => 'nav',
 				'container_id' => 'main_nav', 
 				'container_class' => 'twelve columns',
 				'depth' => 2 )); ?> 
 		</div>
-		<div class="row show-for-small black radius10" id="mobile_nav_container">
+		<div class="row show-for-small black_bg radius10" id="mobile_nav_container" role="navigation">
 
 			<?php wp_nav_menu( array( 
 				'theme_location' => 'main_nav', 

@@ -38,13 +38,13 @@ Template Name: Fields of Study
 					</div>
 
 					<div class="row" id="filters">
-						<button class="blue"><a href="#" data-filter="*">View All</a></button>
-						<button class="green"><a href="#" data-filter=".department">Departments</a></button>
-						<button class="purple"><a href="#" data-filter=".interdisciplinary">Interdisciplinary</a></button>
+						<button class="bright_blue_bg"><a href="#" data-filter="*">View All</a></button>
+						<button class="green_bg"><a href="#" data-filter=".department">Departments</a></button>
+						<button class="purple_bg"><a href="#" data-filter=".interdisciplinary">Interdisciplinary</a></button>
 						<button class="fushia"><a href="#" data-filter=".arts">The Arts</a></button>
-						<button class="yellow"><a href="#" data-filter=".humanities">Humanities</a></button>
-						<button class="orange"><a href="#" data-filter=".natural">Natural Sciences</a></button>
-						<button class="blue"><a href="#" data-filter=".social">Social Sciences</a></button>
+						<button class="yellow_bg"><a href="#" data-filter=".humanities">Humanities</a></button>
+						<button class="orange_bg"><a href="#" data-filter=".natural">Natural Sciences</a></button>
+						<button class="bright_blue_bg"><a href="#" data-filter=".social">Social Sciences</a></button>
 					</div>
 					
 				</fieldset>
@@ -68,26 +68,16 @@ Template Name: Fields of Study
 				<!-- Display ribbons for discipline taxonomy -->
 				<div class="row">	
 					<div class="twelve columns disciplines">
-						<?php  if ( isset($discipline[0] )) { ?>
-							<span class="ribbon" id="<?php echo $discipline[0] ?>"></span>
-						<?php } ?>
-						<?php  if ( isset($discipline[1] )) { ?>
-							<span class="ribbon" id="<?php echo $discipline[1] ?>"></span>
-						<?php } ?>
-						<?php  if ( isset($discipline[2] )) { ?>
-							<span class="ribbon" id="<?php echo $discipline[2] ?>"></span>
-						<?php }  ?>
 					</div>
 				</div>
 				
-					<h3><?php the_title(); ?></h3>
 					<img src="<?php echo get_post_meta($post->ID, 'ecpt_indeximage', true); ?>" />
-					
+					<h3><?php the_title(); ?></h3>
 					<div class="row">
 						<div class="twelve columns">
 							<p>
 								<?php echo get_post_meta($post->ID, 'ecpt_phonenumber', true); ?>
-								<span class="offset-by-two"><?php echo get_post_meta($post->ID, 'ecpt_emailaddress', true); ?></span>
+								<span class="floatright"><?php echo get_post_meta($post->ID, 'ecpt_emailaddress', true); ?></span>
 							</p>
 							<p>
 								<?php if (get_post_meta($post->ID, 'ecpt_majors', true)) : ?>
