@@ -27,7 +27,13 @@ Template Name: Fields of Study
 					<div class="row">
 						<h5>Search fields of study:</h5>
 					</div>
-					
+					<div class="row">
+						<label>Program Type:</label>
+						<input type="radio" name="program_type" value="all_types" checked>View all
+						<input type="radio" name="program_type" value="undergraduate">Undergraduate
+						<input type="radio" name="program_type" value="full_time_grad">Graduate (full-time)
+						<input type="radio" name="program_type" value="part_time_grad">Graduate (part-time)
+					</div>
 					<div class="row">		
 						<input type="submit" class="icon-search" placeholder="Search by major/minor, interests, department name..."value="&#xe004;" />
 						<input type="text" name="search" value="<?php if (isset($_POST['home_search'])) { echo($_POST['home_search']); } ?>" id="id_search"  /> 
