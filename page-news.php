@@ -115,9 +115,26 @@
 			<!-- ************DEPARTMENT & HUB SECTION************* -->
 				<div class="six columns" id="aggregate_section">
 					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://hub.jhu.edu">From the Hub</a></h3></div>
-					<img src="http://placehold.it/300x125">
-					<img src="http://placehold.it/300x125">
-					<img src="http://placehold.it/300x125">
+						<?php
+						$hub_url = 'http://api.hub.jhu.edu/articles?v=1&return_format=json&tags=krieger-school-arts-and-sciences&per_page=2';
+							$rCURL = curl_init();
+								curl_setopt($rCURL, CURLOPT_URL, $hub_url);
+								curl_setopt($rCURL, CURLOPT_HEADER, 0);
+								curl_setopt($rCURL, CURLOPT_RETURNTRANSFER, 1);
+						
+						$hub_call = curl_exec($rCURL);
+						curl_close($rCURL);
+						$hub_results = json_decode ( $hub_call, true );
+						$hub_articles = $hub_results['_embedded'];						
+						foreach($hub_articles['articles'] as $hub_article) { ?>
+							<a href="<?php echo $hub_article['url']; ?>">
+								<article>
+									<img src="<?php echo $hub_article['_embedded']['image_thumbnail'][0]['sizes']['impact_small']; ?>" />
+									<h4><?php echo $hub_article['headline']; ?></h4>
+									<p><?php echo $hub_article['subheadline']; ?></p>
+								</article>	
+							</a>
+						<?php } ?>					
 				</div>
 			<!-- ************END DEPARTMENT & HUB SECTION************* -->
 			</div>

@@ -201,5 +201,14 @@ $j(function() {
 			});
 	</script>
 <?php } ?>
+<?php if ( is_singular('studyfields') ) { ?>
+	<script>
+		var $k = jQuery.noConflict();
+		$k(document).ready(function(){
+			$k('#menu-item-813').addClass('current_page_ancestor');
+			});
+	</script>
+<?php } ?>
+
 	</body>
 </html>
