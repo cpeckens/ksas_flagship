@@ -41,4 +41,8 @@ function add_flagship_categories() {
 		wp_insert_term('By the Numbers', 'category',  array('description'=> '','slug' => 'numbers'));
 	}
 add_action('init', 'add_flagship_categories');
+
+
+include_once (TEMPLATEPATH . '/assets/functions/GoogleSearchResultSet.php'); 
+
 ?>
