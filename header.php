@@ -57,22 +57,10 @@ if( is_page() ) {
 				<div class="row">
 					<div class="six columns">
 					
-					<form method="GET" target="results" action="<?php site_url();?>/search">
+					<form method="GET" target="results" action="http://search.johnshopkins.edu/search">
 						<input type="submit" class="icon-search" value="&#xe004;" />
-						<input type="text" placeholder="Search this site" />
-						<input type="hidden" name="site" value="krieger_collection.KSAS_collection" />
-						<input type="hidden" name="client" value="ksas-frontend" />
-						<input type="hidden" name="output" value="xml_no_dtd" />
-						<input type="hidden" name="proxystylesheet" value="ksas-frontend" />
-						<input type="hidden" name="filter" value="p" />
-						<input type="hidden" name="getfields" value="*" />
+						<input type="text" name="q" placeholder="Search this site" />
 					</form>
-<!--
-						<form>
-							<input type="submit" class="icon-search" value="&#xe004;" />
-							<input type="text" placeholder="Search" />
-						</form>
--->
 					</div>
 					<div class="six columns links">
 						<a href="#">Directory</a> | 
