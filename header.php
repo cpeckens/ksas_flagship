@@ -57,7 +57,7 @@ if( is_page() ) {
 				<div class="row">
 					<div class="six columns">
 					
-					<form method="GET" target="results" action="/search">
+					<form method="GET" action="<?php echo site_url('/search'); ?>">
 						<input type="submit" class="icon-search" value="&#xe004;" />
 						<input type="text" name="q" placeholder="Search this site" />
 					</form>

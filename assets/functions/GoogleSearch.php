@@ -45,7 +45,8 @@ class KSAS_GoogleSearchResults extends KSAS_SearchResults {
     private $searchEngine = null;
     private $start = 0; // corresponds to google's "start" param
     private $xml = null;
-    
+    private $sponsored_title = null;
+    private $sponsored_url = null;
     /**
      * @param KSAS_GoogleSearch $searchEngine the instance of {@link KSAS_GoogleSearch} that returned these search results
      * @param string $query the user query that produced these search results
@@ -89,6 +90,7 @@ class KSAS_GoogleSearchResults extends KSAS_SearchResults {
         $query = $query[0];
         $this->query = (string) $query['original_value'];
         $this->displayQuery = htmlspecialchars((string) $query['value']);
+        
         if ($xml->RES) {
             $this->hits = (string) $xml->RES->M;
         } else {
@@ -188,6 +190,21 @@ class KSAS_GoogleSearchResults extends KSAS_SearchResults {
         );
     }
     
+    
+    
+    public function getSponsoredResult() {
+        
+        if (empty($this->xml->GM)) {
+            return false;
+        }
+        $sponsored_result = $this->xml->GM;        
+        $sponsored_url = (string) $sponsored_result->GL;
+	    $sponsored_title = (string) $sponsored_result->GD;
+        return array(
+            'sponsored_title'             => $sponsored_title,
+            'sponsored_url'             => $sponsored_url,
+        );
+    }    
     public function getNumHits() {
         return $this->hits;
     }
@@ -221,7 +238,8 @@ class KSAS_GoogleSearchResults extends KSAS_SearchResults {
         if ($this->resultsPageNum == $this->lastResultsPageNum) {
             return $text;
         } else {
-            $url = $this->baseQueryURL . "resultsPageNum=" . ($this->resultsPageNum + 1);
+        	$site_path = site_url('/search?q=');
+            $url = $site_path . $this->query . "&resultsPageNum=" . ($this->resultsPageNum + 1);
             return "<a href=\"$url\">$text</a>";
         }
     }
@@ -234,11 +252,12 @@ class KSAS_GoogleSearchResults extends KSAS_SearchResults {
      */
     public function getResultsetLinks() {
         $links = array();
+        $site_path = site_url('/search?q=');
         for ($resultsPageNum = 1; $resultsPageNum <= $this->lastResultsPageNum; $resultsPageNum++) {
             if ($resultsPageNum == $this->resultsPageNum) {
-                $links[] = $resultsPageNum;
+                $links[] = "<a class=\"current\">$resultsPageNum</a>";
             } else {
-                $url = $this->baseQueryURL . "resultsPageNum=" . ($resultsPageNum);
+                $url = $site_path . $this->query . "&resultsPageNum=" . ($resultsPageNum);
                 $links[] = "<a href=\"$url\">$resultsPageNum</a>";
             }
         }

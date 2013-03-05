@@ -1532,6 +1532,15 @@ background: #3478b6;
 color:#fff;
 }
 
+/******* SEARCH RESULTS ******/
+#search-results ul {
+	list-style: none;
+}
+
+#sponsored small {
+	margin-left: 30px;
+}
+
 /**************DIRECTORY AND BIO PAGES****************/
 .single-people p {
 	line-height: 2em;

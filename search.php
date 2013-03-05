@@ -21,29 +21,39 @@ try {
     $hits = $results->getNumHits();
     $displayQuery = $results->getDisplayQuery();
     $docTitle = 'Search Results';
+    $sponsored_result = $results->getSponsoredResult();
     ?>
-            <div class="section" style="clear: none; width: 450px;">
 
     <?php
     if ($hits > 0) {
         ?>
-                <div id="search-summary">
-                    Results <strong><?php echo $results->getFirstResultNum() ?> - <?php echo $results->getLastResultNum() ?></strong> of about <strong><?php echo $hits ?></strong>
-                </div>
-            </div>
-             
-            <div class="section listing" id="search-results">
+       <form class="search-form" action="<?php echo site_url('/search'); ?>" method="get">
+                    <fieldset>
+                        <input type="text" class="input-text" name="q" value="<?php echo $displayQuery ?>" />
+                        <input type="submit" class="button blue_bg" value="Search Again" />
+                    </fieldset>
+       </form>        
+       <h6>Results <span class="black"><?php echo $results->getFirstResultNum() ?> - <?php echo $results->getLastResultNum() ?></span> of about <span class="black"><?php echo $hits ?></span></h6>
+           
+        <?php if (empty($sponsored_result) == false) { ?>
+	        <div class="panel callout radius10" id="sponsored">
+	        	<h6 class="black">Sponsored Result</h6>
+	        	<a href="<?php echo $sponsored_result['sponsored_url']; ?>"><h3><?php echo $sponsored_result['sponsored_title']; ?><small class="italic">-- <?php echo $sponsored_result['sponsored_url']; ?></small></h3></a>
+	        </div>
+         <?php } ?>   
+            <div id="search-results">
                 <ul>
+           
         <?php
         while ($result = $results->getNextResult()) {
             // note what results are PDFs
             $pdfNote = '';
             if (preg_match('{application/pdf}', $result['mimeType'])) {
-                $pdfNote = '<span class="doctypenote">[PDF]</span> ';
+                $pdfNote = '<span class="black">[PDF]</span> ';
             }
             ?>
                     <li>
-                        <h4><?php echo $pdfNote ?><a href="<?php echo $result['path'] ?>"><?php echo $result['title'] ?></a></h4>
+                        <h5><?php echo $pdfNote ?><a href="<?php echo $result['path'] ?>"><?php echo $result['title'] ?></a></h5>
             <?php
             if (array_key_exists('description', $result) && $result['description']) {
                 ?>
@@ -51,8 +61,9 @@ try {
                 <?php
             }
             ?>
-                        <div class="url"><?php echo $result['localURL'] ?> - <?php echo $result['sizeHumanReadable'] ?></div>
+                        <div class="url"><?php echo $result['path'] ?> - <?php echo $result['sizeHumanReadable'] ?></div>
                     </li>
+                    <hr>
             <?php
         }
         ?>
@@ -68,23 +79,16 @@ try {
                 <?php
             }
         ?>
-                <div id="search-pages">
-                    Result page: 
+                <div class="pagination">
+                     
         <?php
         foreach ($results->getResultsetLinks() as $resultsetLink) {
             print "$resultsetLink ";
         }
         ?>
-                    <?php echo $results->getNextLink() ?> <img class="more" src="/images/layout/bullet.gif" alt="&gt;" />
+                    <?php echo $results->getNextLink() ?> 
                 </div>
                  
-                <form class="search-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
-                    <fieldset>
-                        <input type="text" class="input-text" name="query" value="<?php echo $displayQuery ?>" />
-                        <input type="submit" class="input-submit" value="Search" />
-                        <a href="/search/help.html" class="search-help">Search help</a>
-                    </fieldset>
-                </form>
             </div>
         <?php
     } else {
