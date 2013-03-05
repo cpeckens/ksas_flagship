@@ -42,7 +42,4 @@ function add_flagship_categories() {
 	}
 add_action('init', 'add_flagship_categories');
 
-
-include_once (TEMPLATEPATH . '/assets/functions/GoogleSearchResultSet.php'); 
-
 ?>

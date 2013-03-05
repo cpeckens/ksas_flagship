@@ -57,7 +57,7 @@ if( is_page() ) {
 				<div class="row">
 					<div class="six columns">
 					
-					<form method="GET" target="results" action="http://search.johnshopkins.edu/search">
+					<form method="GET" target="results" action="/search">
 						<input type="submit" class="icon-search" value="&#xe004;" />
 						<input type="text" name="q" placeholder="Search this site" />
 					</form>
