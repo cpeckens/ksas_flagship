@@ -25,7 +25,7 @@
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-
+  <?php include_once("parts-analytics.php") ?> 
 </head>
 
 <?php
@@ -63,9 +63,9 @@ if( is_page() ) {
 					</form>
 					</div>
 					<div class="six columns links">
-						<a href="#">Directory</a> | 
+						<a href="<?php echo network_site_url(); ?>about/dean-leadership/">Directory</a> | 
 						<a href="http://my.jhu.edu">MYJHU</a> | 
-						<a href="http://jhem.johnshopkins.edu/">JHEM</a>
+						<a href="http://library.jhu.edu/">Library</a>
 					</div>
 				</div>	
 			</div>	<!-- End #search-bar	 -->

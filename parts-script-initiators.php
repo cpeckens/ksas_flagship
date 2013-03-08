@@ -98,7 +98,10 @@ $j(function() {
         },
         'hide': function() {
             $j(this).removeClass('quicksearch-match');
-        }
+        },
+        'onAfter': function (val) {
+        _gaq.push(['_trackEvent', 'fields', 'Search', 'val']);
+    }
     }).keyup(function(){ //Add function to match quicksearch to isotopefilter
         setTimeout( function() {
             $container.isotope({ filter: '.quicksearch-match' }).isotope(); 
@@ -210,5 +213,3 @@ $j(function() {
 	</script>
 <?php } ?>
 
-	</body>
-</html>

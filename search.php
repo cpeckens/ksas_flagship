@@ -1,4 +1,9 @@
 <?php
+/*
+Template Name: Search Results
+*/
+?>
+<?php
 require_once TEMPLATEPATH . "/assets/functions/GoogleSearch.php";
 get_header(); ?>
 
@@ -106,6 +111,13 @@ try {
         ?>
              
             <p style="font-weight: bold;">There are no pages matching your search.</p>
+                   <form class="search-form" action="<?php echo site_url('/search'); ?>" method="get">
+                    <fieldset>
+                        <input type="text" class="input-text" name="q" value="<?php echo $displayQuery ?>" />
+                        <input type="submit" class="button blue_bg" value="Search Again" />
+                    </fieldset>
+       </form>        
+
         <?php
     }
 } catch (KSAS_GoogleSearchException $e) {

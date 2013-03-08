@@ -2,7 +2,7 @@
 
 body {
 	font-family: "Myriad W01 Regular", Arial, sans-serif;
-	background: #000;
+	background: #000 url('../images/bg-giving.jpg') no-repeat top center;
 }
 
 h1, h2, h3, h4, h5, h6, .semibold,
@@ -1538,7 +1538,7 @@ color:#fff;
 }
 
 #sponsored small {
-	margin-left: 30px;
+	margin-left: 7px;
 }
 
 /**************DIRECTORY AND BIO PAGES****************/

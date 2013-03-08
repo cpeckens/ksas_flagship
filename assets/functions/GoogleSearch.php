@@ -1,6 +1,5 @@
 <?php
 require_once('Search.php');
-require_once('Util.php');
 
 /**
  * Execute a search
