@@ -3,12 +3,12 @@
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="en"> 
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title></title>
+  <title><?php create_page_title(); ?></title>
   
   <!-- CSS Files: All pages -->
   <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/stylesheets/foundation.css">
@@ -21,9 +21,10 @@
   <?php wp_enqueue_script('jquery'); ?> 
   <?php wp_head(); ?>
 
-  <!-- IE Fix for HTML5 Tags -->
+  <!-- Make IE a modern browser -->
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
   <![endif]-->
   <?php include_once("parts-analytics.php") ?> 
 </head>
@@ -57,7 +58,7 @@ if( is_page() ) {
 				<div class="row">
 					<div class="six columns">
 					
-					<form method="GET" action="<?php echo site_url('/search'); ?>">
+					<form method="GET" action="<?php echo site_url('/search'); ?>" role="search">
 						<input type="submit" class="icon-search" value="&#xe004;" />
 						<input type="text" name="q" placeholder="Search this site" />
 					</form>
@@ -92,4 +93,4 @@ if( is_page() ) {
 				'walker' => new mobile_select_menu(),
 				'items_wrap' => '<select onchange="window.open(this.options[this.selectedIndex].value,\'_top\')">%3$s</select>', )); ?> 
 		</div>	
-		</header>
+	</header>

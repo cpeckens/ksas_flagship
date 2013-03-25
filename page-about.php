@@ -35,14 +35,14 @@
 						
 						));
 			if ( $dean_letter_query->have_posts() ) : while ( $dean_letter_query->have_posts() ) : $dean_letter_query->the_post(); ?>
-			<div class="bright_blue_bg row no-gutter" id="newsletter" role="complementary">
+			<div class="blue_bg row no-gutter" id="newsletter" role="complementary">
 				<div class="eight columns">
 					<h6 class="white">Dean's Newsletter <span class="floatright"><?php echo get_post_meta($post->ID, 'date_newsletter', true); ?></span></h6>
 					<h5 class="white"><?php the_title(); ?></h5>
 					<span class="white"><?php the_excerpt(); ?></span>
 				</div>
 				<div class="four columns no-gutter">
-					<?php the_post_thumbnail('small') ?>
+					<?php the_post_thumbnail('medium') ?>
 				</div>
 			</div> <!-- End Newsletter -->
 			<?php endwhile; endif; ?>

@@ -25,6 +25,10 @@ strong, b,
 	font-weight: normal;
 }
 
+.uppercase {
+	text-transform: uppercase;
+}
+
 .iconfont {
 	font-family: 'flagship-icon';
 }
@@ -53,6 +57,9 @@ time {
 
 }
 
+aside p {
+	font-style: normal;
+}
 /******* Reusable Classes ************/
 .wrapper {
 	background: rgba(255,255,255, 0.95);
@@ -174,6 +181,20 @@ button a,
 button a:hover,
 button a:visited {
 	color: #fff;
+}
+
+.gallery {
+	background: #3478b6;
+	margin-bottom: 30px;
+}
+
+.gallery ul {
+	padding: 15px 0;
+}
+li.gallery-item {
+	float:left; 
+	margin-right:-36px; 
+	margin-bottom:17px;
 }
 
 .radius10 {
@@ -735,8 +756,25 @@ footer a,
 	padding:15px 15px;
 }
 
+
+
 #sidebar_header h5 {
 	font-size: 22px;
+	color: #FFF;
+}
+
+#sidebar_header.rust_bg {
+	padding: 5px 15px;
+	margin-bottom: 20px;
+}
+
+#sidebar_header.rust_bg h5 {
+	margin:0;
+	font-size: 20px;
+}
+
+aside .photo-page-right {
+	margin-top: 0;
 }
 
 body.home,
@@ -1679,7 +1717,6 @@ body.research ul.nav li {
 	clear: both;
 	margin-right: -45px;
 	margin-left:0px;
-	background-color: #97b4c9;
 }
 
 #newsletter p {
@@ -1707,6 +1744,24 @@ body.research ul.nav li {
 	margin:0;
 	padding:0;
 }
+
+#menu-dean-links {
+	margin-bottom: 20px;
+}
+#menu-dean-links li {
+	border-top: none;
+	font-size: 12px;
+	padding: 0px 0 4px 20px;
+}
+
+#menu-dean-links li a {
+	color: #000;
+}
+
+#menu-dean-links:last-child {
+	border-bottom:none;
+}
+
 /******* Icons ******/
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
