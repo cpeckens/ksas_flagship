@@ -5,11 +5,14 @@ Template Name: Dean's Newsletter
 ?>
 <?php get_header(); ?>
 <div class="row sidebar_bg radius10">
-<?php $dean_letter_query = new WP_Query(array(
+<?php if ( false === ( $dean_letter_query = get_transient( 'dean_letter_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$dean_letter_query = new WP_Query(array(
 						'post_type' => 'post',
 						'category_name' => 'newsletter',
 						'posts_per_page' => '1',						
 						));
+					set_transient( 'dean_letter_query', $dean_letter_query, 2592000 ); }
 ?>
 <?php if ( $dean_letter_query->have_posts() ) : while ( $dean_letter_query->have_posts() ) : $dean_letter_query->the_post(); ?>
 	<div class="eight columns wrapper radius-left offset-topgutter">

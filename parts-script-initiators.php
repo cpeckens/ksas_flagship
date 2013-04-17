@@ -16,7 +16,6 @@
   
 <!***********ALL PAGES**************>
   <script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/app.js"></script>
-  <!-- Add "external" class to hyperlinks not on the krieger.jhu.edu domain -->
   <script>
 	  jQuery('a').filter(function() {
 		  return this.hostname && this.hostname !== location.hostname;

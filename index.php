@@ -22,34 +22,34 @@ $flagship_news_archive_query = new WP_Query(array(
 					if ( false === $format ) { $format = 'standard'; }
 					if ( $format == 'standard' ) { ?>
 
-					<article class="three columns mobile-four">
+					<article class="four columns mobile-four">
 						<a href="<?php the_permalink(); ?>">
-							<?php the_post_thumbnail('rss'); ?>								
+							<?php the_post_thumbnail('bullet', array('class' => 'floatleft')); ?>								
 							<time><?php echo get_the_date(); ?></time>
 							<h5 class="icon-newspaper"><?php the_title(); ?></h5>
-							<summary><?php the_excerpt(); ?></summary>
+							<summary><?php echo limit_words(get_the_excerpt(), '25'); ?><span class="blue">&nbsp;&nbsp;[Read More]</span></summary>
 						</a>
 					</article>
 					
 				<?php } if ( $format == 'video' ) { ?>
-					<article class="three columns mobile-four">
+					<article class="four columns mobile-four">
 					<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video">
 						<div class="video_thumb archive">
-							<span class="icon-play"></span><?php the_post_thumbnail('rss'); ?>
+							<?php the_post_thumbnail('bullet', array('class' => 'floatleft')); ?>
 						</div>
 							<time><?php echo get_the_date(); ?></time>
 							<h5 class="icon-video"><?php the_title(); ?></h5>
-							<summary><?php the_excerpt(); ?></summary>
+							<summary><?php echo limit_words(get_the_excerpt(), '25'); ?><span class="blue">&nbsp;&nbsp;[Read More]</span></summary>
 						</a>
 					</article>
 					
 				<?php } if ( $format == 'image' ) { ?>
-					<article class="three columns mobile-four">
+					<article class="four columns mobile-four">
 						<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_image">
-							<?php the_post_thumbnail('rss'); ?>
+							<?php the_post_thumbnail('bullet', array('class' => 'floatleft')); ?>
 							<time><?php echo get_the_date(); ?></time>
 							<h5 class="icon-camera"><?php the_title(); ?></h5>
-							<summary><?php the_content(); ?></summary>
+							<summary><?php echo limit_words(get_the_content(), '25'); ?><span class="blue">&nbsp;&nbsp;[Read More]</span></summary>
 						</a>
 					</article>
 				<?php } ?>

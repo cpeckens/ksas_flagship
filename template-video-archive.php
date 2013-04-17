@@ -5,21 +5,22 @@ Template Name: Video Archive
 ?>
 <?php get_header(); ?>
 
-<?php 
-
-$paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
-$flagship_video_archive_query = new WP_Query(array(
-    'post_type' => array('deptextra', 'post'),
-    'tax_query' => array(
-    	array(
-    	'taxonomy' => 'post_format',
-    	'field' => 'slug',
-    	'terms' => 'post-format-video',
-    	'operator' => 'IN' )),
-    'posts_per_page' => '12',
-    'paged' => $paged
-    )); 
-?>
+<?php $paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
+			if ( false === ( $flagship_video_archive_query = get_transient( 'flagship_video_archive_query_' . $paged ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$flagship_video_archive_query = new WP_Query(array(
+					'post_type' => array('deptextra', 'post'),
+					'tax_query' => array(
+						array(
+						'taxonomy' => 'post_format',
+						'field' => 'slug',
+						'terms' => 'post-format-video',
+						'operator' => 'IN' )),
+					'posts_per_page' => '12',
+					'paged' => $paged
+					)); 
+					set_transient( 'flagship_video_archive_query_' . $paged, $flagship_video_archive_query, 2592000 );
+			} 	?>
 
 <section class="row wrapper radius10">
 	<div class="twelve columns">
@@ -28,14 +29,14 @@ $flagship_video_archive_query = new WP_Query(array(
 			<h2>Video Library</h2>
 			<?php locate_template('parts-archive-navigation.php', true, false); ?>
 			<?php while ($flagship_video_archive_query->have_posts()) : $flagship_video_archive_query->the_post(); ?>
-				<article class="three columns mobile-four">
+				<article class="four columns mobile-four">
 				<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video">
 					<div class="video_thumb archive">
-						<span class="icon-play"></span><?php the_post_thumbnail('rss'); ?>
+						<?php the_post_thumbnail('bullet', array('class' => 'floatleft')); ?>
 					</div>
 						<time><?php echo get_the_date(); ?></time>						
 						<h5 class="icon-video"><?php the_title(); ?></h5>
-						<summary><?php the_excerpt(); ?></summary>
+						<summary><?php echo limit_words(get_the_excerpt(), '25'); ?><span class="blue">&nbsp;&nbsp;[Read More]</span></summary>
 					</a>
 				</article>
 			<?php endwhile; ?>

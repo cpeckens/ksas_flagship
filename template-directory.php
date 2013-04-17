@@ -5,21 +5,27 @@ Template Name: Dean's Directory
 ?>
 <?php get_header(); 
 	//Set Fields of Study Query Parameters
-	$flagship_leadership_query = new WP_Query(array(
-		'post_type' => 'people',
-		'role' => 'leadership',
-		'meta_key' => 'ecpt_people_alpha',
-		'orderby' => 'meta_value',
-		'order' => 'ASC',
-		'posts_per_page' => '-1'));
+	if ( false === ( $flagship_leadership_query = get_transient( 'flagship_leadership_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$flagship_leadership_query = new WP_Query(array(
+					'post_type' => 'people',
+					'role' => 'leadership',
+					'meta_key' => 'ecpt_people_alpha',
+					'orderby' => 'meta_value',
+					'order' => 'ASC',
+					'posts_per_page' => '-1'));
+					set_transient( 'flagship_leadership_query', $flagship_leadership_query, 2592000 ); }
 		
-	$flagship_dean_staff_query = new WP_Query(array(
-		'post_type' => 'people',
-		'role' => 'staff',
-		'meta_key' => 'ecpt_people_alpha',
-		'orderby' => 'meta_value',
-		'order' => 'ASC',
-		'posts_per_page' => '-1'));		 ?>
+	if ( false === ( $flagship_dean_staff_query = get_transient( 'flagship_dean_staff_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$flagship_dean_staff_query = new WP_Query(array(
+					'post_type' => 'people',
+					'role' => 'staff',
+					'meta_key' => 'ecpt_people_alpha',
+					'orderby' => 'meta_value',
+					'order' => 'ASC',
+					'posts_per_page' => '-1'));
+					set_transient( 'flagship_dean_staff_query', $flagship_dean_staff_query, 2592000 ); }		 ?>
 <div class="row wrapper radius10">
 <div class="twelve columns">
 	<section class="row">

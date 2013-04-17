@@ -11,13 +11,16 @@
 			</div>
 			
 			<div id="slider" class="six columns no-gutter photo-page-right">
-		<?php $research_query = new WP_Query(array(
+		<?php if ( false === ( $research_query = get_transient( 'research_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$research_query = new WP_Query(array(
 						'post_type' => array('deptextra', 'post'),
 						'category_name' => 'research',
 						'orderby' => 'rand',
 						'posts_per_page' => '5'
 						
 						));
+					set_transient( 'research_query', $research_query, 2592000 ); }
 			if ( $research_query->have_posts() ) : while ( $research_query->have_posts() ) : $research_query->the_post();
 			$full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
 			$thumbnail_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'bullet');

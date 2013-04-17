@@ -20,21 +20,27 @@ Template Name: Research Opp
 <?php endwhile; endif; ?>	
 	
 <?php	
-	$undergraduate_research_query = new WP_Query(array(
-		'post_type' => 'page',
-		'meta_key' => 'fund_type',
-		'meta_value' => 'undergraduate',
-		'orderby' => 'title',
-		'order' => 'ASC',
-		'posts_per_page' => '-1'));
+	if ( false === ( $undergraduate_research_query = get_transient( 'undergraduate_research_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$undergraduate_research_query = new WP_Query(array(
+					'post_type' => 'page',
+					'meta_key' => 'fund_type',
+					'meta_value' => 'undergraduate',
+					'orderby' => 'title',
+					'order' => 'ASC',
+					'posts_per_page' => '-1'));
+					set_transient( 'undergraduate_research_query', $undergraduate_research_query, 2592000 ); }
 	
-	$graduate_research_query = new WP_Query(array(
-		'post_type' => 'page',
-		'meta_key' => 'fund_type',
-		'meta_value' => 'graduate',
-		'orderby' => 'title',
-		'order' => 'ASC',
-		'posts_per_page' => '-1'));
+	if ( false === ( $graduate_research_query = get_transient( 'graduate_research_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$graduate_research_query = new WP_Query(array(
+					'post_type' => 'page',
+					'meta_key' => 'fund_type',
+					'meta_value' => 'graduate',
+					'orderby' => 'title',
+					'order' => 'ASC',
+					'posts_per_page' => '-1'));
+					set_transient( 'graduate_research_query', $graduate_research_query, 2592000 ); }
 ?>
 	<div class="four columns" id="sidebar"> <!-- Begin Sidebar -->
 		<div class="blue_bg radius-topright offset-gutter" id="sidebar_header">

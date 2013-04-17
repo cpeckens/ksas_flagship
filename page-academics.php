@@ -41,12 +41,13 @@
 					</div>	
 				</div>
 				
-				<div class="row">
+				<div class="row" id="video_scroll">
+					<div class="blue_bg one column" id="left"></div>
 					<?php $student_voice_query = new WP_Query(array(
-							'post_type' => 'deptextra',
+							'post_type' => array('deptextra', 'post'),
 							'category_name' => 'voices',
 							'orderby' => 'rand',
-							'posts_per_page' => '-1',
+							'posts_per_page' => '3',
 						));
 	 
 						if ( $student_voice_query->have_posts() ) : while ( $student_voice_query->have_posts() ) : $student_voice_query->the_post(); 
@@ -70,6 +71,7 @@
 						</a>
 					</article>
 					<?php endwhile; endif; ?>
+					<div class="blue_bg one column" id="right"></div>
 				</div>
 			</div>
 		</div>

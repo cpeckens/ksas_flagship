@@ -72,18 +72,21 @@
 				<h6>Jump to department</h6>
 				<select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
 					<option>--<?php the_title(); ?></option>
-					<?php $jump_menu_query = new WP_Query(array(
-						'post_type' => 'studyfields',
-						'orderby' => 'title',
-						'order' => 'ASC',
-						'posts_per_page' => '-1',
-						'meta_query' => array(
-							array(
-							    'key' => 'ecpt_structure',
-							    'value' => 'department',
-							    'compare' => 'IN'
-							))
-					)); ?>
+					<?php if ( false === ( $jump_menu_query = get_transient( 'jump_menu_query' ) ) ) {
+						// It wasn't there, so regenerate the data and save the transient
+						$jump_menu_query = new WP_Query(array(
+								'post_type' => 'studyfields',
+								'orderby' => 'title',
+								'order' => 'ASC',
+								'posts_per_page' => '-1',
+								'meta_query' => array(
+									array(
+									    'key' => 'ecpt_structure',
+									    'value' => 'department',
+									    'compare' => 'IN'
+									))
+							));
+							set_transient( 'jump_menu_query', $jump_menu_query, 2592000 ); } ?>
 					<?php while ($jump_menu_query->have_posts()) : $jump_menu_query->the_post(); ?>				
 						<option value="<?php the_permalink() ?>"><?php the_title(); ?></option>
 					<?php endwhile; ?>

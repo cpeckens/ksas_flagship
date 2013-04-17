@@ -8,9 +8,10 @@
 			<!-- ************START NEWS -->
 			<div class="banner blue_bg offset-gutter offset-topgutter radius-topleft"><h3><a href="/news/articles" class="dark_blue_bg radius-topleft">Arts &amp; Sciences News</a></h3></div>
 					<?php 
-						$flagship_news_query = new WP_Query(array(
+						if ( false === ( $flagship_news_query = get_transient( 'flagship_news_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$flagship_news_query = new WP_Query(array(
 							'category_name' => 'news',
-							'order' => 'ASC',
 							'tax_query' => array(
 								array(
 								'taxonomy' => 'post_format',
@@ -18,6 +19,7 @@
 								'terms' => array('post-format-video', 'post-format-image'),
 								'operator' => 'NOT IN')),
 							'posts_per_page' => '3')); 
+					set_transient( 'flagship_news_query', $flagship_news_query, 2592000 ); }
 					 ?>
 		
 						<?php while ($flagship_news_query->have_posts()) : $flagship_news_query->the_post(); ?>
@@ -33,9 +35,10 @@
 			<!-- ************END NEWS -- START FEATURED VIDEO -->
 			<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="/news/videos">Featured Video</a></h3></div>
 					<?php 
-						$flagship_video_query = new WP_Query(array(
+						if ( false === ( $flagship_video_query = get_transient( 'flagship_video_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$flagship_video_query = new WP_Query(array(
 							'category_name' => 'news',
-							'order' => 'ASC',
 							'tax_query' => array(
 								array(
 								'taxonomy' => 'post_format',
@@ -43,6 +46,7 @@
 								'terms' => 'post-format-video',
 								'operator' => 'IN' )),
 							'posts_per_page' => '1')); 
+					set_transient( 'flagship_video_query', $flagship_video_query, 2592000 ); }
 					 ?>
 		
 						<?php while ($flagship_video_query->have_posts()) : $flagship_video_query->the_post(); ?>
@@ -71,9 +75,10 @@
 			<div class="row">
 				<div class="twelve columns no-gutter radius-topright" id="photo_section">
 				<?php 
-						$flagship_photo_query = new WP_Query(array(
+						if ( false === ( $flagship_photo_query = get_transient( 'flagship_photo_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$flagship_photo_query = new WP_Query(array(
 							'category_name' => 'news',
-							'order' => 'ASC',
 							'tax_query' => array(
 								array(
 								'taxonomy' => 'post_format',
@@ -81,6 +86,7 @@
 								'terms' => 'post-format-image',
 								'operator' => 'IN' )),
 							'posts_per_page' => '1')); 
+					set_transient( 'flagship_photo_query', $flagship_photo_query, 2592000 ); }
 					 ?>
 		
 						<?php while ($flagship_photo_query->have_posts()) : $flagship_photo_query->the_post(); ?>
@@ -116,7 +122,7 @@
 				<div class="six columns" id="aggregate_section">
 					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://hub.jhu.edu">From the Hub</a></h3></div>
 						<?php
-						$hub_url = 'http://api.hub.jhu.edu/articles?v=1&return_format=json&tags=krieger-school-arts-and-sciences&per_page=2';
+						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&return_format=json&q=krieger&per_page=2';
 							$rCURL = curl_init();
 								curl_setopt($rCURL, CURLOPT_URL, $hub_url);
 								curl_setopt($rCURL, CURLOPT_HEADER, 0);

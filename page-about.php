@@ -11,13 +11,15 @@
 			</div>
 			<div class="six columns">
 				<div id="slider" class="no-gutter photo-page-right">
-					<?php $by_the_numbers_query = new WP_Query(array(
+					<?php if ( false === ( $by_the_numbers_query = get_transient( 'by_the_numbers_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$by_the_numbers_query = new WP_Query(array(
 							'post_type' => 'post',
 							'category_name' => 'numbers',
 							'orderby' => 'rand',
 							'posts_per_page' => '-1'
-							
-							));
+							)); 
+					set_transient( 'by_the_numbers_query', $by_the_numbers_query, 2592000 );
 						if ( $by_the_numbers_query->have_posts() ) : while ( $by_the_numbers_query->have_posts() ) : $by_the_numbers_query->the_post(); ?>
 					<div class="number">
 							<?php the_post_thumbnail('full',array( 'class'	=> "radius-topright")); ?>

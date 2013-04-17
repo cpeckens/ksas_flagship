@@ -7,17 +7,12 @@
 ?>		
 
 <div class="row">
-	<section class="seven columns end offset-top" id="evergreen" role="main">
+	<section class="seven columns end offset-top hide-for-small" id="evergreen" role="main">
 		<?php while ($flagship_evergreen_query->have_posts()) : $flagship_evergreen_query->the_post(); ?>
 			<!-- Set background image. Resolution varies based on size -- Desktop, Tablet, Mobile -->
 				<style>
 					body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
-					@media only screen and (max-width: 768px) { 
-						body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
-						}
-					@media only screen and (max-width: 420px) { 
-						body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
-						}
+					@media only screen and (max-width: 420px) { body { background: #000; } }
 				</style>
 				<a href="#" data-reveal-id="modal_<?php the_id(); ?>_caption">
 					<h1 class="text-shadow"><?php the_title(); ?></h1>

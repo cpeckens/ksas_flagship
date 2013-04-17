@@ -5,11 +5,14 @@ Template Name: Fields of Study
 ?>
 <?php get_header(); 
 	//Set Fields of Study Query Parameters
-	$flagship_studyfields_query = new WP_Query(array(
-		'post_type' => 'studyfields',
-		'orderby' => 'title',
-		'order' => 'ASC',
-		'posts_per_page' => '-1')); ?>
+	if ( false === ( $flagship_studyfields_query = get_transient( 'flagship_studyfields_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$flagship_studyfields_query = new WP_Query(array(
+					'post_type' => 'studyfields',
+					'orderby' => 'title',
+					'order' => 'ASC',
+					'posts_per_page' => '-1'));
+					set_transient( 'flagship_studyfields_query', $flagship_studyfields_query, 2592000 ); } ?>
 <div class="row wrapper radius10">
 <div class="twelve columns">
 	<section class="row">
@@ -21,7 +24,7 @@ Template Name: Fields of Study
 		<?php endwhile; endif; ?>
 		</div>
 		
-		<div class="seven columns" id="fields_search">
+		<div class="seven columns" id="fields_search" role="search">
 			<form action="#">
 				<fieldset class="radius10">
 
@@ -57,7 +60,7 @@ Template Name: Fields of Study
 		</div>
 	</section>
 
-<section class="row" id="fields_container">
+<section class="row" id="fields_container" role="main">
 	<?php while ($flagship_studyfields_query->have_posts()) : $flagship_studyfields_query->the_post(); 
 		//Pull discipline array (humanities, natural, social)
 		$discipline_array = get_post_meta($post->ID, 'ecpt_discipline', true);

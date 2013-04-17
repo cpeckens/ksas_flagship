@@ -746,6 +746,13 @@ footer a,
 	font-size:12px;
 }
 
+#copyright p {
+	text-align: center;
+	font-size: 12px;
+	color: #CCC;
+	margin: 20px 0 40px 0;
+}
+
 /*******Backgrounds & Wrappers*********/
 .no-gutter {
 	padding: 0;
@@ -1333,7 +1340,9 @@ body.news h4 {
 	font-family:"Myriad W01 Bd";
 }
 
-body.news summary {
+body.news summary,
+body.news a summary,
+#archive a summary {
 	line-height: 1.25em;
 	color: #333;
 	
@@ -1513,6 +1522,10 @@ a.rssLink {
 }
 /******* News Index Pages ******/
 
+#archive article {
+	min-height: 250px;
+}
+
 ul.photo_list li {
 	margin-bottom:40px;
 }
@@ -1529,6 +1542,10 @@ ul.photo_list li:last-child,
 
 #archive h5 {
 	margin-top:3px;
+}
+
+#archive .four.columns .video_thumb .icon-play:before {
+	font-size: 36px;
 }
 
 time {

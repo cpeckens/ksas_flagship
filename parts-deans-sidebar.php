@@ -18,13 +18,16 @@
 		</div>
 		
 
-			<?php $dean_letter_archive_query = new WP_Query(array(
+			<?php if ( false === ( $dean_letter_archive_query = get_transient( 'dean_letter_archive_query' ) ) ) {
+				// It wasn't there, so regenerate the data and save the transient
+				$dean_letter_archive_query = new WP_Query(array(
 						'post_type' => 'post',
 						'category_name' => 'newsletter',
 						'posts_per_page' => '4',
 						'offset' => 1
 						
 						));
+					set_transient( 'dean_letter_archive_query', $dean_letter_archive_query, 2592000 ); }
 			if ( $dean_letter_archive_query->have_posts() ) : while ( $dean_letter_archive_query->have_posts() ) : $dean_letter_archive_query->the_post(); ?>
 			<div class="row">
 			<div class="twelve columns">
