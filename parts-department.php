@@ -25,22 +25,21 @@
 						</a>
 						</span>
 					<?php endif; ?>
-					
+										
+					<?php if ( get_post_meta($post->ID, 'ecpt_location', true) ) : ?>
+						<span class="icon-location"><?php echo get_post_meta($post->ID, 'ecpt_location', true); ?></span> 
+					<?php endif; ?>
 					<?php if ( get_post_meta($post->ID, 'ecpt_homepage', true) ) : ?>
-						<span class="icon-new-tab-2">
+						<br><span class="icon-new-tab-2">
 						<a href="http://<?php echo get_post_meta($post->ID, 'ecpt_homepage', true); ?>">
 							<?php echo get_post_meta($post->ID, 'ecpt_homepage', true);?>
 						</a>
 						</span>
 					<?php endif; ?>
-					
-					<?php if ( get_post_meta($post->ID, 'ecpt_location', true) ) : ?>
-						<span class="icon-location"><?php echo get_post_meta($post->ID, 'ecpt_location', true); ?></span> 
-					<?php endif; ?>
 				</p> <!-- End Contact info line -->
 				
 				<?php if ( get_post_meta($post->ID, 'ecpt_title', true) || get_post_meta($post->ID, 'ecpt_content', true) ) : ?>
-					<div class="panel radius six columns floatleft mobile-four">
+					<div class="panel radius10 six columns floatleft mobile-four">
 						<?php if ( get_post_meta($post->ID, 'ecpt_title', true) ) : ?>
 							<h5 class="white"><?php echo get_post_meta($post->ID, 'ecpt_title', true);?></h5>  
 						<?php endif; ?>
@@ -56,7 +55,7 @@
 				
 				<?php if ( get_post_meta($post->ID, 'ecpt_section2content', true) ) :  echo get_post_meta($post->ID, 'ecpt_section2content', true);  endif; ?>
 				
-				<?php if ( get_post_meta($post->ID, 'ecpt_section3heading', true) ) : ?><h3><?php echo get_post_meta($post->ID, 'ecpt_section3heading', true) ?></h3><?php else : ?>
+				<?php if ( get_post_meta($post->ID, 'ecpt_section3heading', true) ) : ?><h3><?php echo get_post_meta($post->ID, 'ecpt_section3heading', true) ?></h3><?php elseif(get_post_meta($post->ID, 'ecpt_section3content', true)) : ?>
 					<h3>Related Programs and Centers</h3>
 				<?php endif; ?>
 				<?php if ( get_post_meta($post->ID, 'ecpt_section3content', true) ) :  echo get_post_meta($post->ID, 'ecpt_section3content', true);  endif; ?>
@@ -113,22 +112,26 @@
 				<?php if ( get_post_meta($post->ID, 'ecpt_graduatepage', true) ) : ?>
 					<li><span class="icon-arrow-right-2"></span><a href="http://<?php echo get_post_meta($post->ID, 'ecpt_graduatepage', true); ?>">Graduate</a></li>
 				<?php endif; ?>
+				<?php //Get the academic department slug 
+					$academicdepartments = get_the_terms( $post->ID, 'academicdepartment' );
+						$academicdepartment_names = array();
+							foreach ( $academicdepartments as $academicdepartment ) {
+								$academicdepartment_names[] = $academicdepartment->slug;
+							}
+					$academicdepartment_name = $academicdepartment_names[0];
+				 ?>
+
 			<?php endwhile; endif; ?>	
 			</ul>
 		</div> <!--End Dept Nav Links -->
 		
 		<?php
-			//Get the academic department slug 
-			global $wp_query;
-			foreach(get_the_terms($wp_query->post->ID, 'academicdepartment') as $term);
-			$dept_slug = $term->slug;
-			
 			//Query department extras for that slug
 			$dept_extra_query = new WP_Query(array(
 						'post_type' => array('deptextra', 'post'),
 						'orderby' => 'rand',
 						'posts_per_page' => '1',
-						'academicdepartment' => $dept_slug
+						'academicdepartment' => $academicdepartment_name
 						));
 						 
 			//If there are results

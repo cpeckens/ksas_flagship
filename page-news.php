@@ -95,7 +95,7 @@
 									<div class="row">
 										<div class="eleven columns centered">
 											<h4>This Week Around Campus</h4>
-											<a href="/news/photos"><button class="radius10 grey_bg no-margin">View More</button></a>
+											<a href="/news/photos"><div class="button radius10 grey_bg no-margin">View More</div></a>
 											<?php the_content(); ?>
 										</div>
 									</div>
@@ -111,10 +111,13 @@
 				<div class="six columns" id="calendar_section">
 					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="/news/events">Today's Events</a></h3></div>
 					<div id="calendar_container"></div>
-					<h6>View full calendars</h6>
-					<button class="yellow_bg small"><a href="/news/events/cal_humanities">Humanities</a></button>
-					<button class="orange_bg"><a href="/news/events/cal_sciences">Sciences</a></button>
-					<button class="bright_blue_bg"><a href="/news/events/cal_interdisciplinary">Interdisciplinary</a></button>
+					<!-- Uncomment when ready for filter calendars
+						<h6>View full calendars</h6>
+						<div class="button yellow_bg small"><a href="/news/events/cal_humanities">Humanities</a></div>
+						<div class="button orange_bg"><a href="/news/events/cal_sciences">Sciences</a></div>
+						<div class="button bright_blue_bg"><a href="/news/events/cal_interdisciplinary">Interdisciplinary</a></div>
+					-->
+					<div class="button bright_blue_bg"><a href="/news/events">View Full Calendar</a></div>
 				</div>
 			<!-- ************END CALENDAR SECTION************* -->	
 			

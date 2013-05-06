@@ -45,13 +45,13 @@
 	
 	<div class="row" id="filters">
 			<label class="one column">EXPLORE:</label>
-			<button class="bright_blue_bg"><a href="academics/fields" data-filter="*">View All</a></button>
-			<button class="green_bg"><a href="academics/fields?filter=department" data-filter=".department">Departments</a></button>
-			<button class="purple_bg"><a href="academics/fields?filter=interdisciplinary" data-filter=".interdisciplinary">Interdisciplinary</a></button>
-			<button class="fushia"><a href="academics/fields?filter=arts" data-filter=".arts">The Arts</a></button>
-			<button class="yellow_bg"><a href="academics/fields?filter=humanities" data-filter=".humanities">Humanities</a></button>
-			<button class="orange_bg"><a href="academics/fields?filter=natural" data-filter=".natural">Natural Sciences</a></button>
-			<button class="bright_blue_bg"><a href="academics/fields?filter=social" data-filter=".social">Social Sciences</a></button>
+			<div class="button bright_blue_bg"><a href="academics/fields" data-filter="*">View All</a></div>
+			<div class="button green_bg"><a href="academics/fields?filter=department" data-filter=".department">Departments</a></div>
+			<div class="button purple_bg"><a href="academics/fields?filter=interdisciplinary" data-filter=".interdisciplinary">Interdisciplinary</a></div>
+			<div class="button fushia"><a href="academics/fields?filter=arts" data-filter=".arts">The Arts</a></div>
+			<div class="button yellow_bg"><a href="academics/fields?filter=humanities" data-filter=".humanities">Humanities</a></div>
+			<div class="button orange_bg"><a href="academics/fields?filter=natural" data-filter=".natural">Natural Sciences</a></div>
+			<div class="button bright_blue_bg"><a href="academics/fields?filter=social" data-filter=".social">Social Sciences</a></div>
 	</div>	    
 	</form>
   </li>

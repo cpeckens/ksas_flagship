@@ -42,7 +42,7 @@
 				</div>
 				
 				<div class="row" id="video_scroll">
-					<div class="blue_bg one column" id="left"></div>
+				<div class="one column spacer"></div>
 					<?php $student_voice_query = new WP_Query(array(
 							'post_type' => array('deptextra', 'post'),
 							'category_name' => 'voices',
@@ -53,7 +53,7 @@
 						if ( $student_voice_query->have_posts() ) : while ( $student_voice_query->have_posts() ) : $student_voice_query->the_post(); 
 
 				 ?>
-					<article class="three columns no-gutter rust_bg voices">
+					<article class="three columns rust_bg no-gutter voices">
 						<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video">
 							<div class="video_thumb small">
 								<span class="icon-play"></span><?php the_post_thumbnail('full'); ?>
@@ -65,13 +65,13 @@
 								    $dept_name_array[] = $term->name;
 								}
 								$dept_name = join( ", ", $dept_name_array ); ?>
-									<h3><?php echo $dept_name; ?></h3>
+									<h3><?php echo $dept_name_array[0]; ?></h3>
 								<?php endif; ?>	
 							
 						</a>
 					</article>
 					<?php endwhile; endif; ?>
-					<div class="blue_bg one column" id="right"></div>
+					<div class="one column spacer"></div>
 				</div>
 			</div>
 		</div>

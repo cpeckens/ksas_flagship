@@ -20,17 +20,16 @@
 						</a>
 						</span>
 					<?php endif; ?>
-					
+										
+					<?php if ( get_post_meta($post->ID, 'ecpt_location', true) ) : ?>
+						<span class="icon-location"><?php echo get_post_meta($post->ID, 'ecpt_location', true); ?></span> 
+					<?php endif; ?>
 					<?php if ( get_post_meta($post->ID, 'ecpt_homepage', true) ) : ?>
-						<span class="icon-new-tab-2">
+						<br><span class="icon-new-tab-2">
 						<a href="http://<?php echo get_post_meta($post->ID, 'ecpt_homepage', true); ?>">
 							<?php echo get_post_meta($post->ID, 'ecpt_homepage', true);?>
 						</a>
 						</span>
-					<?php endif; ?>
-					
-					<?php if ( get_post_meta($post->ID, 'ecpt_location', true) ) : ?>
-						<span class="icon-location"><?php echo get_post_meta($post->ID, 'ecpt_location', true); ?></span> 
 					<?php endif; ?>
 				</p> <!-- End Contact info line -->
 				
@@ -92,22 +91,26 @@
 				<?php if ( get_post_meta($post->ID, 'ecpt_homepage', true) ) : ?>
 					<li><span class="icon-arrow-right-2"></span><a href="http://<?php echo get_post_meta($post->ID, 'ecpt_homepage', true); ?>">Department Website</a></li>
 				<?php endif; ?>
+				<?php //Get the affiliation slug 
+					$affiliations = get_the_terms( $post->ID, 'affiliation' );
+						$affiliation_names = array();
+							foreach ( $affiliations as $affiliation ) {
+								$affiliation_names[] = $affiliation->slug;
+							}
+					$affiliation_name = $affiliation_names[0];
+				 ?>
 			<?php endwhile; endif; ?>	
 			</ul>
 		</div> <!--End Dept Nav Links -->
 		
 		<?php
-			//Get the academic department slug 
-			global $wp_query;
-			foreach(get_the_terms($wp_query->post->ID, 'affiliation') as $term);
-			$dept_slug = $term->slug;
 			
 			//Query department extras for that slug
 			$dept_extra_query = new WP_Query(array(
 						'post_type' => 'deptextra',
 						'orderby' => 'rand',
 						'posts_per_page' => '1',
-						'affiliation' => $dept_slug
+						'affiliation' => $affiliation_name
 						));
 						 
 			//If there are results

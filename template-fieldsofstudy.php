@@ -30,10 +30,10 @@ Template Name: Fields of Study
 
 					<div class="row filter option-set" data-filter-group="program_type">
 						<h5>Choose program type:</h5>
-						<button class="radio"><a href="#" data-filter="" class="selected">View all</a></button>
-						<button class="radio"><a href="#" data-filter=".undergrad_program">Undergraduate</a></button>
-						<button class="radio"><a href="#" data-filter=".full_time_program">Graduate (full-time)</a></button>
-						<button class="radio"><a href="#" data-filter=".part_time_program">Graduate (part-time)</a></button>
+						<div class="button radio"><a href="#" data-filter="" class="selected">View all</a></div>
+						<div class="button radio"><a href="#" data-filter=".undergrad_program">Undergraduate</a></div>
+						<div class="button radio"><a href="#" data-filter=".full_time_program">Graduate (full-time)</a></div>
+						<div class="button radio"><a href="#" data-filter=".part_time_program">Graduate (part-time)</a></div>
 					</div>
 					<div class="row">
 						<h5>Search by keyword:</h5>		
@@ -46,13 +46,13 @@ Template Name: Fields of Study
 					</div>
 
 					<div class="row filter option-set" data-filter-group="structure">
-						<button class="bright_blue_bg"><a href="#" data-filter="" class="selected">View All</a></button>
-						<button class="green_bg"><a href="#" data-filter=".department">Departments</a></button>
-						<button class="purple_bg"><a href="#" data-filter=".interdisciplinary">Interdisciplinary</a></button>
-						<button class="fushia"><a href="#" data-filter=".arts">The Arts</a></button>
-						<button class="yellow_bg"><a href="#" data-filter=".humanities">Humanities</a></button>
-						<button class="orange_bg"><a href="#" data-filter=".natural">Natural Sciences</a></button>
-						<button class="bright_blue_bg"><a href="#" data-filter=".social">Social Sciences</a></button>
+						<div class="button bright_blue_bg"><a href="#" data-filter="" class="selected">View All</a></div>
+						<div class="button green_bg"><a href="#" data-filter=".department">Departments</a></div>
+						<div class="button purple_bg"><a href="#" data-filter=".interdisciplinary">Interdisciplinary</a></div>
+						<div class="button fushia"><a href="#" data-filter=".arts">The Arts</a></div>
+						<div class="button yellow_bg"><a href="#" data-filter=".humanities">Humanities</a></div>
+						<div class="button orange_bg"><a href="#" data-filter=".natural">Natural Sciences</a></div>
+						<div class="button bright_blue_bg"><a href="#" data-filter=".social">Social Sciences</a></div>
 					</div>
 					
 				</fieldset>
@@ -63,8 +63,10 @@ Template Name: Fields of Study
 <section class="row" id="fields_container" role="main">
 	<?php while ($flagship_studyfields_query->have_posts()) : $flagship_studyfields_query->the_post(); 
 		//Pull discipline array (humanities, natural, social)
-		$discipline_array = get_post_meta($post->ID, 'ecpt_discipline', true);
-		$discipline = array_values($discipline_array);
+		if(get_post_meta($post->ID, 'ecpt_discipline', true)) {
+			$discipline_array = get_post_meta($post->ID, 'ecpt_discipline', true);
+			$discipline = array_values($discipline_array);
+		}
 		$program_types = get_the_terms( $post->ID, 'program_type' );
 			if ( $program_types && ! is_wp_error( $program_types ) ) : 
 				$program_type_names = array();
@@ -91,7 +93,7 @@ Template Name: Fields of Study
 					<h3><?php the_title(); ?></h3>
 					<div class="row">
 						<div class="twelve columns">
-							<p>
+							<p class="contact">
 								<?php echo get_post_meta($post->ID, 'ecpt_phonenumber', true); ?>
 								<span class="floatright"><?php echo get_post_meta($post->ID, 'ecpt_emailaddress', true); ?></span>
 							</p>

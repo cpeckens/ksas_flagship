@@ -6,6 +6,7 @@ function flagship_theme_support() {
 	set_post_thumbnail_size( 125, 125, true );   // default thumb size
 	add_image_size( 'rss', 300, 150, true );
 	add_image_size( 'bullet', 95, 95, true );
+	add_image_size( 'directory', 90, 130, true );
 	add_theme_support( 'automatic-feed-links' ); // rss thingy
 	add_theme_support( 'post-formats',      // post formats
 		array( 
@@ -44,55 +45,50 @@ add_action('init', 'add_flagship_categories');
 
 
 
-function delete_news_transients() {
-  	for ($i=1; $i < 5; $i++) { 
-  		delete_transient('news_archive_query_' . $i);
-  		delete_transient('flagship_photo_archive_query_' . $i);
-  		delete_transient('flagship_article_archive_query_' . $i);
-  		delete_transient('flagship_video_archive_query_' . $i);
-  	}
-	delete_transient('by_the_numbers_query');
-	delete_transient('flagship_news_query'); 
-	delete_transient('flagship_video_query');
-	delete_transient('flagship_photo_query');
-	delete_transient('research_query');
-	delete_transient('dean_letter_query');
-	delete_transient('dean_letter_archive_query');
-}
+function delete_flagship_transients($post_id) {
+	global $post;
+	if (isset($_GET['post_type'])) {		
+		$post_type = $_GET['post_type'];
+	}
+	else {
+		$post_type = $post->post_type;
+	}
+	switch($post_type) {
+		case 'post' :
+		  	for ($i=1; $i < 5; $i++) { 
+		  		delete_transient('news_archive_query_' . $i);
+		  		delete_transient('flagship_photo_archive_query_' . $i);
+		  		delete_transient('flagship_article_archive_query_' . $i);
+		  		delete_transient('flagship_video_archive_query_' . $i);
+		  	}
+			delete_transient('by_the_numbers_query');
+			delete_transient('flagship_news_query'); 
+			delete_transient('flagship_video_query');
+			delete_transient('flagship_photo_query');
+			delete_transient('research_query');
+			delete_transient('dean_letter_query');
+			delete_transient('dean_letter_archive_query');
+		break;
+		
+		case 'people' :
+			delete_transient('flagship_leadership_query');
+			delete_transient('flagship_dean_staff_query');
+		break;
+	
+		case 'studyfields' :
+			delete_transient('flagship_studyfields_query');
+			delete_transient('jump_menu_query');
+			delete_transient('jump_menu_art_query');
+			delete_transient('jump_menu_pci_query');
+		break;
+		
+		case 'page' :
+			delete_transient('undergraduate_research_query');
+			delete_transient('graduate_research_query');
+		break;
+	}
+} 
+add_action('save_post','delete_flagship_transients');
+
  
-add_action('save_post','delete_news_transients');
-
-function delete_people_transients() {
-	if($_POST[post_type] == 'people') {
-		delete_transient('flagship_leadership_query');
-		delete_transient('flagship_dean_staff_query');
-	}
-}
-
-if(post_type_exists('people')) {		
-	add_action('save_post','delete_people_transients'); 
-}
-
-function delete_studyfields_transients() {
-	if($_POST[post_type] == 'studyfields') {
-		delete_transient('flagship_studyfields_query');
-		delete_transient('jump_menu_query');
-		delete_transient('jump_menu_art_query');
-		delete_transient('jump_menu_pci_query');
-	}
-}
-
-if(post_type_exists('studyfields')) {		
-	add_action('save_post','delete_studyfields_transients'); 
-}
-
-function delete_page_transients() {
-	if($_POST[post_type] == 'page') {
-		delete_transient('undergraduate_research_query');
-		delete_transient('graduate_research_query');
-	}
-}
-add_action('save_post','delete_page_transients');
-
-
 ?>

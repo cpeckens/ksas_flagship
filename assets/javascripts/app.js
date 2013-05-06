@@ -35,33 +35,3 @@ function getParameterByName(name)
     return decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-//***********For Sidebar pages***********
-var $q = jQuery.noConflict();
-var highestCol = Math.max($q('#sidebar').height(),$q('.wrapper').height());
-$q('#sidebar, .wrapper').height(highestCol);
-
-//**************For Footer and Student Voices videos*******************//
-var $j = jQuery.noConflict();
-   $j('#right').click(function () {
-      $j('#video_scroll').animate({
-        marginLeft: -="200px"
-      }, "fast");
-   });
-
-   $j('#left').click(function () {
-      $j('#video_scroll').animate({
-        marginLeft: +="200px"
-      }, "fast");
-   });
-   
-   $j('#right_foot').click(function () {
-      $j('#footer_scroll').animate({
-        marginLeft: -="200px"
-      }, "fast");
-   });
-   
-  $j('#left_foot').click(function () {
-      $j('#footer_scroll').animate({
-       marginLeft: +="200px"
-      }, "fast");
-   });

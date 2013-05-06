@@ -11,9 +11,9 @@
   <title><?php create_page_title(); ?></title>
   
   <!-- CSS Files: All pages -->
+   <script type="text/javascript" src="http://fast.fonts.com/jsapi/c5f514c7-d786-4bfb-9484-ea6c8fbd263f.js"></script>
   <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/stylesheets/foundation.css">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/stylesheets/flagship.css">
-  <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/c5f514c7-d786-4bfb-9484-ea6c8fbd263f.css"/>
   <!-- CSS Files: Conditionals -->
   
   <!-- Modernizr and Jquery Script -->
@@ -64,7 +64,7 @@ if( is_page() ) {
 					</form>
 					</div>
 					<div class="six columns links">
-						<a href="<?php echo network_site_url(); ?>about/dean-leadership/">Directory</a> | 
+						<a href="<?php echo network_site_url(); ?>about/contact/">Directory</a> | 
 						<a href="http://my.jhu.edu">MYJHU</a> | 
 						<a href="http://library.jhu.edu/">Library</a>
 					</div>
@@ -78,7 +78,8 @@ if( is_page() ) {
 				'container' => 'nav',
 				'container_id' => 'main_nav', 
 				'container_class' => 'twelve columns',
-				'depth' => 2 )); ?> 
+				'depth' => 2,
+				'walker'=> new page_id_classes )); ?> 
 		</div>
 		<div class="row show-for-small black_bg radius10" id="mobile_nav_container" role="navigation">
 
