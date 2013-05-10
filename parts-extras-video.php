@@ -14,7 +14,18 @@
 </div> <!-- End #landing -->
 <div id="modal_dept_video" class="reveal-modal large black_bg">
 	<div class="flex-video">
-		<?php the_content(); ?>
+		
 	</div>
 	<a class="close-reveal-modal">&#215;</a>
 </div>
+		<script>
+		<?php 
+		$vid_url = get_the_content();
+		$embed_vid = "[embed]" . $vid_url . "[/embed]"; 
+		$wp_embed = new WP_Embed();
+		$post_embed = $wp_embed->run_shortcode($embed_vid); ?>
+		var $d = jQuery.noConflict();
+            $d('a[data-reveal-id="modal_dept_video"]').click( function(){
+                $d('<?php echo $post_embed; ?>').appendTo('#modal_dept_video .flex-video');
+            });
+        </script>

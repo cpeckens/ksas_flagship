@@ -25,7 +25,7 @@
 						<span class="icon-location"><?php echo get_post_meta($post->ID, 'ecpt_location', true); ?></span> 
 					<?php endif; ?>
 					<?php if ( get_post_meta($post->ID, 'ecpt_homepage', true) ) : ?>
-						<br><span class="icon-new-tab-2">
+						<br><span class="icon-globe">
 						<a href="http://<?php echo get_post_meta($post->ID, 'ecpt_homepage', true); ?>">
 							<?php echo get_post_meta($post->ID, 'ecpt_homepage', true);?>
 						</a>

@@ -48,6 +48,7 @@ For production environment search and replace javascripts/ for javascripts/min.
         	'directionalNav' : false,
 	        'bullets' : true,		
 	        'bulletThumbs': true,
+	        'fluid' : '527x424'
 	        
         });
    });

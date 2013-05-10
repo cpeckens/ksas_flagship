@@ -11,7 +11,8 @@
 		<?php while ($flagship_evergreen_query->have_posts()) : $flagship_evergreen_query->the_post(); ?>
 			<!-- Set background image. Resolution varies based on size -- Desktop, Tablet, Mobile -->
 				<style>
-					body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center; }
+					body { background: #000 url('<?php echo get_post_meta($post->ID, 'ecpt_fullimage', true); ?>') no-repeat top center;
+							background-attachment: scroll; }
 					@media only screen and (max-width: 420px) { body { background: #000; } }
 				</style>
 				<a href="#" data-reveal-id="modal_<?php the_id(); ?>_caption">

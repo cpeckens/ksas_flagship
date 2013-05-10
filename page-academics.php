@@ -36,7 +36,7 @@
 			<div class="eight columns tan_bg radius10">
 				<div class="row">
 					<div class="offset-by-one">
-						<h3 class="blue">Student Voices</h3>
+						<a href="<?php echo site_url('/news/archive/student-voices'); ?>"><h3 class="blue">Student Voices</h3></a>
 						<p><i>Hear what current students have to say about Johns Hopkins and their academic experience</i></p>
 					</div>	
 				</div>
@@ -58,16 +58,22 @@
 							<div class="video_thumb small">
 								<span class="icon-play"></span><?php the_post_thumbnail('full'); ?>
 							</div>
-							<?php $terms = get_the_terms( $post->ID, 'academicdepartment' );
-								if ( $terms && ! is_wp_error( $terms ) ) : 
+							<?php if (has_term('','academicdepartment', $post->ID) == true) {
+							$terms = get_the_terms( $post->ID, 'academicdepartment' );
 								$dept_name_array = array();
 								foreach ( $terms as $term ) {
 								    $dept_name_array[] = $term->name;
 								}
-								$dept_name = join( ", ", $dept_name_array ); ?>
-									<h3><?php echo $dept_name_array[0]; ?></h3>
-								<?php endif; ?>	
-							
+							?><h3><?php echo $dept_name_array[0]?></h3>
+							<?php } else {
+								$affiliations = get_the_terms( $post->ID, 'affiliation' );
+									$affiliation_names = array();
+									foreach ( $affiliations as $affiliation ) {
+										$affiliation_names[] = $affiliation->name;
+									}
+								?>
+									<h3><?php echo $affiliation_names[0]; ?></h3>
+							<?php } ?>							
 						</a>
 					</article>
 					<?php endwhile; endif; ?>
@@ -83,10 +89,20 @@
 <?php if ( $student_voice_query->have_posts() ) : while ( $student_voice_query->have_posts() ) : $student_voice_query->the_post(); ?>
 <div id="modal_home_<?php the_id(); ?>_video" class="reveal-modal large black_bg">
 	<div class="flex-video">
-		<?php the_content(); ?>
 	</div>
 	<a class="close-reveal-modal">&#215;</a>
 </div>
+<script>
+	<?php 
+	$vid_url = get_the_content();
+	$embed_vid = "[embed]" . $vid_url . "[/embed]"; 
+	$wp_embed = new WP_Embed();
+	$post_embed = $wp_embed->run_shortcode($embed_vid); ?>
+	var $d = jQuery.noConflict();
+        $d('a[data-reveal-id="modal_home_<?php the_id(); ?>_video"]').click( function(){
+            $d('<?php echo $post_embed; ?>').appendTo('#modal_home_<?php the_id();?>_video .flex-video');
+        });
+</script>
 <?php endwhile; endif; ?>
 <!-- ************End Modal Video Boxes******************* -->
 

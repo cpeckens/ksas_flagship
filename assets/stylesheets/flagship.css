@@ -66,7 +66,7 @@ aside p {
 	background: rgb(255,255,255);
 	background: rgba(255,255,255, 0.95);
 	padding: 30px;
-	margin-top: 15px;
+	margin-top: 5px;
 	margin-bottom: 30px;
 }
 
@@ -180,7 +180,7 @@ button,
 	font-size: 16px;
 	padding:8px 12px;
 	margin-right: 10px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	opacity: .8;
 	font-weight: normal;
 	-webkit-box-shadow: none;
@@ -339,9 +339,11 @@ ul, ol {
 
 .panel li:before {
     content:"\25FE";
-    font-size:20px;
+    font-family: "Myriad W01 Regular", Arial, sans-serif;
+    font-size: 20px;
     padding-right: 3px;
     vertical-align:middle;
+	
 }
 
 #landing .panel li a,
@@ -424,6 +426,9 @@ blockquote:before {
 	opacity: .25;
 	color: #336699;	
 }
+.lt-ie9 blockquote:before {
+	content:none;
+}
 
 .wp-post-image {
 	margin-bottom: 15px;
@@ -441,7 +446,7 @@ nav ul {
 .nav-bar > li > a:first-child{
 	font-size: 18px;
 	color:#ccc;
-	padding: 0 24px;
+	padding: 0 23px;
 }
 
 #main_nav,
@@ -465,12 +470,12 @@ nav ul {
 	z-index:100;
 	width: 100%;
 	max-width:1000px; 
-	height:72px; 
+	height:62px; 
 }
 
 #main_nav ul li {
 	float:left; 
-	line-height: 72px;
+	line-height: 62px;
 	padding: 0 25px;
 	
 }
@@ -496,7 +501,7 @@ nav ul {
 #main_nav ul li ul {
 	visibility:hidden; 
 	position:absolute; 
-	top:72px; 
+	top:62px; 
 	left:0; 
 }
 
@@ -513,7 +518,7 @@ nav ul {
 	background: rgba(51, 102, 153, .9);
 	width: 100%;
 	max-width:1000px; 
-	min-height:72px;
+	min-height:62px;
 	-webkit-border-radius:  10px;
 	-moz-border-radius: 	10px;
 	border-radius: 			10px;
@@ -527,7 +532,7 @@ nav ul {
 }
 
 #main_nav ul li:hover ul li ul,
-#main_nav ul li a:hover ul li a ul {visibility:hidden; position:absolute; left:0; top:72px; }
+#main_nav ul li a:hover ul li a ul {visibility:hidden; position:absolute; left:0; top:62px; }
 
 #main_nav ul li:hover ul li a,
 #main_nav ul li a:hover ul li a {display:block; color:#fff;}
@@ -613,15 +618,15 @@ li.external a::after:hover {
 #main_nav li.logo,
 .mobile-logo {
 	width: 237px;
-	height: 133px;
+	height: 135px;
 	padding: 0;
 }
 #main_nav li.logo a,
 .mobile-logo a {
 	background: url('../images/logo.png') no-repeat top;
 	width: 237px;
-	height: 133px;
-	margin-top:-61px;
+	height: 155px;
+	margin-top:-94px;
 	text-indent: -9999px;
 	position: absolute;
 }
@@ -644,7 +649,8 @@ li.external a::after:hover {
 	color: #ccc;
 	text-transform: uppercase;
 	font-family:"Myriad W01 Bd";
-	margin-top:15px;
+	margin-top:35px;
+	margin-bottom: 12px;
 }
 
 #search-bar .columns {
@@ -882,7 +888,7 @@ body.home .reveal-modal {
 }
 
 #evergreen {
-	min-height: 325px;
+	min-height: 270px;
 }
 
 #field_search,
@@ -1067,6 +1073,10 @@ body.home .reveal-modal {
 #video_fixed article {
 	margin-right: 20px;
 }
+
+#video_scroll article {
+	margin:1em 5px;
+	min-height: 150px;}
 /******* Fields of Study ******/
 a.field,
 a.field p {
@@ -1190,7 +1200,7 @@ min-width: 240px;
 
 
 #fields_search fieldset {
-	background: rgb(0,0,0);
+	background: #CCC;
 	background: rgba(0,0,0,0.15);
 	padding-bottom:5px;
 	border:none;
@@ -1214,7 +1224,7 @@ min-width: 240px;
 }
 
 #fields_search input[type="text"] {
-    height: 56px;
+    height: 40px;
     margin-bottom: 10px;
     -webkit-border-top-right-radius: 	7px;
     -webkit-border-bottom-right-radius: 7px;
@@ -1235,7 +1245,7 @@ min-width: 240px;
 
 #fields_search input[type="submit"] {
 	background: #333;
-	height: 56px;
+	height: 40px;
 	width: 45px;
 	font-family: 'flagship-icon';
 	-webkit-border-top-left-radius: 	7px;
@@ -1303,8 +1313,9 @@ min-width: 240px;
 p.contact,
 #landing p.contact a {
 	font-size: 14px;
-	margin-bottom: 40px;
-	color: #000;	
+	margin-bottom: 25px;
+	color: #000;
+	line-height: 2em;	
 }
 
 p.contact span {
@@ -1364,6 +1375,12 @@ ul.nav:last-child {
     height: 35px;
 }
 
+.jumpmenu select option:nth-child(1) {
+	color: #FFF;
+}
+.jumpmenu select option {
+	color: #000;
+}
 #landing .grey_bg h3 {
 	margin: 5px 15px;
 	color: #fff;
@@ -1475,7 +1492,6 @@ body.news .wp-post-image {
 #video_section {
 	position: relative;
 }
-
 
 /**************CALENDAR****************/
 .SEClear {
@@ -1750,9 +1766,7 @@ body.about div.orbit {
 body.research div.orbit-wrapper,
 body.about div.orbit-wrapper {
 	width: auto !important;
-	padding: 0;
-	float: right;
-	
+	padding: 0;	
 }
 
 .ie8 body.research div.orbit-wrapper {
@@ -1780,7 +1794,7 @@ body.about #slider {
 
 ul.orbit-bullets {
 	top: 405px;
-	width: 527px;
+	width: 495px;
 	left: 3px;
 	margin-left:0 !important;
 }
@@ -1796,8 +1810,8 @@ ul.orbit-bullets li:last-child {
 }
 
 ul.orbit-bullets li.has-thumb {
-	width:95px;
-	height:95px;
+	width:87px;
+	height:87px;
 }
 div.orbit-wrapper div.timer {
 	display: none;
@@ -1827,6 +1841,10 @@ body.research ul.nav li {
 	padding-right:15px;
 	text-indent: -25px;
 	padding-left: 55px;
+}
+
+body.research .orbit-wrapper {
+	height: 400px !important;
 }
 
 #sidebar h6 {
@@ -1934,6 +1952,8 @@ a[href*=".pdf"]:before {
 }
 .icon-location:before {
 	content: "\e000";
+	font-family: 'flagship-icon';
+
 }
 .icon-calendar:before {
 	content: "\e001";
@@ -1946,6 +1966,7 @@ a[href*=".pdf"]:before {
 }
 .icon-search:before {
 	content: "\e004";
+	font-family: 'flagship-icon';
 }
 .icon-user:before {
 	content: "\e005";
@@ -1955,12 +1976,15 @@ a[href*=".pdf"]:before {
 }
 .icon-new-tab-2:before {
 	content: "\e007";
+	font-family: 'flagship-icon';
 }
 .icon-facebook:before {
 	content: "\e008";
+	font-family: 'flagship-icon';
 }
 .icon-vimeo:before {
 	content: "\e009";
+	font-family: 'flagship-icon';
 }
 .icon-github:before {
 	content: "\e00a";
@@ -1982,6 +2006,7 @@ a[href*=".pdf"]:before {
 }
 .icon-mail:before {
 	content: "\e013";
+	font-family: 'flagship-icon';
 }
 .icon-minus:before {
 	content: "\e014";
@@ -2051,12 +2076,15 @@ a[href*=".pdf"]:before {
 }
 .icon-play:before {
 	content: "\e02a";
+	font-family: 'flagship-icon';
 }
 .icon-mobile:before {
 	content: "\e02b";
+	font-family: 'flagship-icon';
 }
 .icon-phone:before {
 	content: "\e012";
+	font-family: 'flagship-icon';
 }
 .icon-youtube:before {
 	content: "\e02c";
@@ -2064,6 +2092,7 @@ a[href*=".pdf"]:before {
 
 .icon-arrow-right-2:before {
 	content: "\e010";
+	font-family: 'flagship-icon';
 }
 
 .icon-comments:before {
@@ -2072,12 +2101,15 @@ a[href*=".pdf"]:before {
 
 .icon-camera:before {
 	content: "\e02d";
+	font-family: 'flagship-icon';
 }
 .icon-video:before {
 	content: "\e02e";
+	font-family: 'flagship-icon';
 }
 .icon-newspaper:before {
 	content: "\e02f";
+	font-family: 'flagship-icon';
 }
 
 .icon-calendar-2:before {
@@ -2086,6 +2118,7 @@ a[href*=".pdf"]:before {
 
 .icon-globe:before {
 	content: "\f0ac";
+	font-family: 'flagship-icon';
 }
 
 @media only screen and (max-width: 975px) {

@@ -19,7 +19,7 @@
 		
 		<nav class="two column iconfont" id="social-media">
 			<a href="http://facebook.com/jhuksas" title="Facebook"><span class="icon-facebook"></span></a>
-			<a href="http://vimeo.com/jhuksas" title="Vimeo"><span class="icon-vimeo"></span></a>
+			<a href="http://vimeo.com/channels/jhuksas" title="Vimeo"><span class="icon-vimeo"></span></a>
 		</nav>
   	</div>
   	<div class="row" id="copyright" role="content-info">

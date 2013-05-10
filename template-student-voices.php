@@ -1,14 +1,14 @@
 <?php
 /*
-Template Name: Video Archive
+Template Name: Student Voices
 */
 ?>
 <?php get_header(); ?>
 
 <?php $paged = (get_query_var('paged')) ? (int) get_query_var('paged') : 1;
-			if ( false === ( $flagship_video_archive_query = get_transient( 'flagship_video_archive_query_' . $paged ) ) ) {
+			if ( false === ( $flagship_student_voices_query = get_transient( 'flagship_student_voices_query_' . $paged ) ) ) {
 				// It wasn't there, so regenerate the data and save the transient
-				$flagship_video_archive_query = new WP_Query(array(
+				$flagship_student_voices_query = new WP_Query(array(
 					'post_type' => array('deptextra', 'post'),
 					'tax_query' => array(
 						array(
@@ -16,19 +16,20 @@ Template Name: Video Archive
 						'field' => 'slug',
 						'terms' => 'post-format-video',
 						'operator' => 'IN' )),
+					'category_name' => 'voices',
 					'posts_per_page' => '12',
 					'paged' => $paged
 					)); 
-					set_transient( 'flagship_video_archive_query_' . $paged, $flagship_video_archive_query, 2592000 );
+					set_transient( 'flagship_student_voices_query_' . $paged, $flagship_student_voices_query, 2592000 );
 			} 	?>
 
 <section class="row wrapper radius10">
 	<div class="twelve columns">
 		<div class="row">
 			<div class="twelve columns" id="archive">
-			<h2>Video Library</h2>
+			<h2>Student Voices</h2>
 			<?php locate_template('parts-archive-navigation.php', true, false); ?>
-			<?php while ($flagship_video_archive_query->have_posts()) : $flagship_video_archive_query->the_post(); ?>
+			<?php while ($flagship_student_voices_query->have_posts()) : $flagship_student_voices_query->the_post(); ?>
 				<article class="four columns mobile-four">
 				<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video">
 					<div class="video_thumb archive">
@@ -44,13 +45,13 @@ Template Name: Video Archive
 			</div>
 		</div>
 		<div class="row">
-			<?php flagship_pagination($flagship_video_archive_query->max_num_pages); ?>		
+			<?php flagship_pagination($flagship_student_voices_query->max_num_pages); ?>		
 		</div>
 	</div>
 </section>
 
 <!-- VIDEO MODALS -->
-<?php if ( $flagship_video_archive_query->have_posts() ) : while ( $flagship_video_archive_query->have_posts() ) : $flagship_video_archive_query->the_post(); ?>
+<?php if ( $flagship_student_voices_query->have_posts() ) : while ( $flagship_student_voices_query->have_posts() ) : $flagship_student_voices_query->the_post(); ?>
 <div id="modal_home_<?php the_id(); ?>_video" class="reveal-modal large black_bg">
 	<div class="flex-video">
 	</div>

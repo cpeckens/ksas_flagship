@@ -123,9 +123,9 @@
 			
 			<!-- ************DEPARTMENT & HUB SECTION************* -->
 				<div class="six columns" id="aggregate_section">
-					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://hub.jhu.edu">From the Hub</a></h3></div>
+					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://hub.jhu.edu/divisions/school-arts-and-sciences">From the Hub</a></h3></div>
 						<?php
-						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&return_format=json&q=krieger&per_page=2';
+						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&return_format=json&divisions=426&per_page=2';
 							$rCURL = curl_init();
 								curl_setopt($rCURL, CURLOPT_URL, $hub_url);
 								curl_setopt($rCURL, CURLOPT_HEADER, 0);
@@ -140,7 +140,11 @@
 								<article>
 									<img src="<?php echo $hub_article['_embedded']['image_thumbnail'][0]['sizes']['impact_small']; ?>" />
 									<h4><?php echo $hub_article['headline']; ?></h4>
-									<p><?php echo $hub_article['subheadline']; ?></p>
+									<p><?php echo $hub_article['subheadline']; 
+											 if (empty($hub_article['subheadline'])) { 
+												 echo $hub_article['excerpt'];
+											} ?>
+									</p>
 								</article>	
 							</a>
 						<?php } ?>					
@@ -154,7 +158,7 @@
 	<!-- ************MAGAZINE SECTION************* -->
 	<div class="row">
 		<div class="twelve columns" id="magazine_section">
-			<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://krieger.jhu.edu/magazine/category/exclusives">Web Exclusives from Arts &amp; Sciences Magazine</a></h3></div>
+			<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://krieger.jhu.edu/magazine/category/exclusive">Web Exclusives from Arts &amp; Sciences Magazine</a></h3></div>
 				<?php // Get RSS Feed(s)
 					include_once(ABSPATH . WPINC . '/feed.php');
 					
@@ -192,6 +196,18 @@
 	</div>
 	<a class="close-reveal-modal">&#215;</a>
 </div>
+<script>
+	<?php //Load Video iframe only if the thumbnail is clicked
+		$vid_url = get_the_content();
+		$embed_vid = "[embed]" . $vid_url . "[/embed]"; 
+		$wp_embed = new WP_Embed();
+		$post_embed = $wp_embed->run_shortcode($embed_vid); ?>
+		
+	var $d = jQuery.noConflict();
+        $d('a[data-reveal-id="modal_home_<?php the_id(); ?>_video"]').click( function(){
+            $d('<?php echo $post_embed; ?>').appendTo('#modal_home_<?php the_id();?>_video .flex-video');
+        });
+</script>
 <?php endwhile; endif; ?>
 
 <!-- ************IMAGE MODAL************* -->

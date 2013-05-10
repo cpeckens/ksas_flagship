@@ -60,6 +60,7 @@ function delete_flagship_transients($post_id) {
 		  		delete_transient('flagship_photo_archive_query_' . $i);
 		  		delete_transient('flagship_article_archive_query_' . $i);
 		  		delete_transient('flagship_video_archive_query_' . $i);
+		  		delete_transient('flagship_student_voices_query_' . $i);
 		  	}
 			delete_transient('by_the_numbers_query');
 			delete_transient('flagship_news_query'); 
@@ -86,6 +87,15 @@ function delete_flagship_transients($post_id) {
 			delete_transient('undergraduate_research_query');
 			delete_transient('graduate_research_query');
 		break;
+		
+		case 'deptextra' :
+			for ($i=1; $i < 5; $i++) { 
+		  		delete_transient('news_archive_query_' . $i);
+		  		delete_transient('flagship_photo_archive_query_' . $i);
+		  		delete_transient('flagship_article_archive_query_' . $i);
+		  		delete_transient('flagship_video_archive_query_' . $i);
+		  		delete_transient('flagship_student_voices_query_' . $i);
+		  	}
 	}
 } 
 add_action('save_post','delete_flagship_transients');
