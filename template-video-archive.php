@@ -30,7 +30,7 @@ Template Name: Video Archive
 			<?php locate_template('parts-archive-navigation.php', true, false); ?>
 			<?php while ($flagship_video_archive_query->have_posts()) : $flagship_video_archive_query->the_post(); ?>
 				<article class="four columns mobile-four">
-				<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video">
+				<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video" onclick="ga('send', 'event', 'Video', 'Play', '<?php the_title(); ?>');">
 					<div class="video_thumb archive">
 						<?php the_post_thumbnail('bullet', array('class' => 'floatleft')); ?>
 					</div>

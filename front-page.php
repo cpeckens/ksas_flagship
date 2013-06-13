@@ -36,7 +36,7 @@
   <li class="active">
 	  <form method="post" action="academics/fields">
 
-	  	<div class="row">	
+	  	<div class="row hide-for-small">	
 		<!-- Search Bar -->
 		<div class="twelve columns">
 			<input type="submit" class="icon-search" value="&#xe004;" />
@@ -45,14 +45,14 @@
 	</div>
 	
 	<div class="row" id="filters">
-			<label class="one column">EXPLORE:</label>
-			<div class="button bright_blue_bg"><a href="academics/fields" data-filter="*">View All</a></div>
-			<div class="button green_bg"><a href="academics/fields?filter=department" data-filter=".department">Departments</a></div>
-			<div class="button purple_bg"><a href="academics/fields?filter=interdisciplinary" data-filter=".interdisciplinary">Interdisciplinary</a></div>
-			<div class="button fushia"><a href="academics/fields?filter=arts" data-filter=".arts">The Arts</a></div>
-			<div class="button yellow_bg"><a href="academics/fields?filter=humanities" data-filter=".humanities">Humanities</a></div>
-			<div class="button orange_bg"><a href="academics/fields?filter=natural" data-filter=".natural">Natural Sciences</a></div>
-			<div class="button bright_blue_bg"><a href="academics/fields?filter=social" data-filter=".social">Social Sciences</a></div>
+			<label class="one column hide-for-small">EXPLORE:</label>
+			<div class="button bright_blue_bg"><a href="academics/fields" data-filter="*" onclick="ga('send', 'event', 'Fields', 'Homepage', 'All');">View All</a></div>
+			<div class="button green_bg"><a href="academics/fields?filter=department" data-filter=".department" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Department');">Departments</a></div>
+			<div class="button purple_bg"><a href="academics/fields?filter=interdisciplinary" data-filter=".interdisciplinary" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Interdisciplinary');">Interdisciplinary</a></div>
+			<div class="button fushia"><a href="academics/fields?filter=arts" data-filter=".arts" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Arts');">The Arts</a></div>
+			<div class="button yellow_bg"><a href="academics/fields?filter=humanities" data-filter=".humanities" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Humanities');">Humanities</a></div>
+			<div class="button orange_bg"><a href="academics/fields?filter=natural" data-filter=".natural" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Natural');">Natural Sciences</a></div>
+			<div class="button bright_blue_bg"><a href="academics/fields?filter=social" data-filter=".social" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Social');">Social Sciences</a></div>
 	</div>	    
 	</form>
   </li>

@@ -7,18 +7,23 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title><?php create_page_title(); ?></title>
-  
+  <link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/assets/images/favicon.ico" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo get_template_directory_uri() ?>/assets/images/apple-touch-icon-144x144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_template_directory_uri() ?>/assets/images/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_template_directory_uri() ?>/assets/images/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="<?php echo get_template_directory_uri() ?>/assets/images/apple-touch-icon-57x57-precomposed.png" />
   <!-- CSS Files: All pages -->
-   <script type="text/javascript" src="http://fast.fonts.com/jsapi/c5f514c7-d786-4bfb-9484-ea6c8fbd263f.js"></script>
   <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/stylesheets/foundation.css">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/stylesheets/flagship.css">
+  <script async type="text/javascript" src="http://fast.fonts.com/jsapi/c5f514c7-d786-4bfb-9484-ea6c8fbd263f.js"></script>
   <!-- CSS Files: Conditionals -->
   
   <!-- Modernizr and Jquery Script -->
-  <script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/modernizr.foundation.js"></script>
   <?php wp_enqueue_script('jquery'); ?> 
+  <script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/modernizr.foundation.js"></script>
   <?php wp_head(); ?>
 
   <!-- Make IE a modern browser -->
@@ -54,19 +59,19 @@ if( is_page() ) {
 		</div>
 	
 		<div class="row">
-			<div id="search-bar" class="offset-by-eight four columns" role="search">
+			<div id="search-bar" class="offset-by-eight four mobile-four columns" role="search">
 				<div class="row">
-					<div class="six columns">
+					<div class="six columns mobile-three">
 					
 					<form method="GET" action="<?php echo site_url('/search'); ?>" role="search">
 						<input type="submit" class="icon-search" value="&#xe004;" />
 						<input type="text" name="q" placeholder="Search this site" />
 					</form>
 					</div>
-					<div class="six columns links">
-						<a href="<?php echo network_site_url(); ?>about/contact/">Directory</a> | 
-						<a href="http://my.jhu.edu">MYJHU</a> | 
-						<a href="http://library.jhu.edu/">Library</a>
+					<div class="six columns links hide-for-small">
+						<a href="http://www.jhu.edu">jhu.edu</a> |
+						<a href="http://library.jhu.edu/">Library</a> |
+						<a href="<?php echo network_site_url(); ?>about/contact/">Contact</a>
 					</div>
 				</div>	
 			</div>	<!-- End #search-bar	 -->
@@ -81,17 +86,4 @@ if( is_page() ) {
 				'depth' => 2,
 				'walker'=> new page_id_classes )); ?> 
 		</div>
-		<div class="row show-for-small black_bg radius10" id="mobile_nav_container" role="navigation">
-
-			<?php wp_nav_menu( array( 
-				'theme_location' => 'main_nav', 
-				'menu_class' => '', 
-				'fallback_cb' => 'foundation_page_menu', 
-				'container' => 'div',
-				'container_id' => 'mobile_nav', 
-				'container_class' => 'twelve columns',
-				'depth' => 2,
-				'walker' => new mobile_select_menu(),
-				'items_wrap' => '<select onchange="window.open(this.options[this.selectedIndex].value,\'_top\')">%3$s</select>', )); ?> 
-		</div>	
 	</header>

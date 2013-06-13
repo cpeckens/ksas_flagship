@@ -6,7 +6,7 @@
 		'fallback_cb' => 'foundation_page_menu', 
 		'container' => 'nav', 
 		'container_id' => 'quicklinks',
-		'container_class' => 'three column', 
+		'container_class' => 'three column hide-for-small', 
 		'walker' => new foundation_navigation() ) ); ?>
   		
 		<?php wp_nav_menu( array( 
@@ -25,9 +25,13 @@
   	<div class="row" id="copyright" role="content-info">
   		<p>&copy; <?php print date('Y'); ?> Johns Hopkins University, Zanvyl Krieger School of Arts & Sciences, 3400 N. Charles St, Baltimore, MD 21218</p>
   	</div>
+		<div class="row">
+  		<div class="four columns centered">
+				<a href="http://www.jhu.edu"><img src="<?php echo get_template_directory_uri() ?>/assets/images/university.jpg" /></a>
+			</div>
+		</div>
   </footer>
   
   <?php locate_template('parts-script-initiators.php', true, false); ?>
-
 	</body>
 </html>

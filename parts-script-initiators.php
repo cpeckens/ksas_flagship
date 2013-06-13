@@ -5,7 +5,10 @@ For production environment search and replace javascripts/ for javascripts/min.
 <!***********ALL PAGES**************>
   <script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/min.foundation.js"></script> <!-- ALL -->
   <script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/min.app.js"></script>
-    
+	<script>jQuery(document).ready(function () {
+	    jQuery('#main_nav').meanmenu();
+	});
+	</script>
 <!***********FIELDS OF STUDY**************>
   <?php if ( is_page_template( 'template-fieldsofstudy.php' ))  { ?>
   	<script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/min.page.fieldsofstudy.js"></script>
@@ -73,7 +76,7 @@ For production environment search and replace javascripts/ for javascripts/min.
 <?php } ?>
 
 <!***********NEWS**************>
-<?php if ( is_page('news')) { ?>
+<?php if ( is_page('news-events')) { ?>
 	<script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/min.easyXDM.js"></script>
 	<script>
 	    new easyXDM.Socket({
@@ -102,7 +105,7 @@ For production environment search and replace javascripts/ for javascripts/min.
 
 <!***********NAVIGATION INDICATORS**************>
 <?php if (  is_singular('post') || is_page_template('template-photo-archive.php') || is_page_template('template-story-archive.php') || is_page_template('template-video-archive.php') || is_page('archive') || is_page('events')) { 
-		$news_id = ksas_get_page_id('news');
+		$news_id = ksas_get_page_id('news-events');
 		$archive_id = ksas_get_page_id('archive');
 ?>
 	<script>
@@ -128,11 +131,13 @@ For production environment search and replace javascripts/ for javascripts/min.
 <?php } ?>
 <?php if ( is_singular('studyfields') || is_page_template('template-fieldsofstudy.php') ) { 
 		$academics_id = ksas_get_page_id('academics');
+		$fields_id = ksas_get_page_id('fields');
 ?>
 	<script>
 		var $k = jQuery.noConflict();
 		$k(document).ready(function(){
 			$k('li.page-id-<?php echo $academics_id; ?>').addClass('current_page_ancestor');
+			$k('li.page-id-<?php echo $fields_id; ?>').addClass('current_page_parent');
 			});
 	</script>
 <?php } ?>

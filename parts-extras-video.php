@@ -1,6 +1,6 @@
 						<div class="row">
 							<div class="ten columns centered grey_bg no-gutter">
-								<a href="#" data-reveal-id="modal_dept_video">
+								<a href="#" data-reveal-id="modal_dept_video" onclick="ga('send', 'event', 'Video', 'Play', '<?php the_title(); ?>');">
 									<div class="video_thumb">
 										<span class="icon-play"></span><?php the_post_thumbnail('rss'); ?>
 									</div>

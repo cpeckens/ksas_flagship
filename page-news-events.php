@@ -6,7 +6,7 @@
 		<!-- ************START NEWS & FEATURED VIDEO SECTION************* -->
 		<div class="four columns" id="news_section">
 			<!-- ************START NEWS -->
-			<div class="banner blue_bg offset-gutter offset-topgutter radius-topleft"><h3><a href="/news/articles" class="dark_blue_bg radius-topleft">Arts &amp; Sciences News</a></h3></div>
+			<div class="banner blue_bg offset-gutter offset-topgutter radius-topleft"><h3><a href="/news-events/articles" class="dark_blue_bg radius-topleft">Arts &amp; Sciences News</a></h3></div>
 					<?php 
 						if ( false === ( $flagship_news_query = get_transient( 'flagship_news_query' ) ) ) {
 				// It wasn't there, so regenerate the data and save the transient
@@ -33,7 +33,7 @@
 						<?php endwhile; ?>
 						
 			<!-- ************END NEWS -- START FEATURED VIDEO -->
-			<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="/news/videos">Featured Video</a></h3></div>
+			<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="/news-events/videos">Featured Video</a></h3></div>
 					<?php 
 						if ( false === ( $flagship_video_query = get_transient( 'flagship_video_query' ) ) ) {
 				// It wasn't there, so regenerate the data and save the transient
@@ -95,7 +95,7 @@
 									<div class="row">
 										<div class="eleven columns centered">
 											<h4>This Week Around Campus</h4>
-											<a href="/news/photos"><div class="button radius10 grey_bg no-margin">View More</div></a>
+											<a href="/news-events/photos"><div class="button radius10 grey_bg no-margin">View More</div></a>
 											<?php the_content(); ?>
 										</div>
 									</div>
@@ -109,7 +109,7 @@
 			<div class="row">
 			<!-- ************CALENDAR SECTION************* -->
 				<div class="six columns" id="calendar_section">
-					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="/news/events">Today's Events</a></h3></div>
+					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="/news-events/events">Today's Events</a></h3></div>
 					<div id="calendar_container"></div>
 					<!-- Uncomment when ready for filter calendars
 						<h6>View full calendars</h6>
@@ -117,7 +117,7 @@
 						<div class="button orange_bg"><a href="/news/events/cal_sciences">Sciences</a></div>
 						<div class="button bright_blue_bg"><a href="/news/events/cal_interdisciplinary">Interdisciplinary</a></div>
 					-->
-					<div class="button bright_blue_bg"><a href="/news/events">View Full Calendar</a></div>
+					<div class="button bright_blue_bg"><a href="/news-events/events">View Full Calendar</a></div>
 				</div>
 			<!-- ************END CALENDAR SECTION************* -->	
 			

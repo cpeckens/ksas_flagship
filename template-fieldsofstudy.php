@@ -31,9 +31,9 @@ Template Name: Fields of Study
 					<div class="row filter option-set" data-filter-group="program_type">
 						<h5>Choose program type:</h5>
 						<div class="button radio"><a href="#" data-filter="" class="selected">View all</a></div>
-						<div class="button radio"><a href="#" data-filter=".undergrad_program">Undergraduate</a></div>
-						<div class="button radio"><a href="#" data-filter=".full_time_program">Graduate (full-time)</a></div>
-						<div class="button radio"><a href="#" data-filter=".part_time_program">Graduate (part-time)</a></div>
+						<div class="button radio"><a href="#" data-filter=".undergrad_program" onclick="ga('send', 'event', 'Fields', 'Filter', 'Undergrad');">Undergraduate</a></div>
+						<div class="button radio"><a href="#" data-filter=".full_time_program" onclick="ga('send', 'event', 'Fields', 'Filter', 'Graduate');">Graduate (full-time)</a></div>
+						<div class="button radio"><a href="#" data-filter=".part_time_program" onclick="ga('send', 'event', 'Fields', 'Filter', 'AAP');">Graduate (part-time)</a></div>
 					</div>
 					<div class="row">
 						<h5>Search by keyword:</h5>		
@@ -41,18 +41,18 @@ Template Name: Fields of Study
 						<input type="text" name="search" value="<?php if (isset($_POST['home_search'])) { echo($_POST['home_search']); } ?>" id="id_search" aria-label="Search"  /> 
 					</div>
 					
-					<div class="row">
+					<div class="row hide-for-mobile">
 						<h5>Filter fields of study:</h5>
 					</div>
 
-					<div class="row filter option-set" data-filter-group="structure">
+					<div class="row filter hide-for-mobile option-set" data-filter-group="structure">
 						<div class="button bright_blue_bg"><a href="#" data-filter="" class="selected">View All</a></div>
-						<div class="button green_bg"><a href="#" data-filter=".department">Departments</a></div>
-						<div class="button purple_bg"><a href="#" data-filter=".interdisciplinary">Interdisciplinary</a></div>
-						<div class="button fushia"><a href="#" data-filter=".arts">The Arts</a></div>
-						<div class="button yellow_bg"><a href="#" data-filter=".humanities">Humanities</a></div>
-						<div class="button orange_bg"><a href="#" data-filter=".natural">Natural Sciences</a></div>
-						<div class="button bright_blue_bg"><a href="#" data-filter=".social">Social Sciences</a></div>
+						<div class="button green_bg"><a href="#" data-filter=".department" onclick="ga('send', 'event', 'Fields', 'Filter', 'Department');">Departments</a></div>
+						<div class="button purple_bg"><a href="#" data-filter=".interdisciplinary" onclick="ga('send', 'event', 'Fields', 'Filter', 'Interdisciplinary');">Interdisciplinary</a></div>
+						<div class="button fushia"><a href="#" data-filter=".arts" onclick="ga('send', 'event', 'Fields', 'Filter', 'Arts');">The Arts</a></div>
+						<div class="button yellow_bg"><a href="#" data-filter=".humanities" onclick="ga('send', 'event', 'Fields', 'Filter', 'Humanities');">Humanities</a></div>
+						<div class="button orange_bg"><a href="#" data-filter=".natural" onclick="ga('send', 'event', 'Fields', 'Filter', 'Natural');">Natural Sciences</a></div>
+						<div class="button bright_blue_bg"><a href="#" data-filter=".social" onclick="ga('send', 'event', 'Fields', 'Filter', 'Social');">Social Sciences</a></div>
 					</div>
 					
 				</fieldset>
@@ -78,7 +78,7 @@ Template Name: Fields of Study
 	?>
 		
 		<!-- Set classes for isotype.js filter buttons -->
-		<div class="four columns mobile-two mobile-field <?php echo $discipline[0] . ' '; if ( isset($discipline[1] )) { echo $discipline[1] . ' ';  } if ( isset($discipline[2] )) { echo $discipline[2] . ' ';  } echo get_post_meta($post->ID, 'ecpt_structure', true);?> <?php echo $program_type_name; ?>">
+		<div class="four columns mobile-four mobile-field <?php echo $discipline[0] . ' '; if ( isset($discipline[1] )) { echo $discipline[1] . ' ';  } if ( isset($discipline[2] )) { echo $discipline[2] . ' ';  } echo get_post_meta($post->ID, 'ecpt_structure', true);?> <?php echo $program_type_name; ?>">
 		
 			<a href="<?php the_permalink();?>" title="<?php the_title(); ?>" class="field">
 				<div class="twelve columns field" id="<?php echo get_post_meta($post->ID, 'ecpt_structure', true); ?>">
@@ -89,7 +89,7 @@ Template Name: Fields of Study
 					</div>
 				</div>
 				
-					<img src="<?php echo get_post_meta($post->ID, 'ecpt_indeximage', true); ?>" />
+					<img align="center" src="<?php echo get_post_meta($post->ID, 'ecpt_indeximage', true); ?>" />
 					<h3><?php the_title(); ?></h3>
 					<div class="row">
 						<div class="twelve columns">

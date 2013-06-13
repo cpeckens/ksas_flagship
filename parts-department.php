@@ -138,14 +138,13 @@
 			if ( $dept_extra_query->have_posts() ) : while ( $dept_extra_query->have_posts() ) : $dept_extra_query->the_post();
 			
 			$format = get_post_format();  //Determine post format
-			if ( false === $format )
-				$format = 'standard';
+			if ( false === $format ) { $format = 'standard'; }
 				if ( $format == 'video' ) : locate_template('parts-extras-video.php', true, false); endif;
 				if ( $format == 'quote' ) : locate_template('parts-extras-quote.php', true, false); endif;
 				if ( $format == 'standard' ) : locate_template('parts-extras-news.php', true, false); endif;
 		?>
-<?php endwhile; else : ?>
+<?php endwhile; else { ?>
 		</div> 
 	</div> <!-- End Sidebar -->
 </div> <!-- End #landing -->
-<?php endif; ?>
+<?php } endif; ?>

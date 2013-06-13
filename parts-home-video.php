@@ -1,5 +1,5 @@
 <article class="four columns">
-	<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video">
+	<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video" onclick="ga('send', 'event', 'Video', 'Play', '<?php the_title(); ?>');">
 		<div class="video_thumb">
 			<span class="icon-play"></span><?php the_post_thumbnail('rss'); ?>
 		</div>
