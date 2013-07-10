@@ -11,15 +11,17 @@
 
 <div class="row sidebar_bg radius10" id="landing">
 	<div class="eight columns wrapper radius-left offset-top">		
-		<section class="content">
-				<h2><?php the_title();?></h2>
+		<section class="content" itemscope itemtype="http://schema.org/EducationalOrganization">
+				<h2 itemprop="name"><?php the_title();?></h2>
+				<span class="hide" itemprop="brand">Johns Hopkins University</span>
+				<span class="hide" itemprop="brand">Krieger School of Arts & Sciences</span>
 				<p class="contact"> <!-- Contact info line -->
 					<?php if ( get_post_meta($post->ID, 'ecpt_phonenumber', true) ) : ?>
-						<span class="icon-mobile"><?php echo get_post_meta($post->ID, 'ecpt_phonenumber', true); ?></span> 
+						<span class="icon-mobile" itemprop="telephone"><?php echo get_post_meta($post->ID, 'ecpt_phonenumber', true); ?></span> 
 					<?php endif; ?>
 					
 					<?php if ( get_post_meta($post->ID, 'ecpt_emailaddress', true) ) : ?>
-						<span class="icon-mail">
+						<span class="icon-mail" itemprop="email">
 						<a href="mailto:<?php echo get_post_meta($post->ID, 'ecpt_emailaddress', true); ?>">
 							<?php echo get_post_meta($post->ID, 'ecpt_emailaddress', true);?>
 						</a>
@@ -30,7 +32,7 @@
 						<span class="icon-location"><?php echo get_post_meta($post->ID, 'ecpt_location', true); ?></span> 
 					<?php endif; ?>
 					<?php if ( get_post_meta($post->ID, 'ecpt_homepage', true) ) : ?>
-						<br><span class="icon-globe">
+						<br><span class="icon-globe" itemprop="url">
 						<a href="http://<?php echo get_post_meta($post->ID, 'ecpt_homepage', true); ?>">
 							<?php echo get_post_meta($post->ID, 'ecpt_homepage', true);?>
 						</a>
@@ -39,7 +41,7 @@
 				</p> <!-- End Contact info line -->
 				
 				<?php if ( get_post_meta($post->ID, 'ecpt_title', true) || get_post_meta($post->ID, 'ecpt_content', true) ) : ?>
-					<div class="panel radius10 six columns floatleft mobile-four">
+					<div class="panel radius10 six columns floatleft mobile-four" itemprop="owns">
 						<?php if ( get_post_meta($post->ID, 'ecpt_title', true) ) : ?>
 							<h5 class="white"><?php echo get_post_meta($post->ID, 'ecpt_title', true);?></h5>  
 						<?php endif; ?>
@@ -47,7 +49,7 @@
 					</div>
 				<?php endif; ?>
 				
-				<?php if ( get_post_meta($post->ID, 'ecpt_section1', true) ) :  echo get_post_meta($post->ID, 'ecpt_section1', true);  endif; ?>
+				<span itemprop="description"><?php if ( get_post_meta($post->ID, 'ecpt_section1', true) ) :  echo get_post_meta($post->ID, 'ecpt_section1', true);  endif; ?></span>
 				
 				<?php if ( get_post_meta($post->ID, 'ecpt_section2heading', true) ) : ?><h3><?php echo get_post_meta($post->ID, 'ecpt_section2heading', true) ?></h3><?php else : ?>
 					<h3>What can you do with your degree?</h3>
@@ -143,8 +145,8 @@
 				if ( $format == 'quote' ) : locate_template('parts-extras-quote.php', true, false); endif;
 				if ( $format == 'standard' ) : locate_template('parts-extras-news.php', true, false); endif;
 		?>
-<?php endwhile; else { ?>
+<?php endwhile; else : ?>
 		</div> 
 	</div> <!-- End Sidebar -->
 </div> <!-- End #landing -->
-<?php } endif; ?>
+<?php endif; ?>

@@ -17,6 +17,7 @@ blockquote,
 blockquote p,
 .italic {
 	font-family:"Myriad W01 It";
+	font-style: normal;
 }
 
 strong, b,
@@ -211,7 +212,7 @@ button:hover,
 }
 li.gallery-item {
 	float:left; 
-	margin-right:-36px; 
+	margin-right:10px; 
 	margin-bottom:17px;
 }
 
@@ -1478,14 +1479,6 @@ body.news-events .wp-post-image {
 }
 #magazine_section {
 	margin-bottom: 30px;
-}
-#magazine_section img {
-	position: absolute;
-	top:0;
-}
-
-#magazine_section h4 {
-	margin-top: 165px;
 }
 
 #video_section {

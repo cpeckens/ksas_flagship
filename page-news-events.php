@@ -125,7 +125,7 @@
 				<div class="six columns" id="aggregate_section">
 					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://hub.jhu.edu/divisions/school-arts-and-sciences">From the Hub</a></h3></div>
 						<?php
-						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&return_format=json&divisions=426&per_page=2';
+						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&key=bed3238d428c2c710a65d813ebfb2baa664a2fef&return_format=json&divisions=426&per_page=2';
 							$rCURL = curl_init();
 								curl_setopt($rCURL, CURLOPT_URL, $hub_url);
 								curl_setopt($rCURL, CURLOPT_HEADER, 0);
@@ -163,7 +163,7 @@
 					include_once(ABSPATH . WPINC . '/feed.php');
 					
 					// Get a SimplePie feed object from the specified feed source.
-					$rss = fetch_feed('http://krieger.jhu.edu/magazine/category/exclusive/feed');
+					$rss = fetch_feed('http://krieger.jhu.edu/magazine/exclusives-feed?2');
 					if (!is_wp_error( $rss ) ) : // Checks that the object is created correctly 
 					    // Figure out how many total items there are, but limit it to 3. 
 					    $maxitems = $rss->get_item_quantity(3); 
@@ -173,11 +173,15 @@
 					endif;
 					?>
 					
-					    <?php foreach ( $rss_items as $item ) : ?>
+					    <?php foreach ( $rss_items as $item ) : 
+						    $thumb = $item->get_enclosure();
+						    $thumb_address = $thumb->get_link();
+					    ?>
 					    <article class="four columns">
 					        <a href="<?php echo esc_url( $item->get_permalink() ); ?>">
+					        	<img src="<?php echo $thumb_address; ?>" />
 					        	<h4><?php echo esc_html( $item->get_title() ); ?></h4>
-					        	<summary><?php echo $item->get_description(); ?></summary>
+					        	<?php echo $item->get_description(); ?>
 					        </a>
 					    </article>
 					    <?php endforeach; ?>
