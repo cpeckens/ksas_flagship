@@ -339,9 +339,8 @@ ul, ol {
 }
 
 .panel li:before {
-    content:"\25FE";
+    content:"\25FC";
     font-family: "Myriad W01 Regular", Arial, sans-serif;
-    font-size: 20px;
     padding-right: 3px;
     vertical-align:middle;
 	
