@@ -892,13 +892,13 @@ body.home .reveal-modal {
 }
 
 #field_search,
-#field_search label {
+#field_search dd {
 	font-family: "Myriad W01 SmBd", Arial, sans-serif;
 	color: #FFF;
 	font-size: 16px;
 }
 
-#field_search label {
+#field_search dd {
 	margin-top: 6px;
 	display: inline;
 }
@@ -1204,18 +1204,6 @@ min-width: 240px;
 	background: rgba(0,0,0,0.15);
 	padding-bottom:5px;
 	border:none;
-}
-
-#field_search,
-#field_search label {
-	font-family: "Myriad W01 SmBd", Arial, sans-serif;
-	color: #FFF;
-	font-size: 16px;
-}
-
-#field_search label {
-	margin-top: 6px;
-	display: inline;
 }
 
 #fields_search h5 { 

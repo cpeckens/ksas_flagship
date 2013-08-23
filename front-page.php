@@ -45,7 +45,7 @@
 	</div>
 	
 	<div class="row" id="filters">
-			<label class="one column hide-for-small">EXPLORE:</label>
+			<dd class="one column hide-for-small" for="explore">EXPLORE:</dd>
 			<div class="button bright_blue_bg"><a href="academics/fields" data-filter="*" onclick="ga('send', 'event', 'Fields', 'Homepage', 'All');">View All</a></div>
 			<div class="button green_bg"><a href="academics/fields?filter=department" data-filter=".department" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Department');">Departments</a></div>
 			<div class="button purple_bg"><a href="academics/fields?filter=interdisciplinary" data-filter=".interdisciplinary" onclick="ga('send', 'event', 'Fields', 'Homepage', 'Interdisciplinary');">Interdisciplinary</a></div>

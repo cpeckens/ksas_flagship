@@ -65,7 +65,7 @@ if( is_page() ) {
 					
 					<form method="GET" action="<?php echo site_url('/search'); ?>" role="search">
 						<input type="submit" class="icon-search" value="&#xe004;" />
-						<input type="text" name="q" placeholder="Search this site" />
+						<label class="hide" for="search">Search</label><input type="text" name="q" id="search" placeholder="Search this site" />
 					</form>
 					</div>
 					<div class="six columns links hide-for-small">

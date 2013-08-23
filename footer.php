@@ -18,8 +18,8 @@
 		'walker' => new foundation_navigation() ) ); ?>
 		
 		<nav class="two column iconfont" id="social-media">
-			<a href="http://facebook.com/jhuksas" title="Facebook"><span class="icon-facebook"></span></a>
-			<a href="http://vimeo.com/channels/jhuksas" title="Vimeo"><span class="icon-vimeo"></span></a>
+			<a href="http://facebook.com/jhuksas" title="Facebook"><span class="icon-facebook"></span><span class="hide">Facebook</span></a>
+			<a href="http://vimeo.com/channels/jhuksas" title="Vimeo"><span class="icon-vimeo"></span><span class="hide">Vimeo</span></a>
 		</nav>
   	</div>
   	<div class="row" id="copyright" role="content-info">
@@ -27,7 +27,7 @@
   	</div>
 		<div class="row">
   		<div class="four columns centered">
-				<a href="http://www.jhu.edu"><img src="<?php echo get_template_directory_uri() ?>/assets/images/university.jpg" /></a>
+				<a href="http://www.jhu.edu"><img src="<?php echo get_template_directory_uri() ?>/assets/images/university.jpg" alt="Johns Hopkins University logo" /></a>
 			</div>
 		</div>
   </footer>
