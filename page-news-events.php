@@ -118,6 +118,12 @@
 						<div class="button bright_blue_bg"><a href="/news/events/cal_interdisciplinary">Interdisciplinary</a></div>
 					-->
 					<div class="button bright_blue_bg"><a href="/news-events/events">View Full Calendar</a></div>
+					
+					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="/news-events/archive/student-voices/">Student Voices</a></h3></div>
+					<?php // Get RSS Feed(s)
+					include_once(ABSPATH . WPINC . '/feed.php'); 
+					locate_template('parts-student-feeds.php', true, false); ?>
+					
 				</div>
 			<!-- ************END CALENDAR SECTION************* -->	
 			
@@ -160,7 +166,6 @@
 		<div class="twelve columns" id="magazine_section">
 			<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://krieger.jhu.edu/magazine/category/exclusive">Web Exclusives from Arts &amp; Sciences Magazine</a></h3></div>
 				<?php // Get RSS Feed(s)
-					include_once(ABSPATH . WPINC . '/feed.php');
 					
 					// Get a SimplePie feed object from the specified feed source.
 					$rss = fetch_feed('http://krieger.jhu.edu/magazine/exclusives-feed?2');
@@ -170,8 +175,8 @@
 					
 					    // Build an array of all the items, starting with element 0 (first element).
 					    $rss_items = $rss->get_items(0, $maxitems); 
-					endif;
-					?>
+									
+					endif; ?>
 					
 					    <?php foreach ( $rss_items as $item ) : 
 						    $thumb = $item->get_enclosure();

@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: Front Page Normal
+*/
+?>
 <?php get_header(); 
 	//Set Evergreen Query Parameters
 	$flagship_evergreen_query = new WP_Query(array(
@@ -21,7 +26,8 @@
 				</a>
 				<div id="modal_<?php the_id(); ?>_caption" class="reveal-modal radius10">
 						<h4>About the Photo</h4>
-						<p class="white"><?php echo get_post_meta($post->ID, 'ecpt_caption_credit', true); ?></p>
+						<p class="white"><?php $caption = get_post_meta($post->ID, 'ecpt_caption_credit', true); 
+												echo apply_filters('the_content', $caption); ?></p>
 					<a class="close-reveal-modal">&#215;</a>
 				</div>
 	</section>

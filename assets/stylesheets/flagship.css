@@ -885,6 +885,7 @@ body.home h4,
 body.home .reveal-modal {
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, .75);
+	width: 560px;
 }
 
 #evergreen {
@@ -1623,17 +1624,19 @@ a.rssLink {
 }
 /******* News Index Pages ******/
 
-#archive article {
+#archive article,
+ul.photo_list li  {
 	min-height: 250px;
-}
-
-ul.photo_list li {
-	margin-bottom:40px;
 }
 
 ul.photo_list h5 {
 	margin-top:4px;
 	margin-bottom:4px;
+}
+
+ul.photo_list a,
+#archive article a {
+	color: #333;
 }
 
 ul.photo_list li:last-child,
