@@ -9,6 +9,7 @@ For production environment search and replace javascripts/ for javascripts/min.
 	    jQuery('#main_nav').meanmenu();
 	});
 	</script>
+	
 <!***********FIELDS OF STUDY**************>
   <?php if ( is_page_template( 'template-fieldsofstudy.php' ))  { ?>
   	<script src="<?php echo get_template_directory_uri() ?>/assets/javascripts/min.page.fieldsofstudy.js"></script>

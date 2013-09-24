@@ -31,7 +31,7 @@ strong, b,
 }
 
 .iconfont {
-	font-family: 'flagship-icon';
+	font-family: 'flagship';
 }
 
 .copy h2 {
@@ -187,6 +187,7 @@ button,
 	-webkit-box-shadow: none;
 	-moz-box-shadow:none;
 	box-shadow: none;
+	display:inline;
 }
 
 
@@ -413,7 +414,7 @@ blockquote p {
 }
 blockquote:before {
 	content: "\e011";
-	font-family: 'flagship-icon';
+	font-family: 'flagship';
 	font-style: normal;
 	speak: none;
 	font-weight: normal;
@@ -581,7 +582,7 @@ nav ul {
 }
 li.external a::after {
 	content: "\e007";
-	font-family: 'flagship-icon';
+	font-family: 'flagship';
 	font-style: normal;
 	speak: none;
 	font-weight: normal;
@@ -689,7 +690,7 @@ li.external a::after:hover {
 	background: #666;
 	height: 31px;
 	width: 30px;
-	font-family: 'flagship-icon';
+	font-family: 'flagship';
 	-webkit-border-top-left-radius: 	7px;
 	-webkit-border-bottom-left-radius: 	7px;
 	-moz-border-radius-topleft: 		7px;
@@ -701,6 +702,7 @@ li.external a::after:hover {
 	float:left;
 	padding:0;
 	color:#ccc;
+	display: inline;
 }
 /******* Footer ************/
 footer {
@@ -925,7 +927,7 @@ body.home .reveal-modal {
 	background: #333;
 	height: 35px;
 	width: 38px;
-	font-family: 'flagship-icon';
+	font-family: 'flagship';
 	-webkit-border-top-left-radius: 	7px;
 	-webkit-border-bottom-left-radius: 	7px;
 	-moz-border-radius-topleft: 		7px;
@@ -1236,7 +1238,7 @@ min-width: 240px;
 	background: #333;
 	height: 40px;
 	width: 45px;
-	font-family: 'flagship-icon';
+	font-family: 'flagship';
 	-webkit-border-top-left-radius: 	7px;
 	-webkit-border-bottom-left-radius: 	7px;
 	-moz-border-radius-topleft: 		7px;
@@ -1903,39 +1905,21 @@ body.research .orbit-wrapper {
 
 /******* Icons ******/
 
-/* Use the following CSS code if you want to use data attributes for inserting your icons */
-[data-icon]:before {
-	font-family: 'flagship-icon';
-	content: attr(data-icon);
-	speak: none;
-	font-weight: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-}
-
 /* Use the following CSS code if you want to have a class per icon */
-[class^="icon-"]:before, 
-[class*=" icon-"]:before,
-a[href*=".ppt"]:before,
-a[href*=".pptx"]:before,
-a[href*=".zip"]:before,
-a[href*=".xls"]:before,
-a[href*=".xlsx"]:before,
-a[href*=".doc"]:before,
-a[href*=".docx"]:before,
-a[href*=".pdf"]:before {
-	font-family: 'flagship-icon';
-	font-style: normal;
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-calendar, .icon-printer, .icon-home, .icon-search, .icon-user, .icon-new-tab, .icon-new-tab2, .icon-facebook, .icon-vimeo, .icon-mail, .icon-share, .icon-download, .icon-file-pdf, .icon-file-word, .icon-file-excel, .icon-file-zip, .icon-play, .icon-mobile, .icon-phone, .icon-youtube, .icon-arrow-right-2, .icon-comments, .icon-camera, .icon-video, .icon-newspaper, .icon-calendar-2, .icon-globe, .icon-location, .icon-arrow-right {
+	font-family: 'flagship';
 	speak: none;
+	font-style: normal;
 	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
-	margin-right: 3px;
-}
-.icon-location:before {
-	content: "\e000";
-	font-family: 'flagship-icon';
-
 }
 .icon-calendar:before {
 	content: "\e001";
@@ -1948,7 +1932,6 @@ a[href*=".pdf"]:before {
 }
 .icon-search:before {
 	content: "\e004";
-	font-family: 'flagship-icon';
 }
 .icon-user:before {
 	content: "\e005";
@@ -1956,89 +1939,26 @@ a[href*=".pdf"]:before {
 .icon-new-tab:before {
 	content: "\e006";
 }
-.icon-new-tab-2:before {
+.icon-new-tab2:before {
 	content: "\e007";
-	font-family: 'flagship-icon';
 }
 .icon-facebook:before {
 	content: "\e008";
-	font-family: 'flagship-icon';
 }
 .icon-vimeo:before {
 	content: "\e009";
-	font-family: 'flagship-icon';
-}
-.icon-github:before {
-	content: "\e00a";
-}
-.icon-reddit:before {
-	content: "\e00b";
-}
-.icon-wordpress:before {
-	content: "\e00c";
-}
-.icon-flickr:before {
-	content: "\e00d";
-}
-.icon-feed:before {
-	content: "\e00e";
-}
-.icon-twitter:before {
-	content: "\e00f";
 }
 .icon-mail:before {
 	content: "\e013";
-	font-family: 'flagship-icon';
-}
-.icon-minus:before {
-	content: "\e014";
-}
-.icon-plus:before {
-	content: "\e015";
+	margin-right: 5px;
 }
 .icon-share:before {
 	content: "\e016";
 }
-.icon-share-2:before {
-	content: "\e017";
-}
-.icon-bookmark:before {
-	content: "\e018";
-}
-.icon-arrow-up-left:before {
-	content: "\e019";
-}
-.icon-arrow-up:before {
-	content: "\e01a";
-}
-.icon-arrow-up-right:before {
-	content: "\e01b";
-}
-.icon-arrow-right:before {
-	content: "\e01c";
-}
-.icon-arrow-down-right:before {
-	content: "\e01d";
-}
-.icon-arrow-down:before {
-	content: "\e01e";
-}
-.icon-arrow-down-left:before {
-	content: "\e01f";
-}
-.icon-arrow-left:before {
-	content: "\e020";
-}
 .icon-download:before {
 	content: "\e021";
 }
-.icon-thumbs-up:before {
-	content: "\e022";
-}
-.icon-thumbs-down:before {
-	content: "\e023";
-}
-.icon-file-pdf:before{
+.icon-file-pdf:before {
 	content: "\e024";
 }
 .icon-file-word:before {
@@ -2050,57 +1970,44 @@ a[href*=".pdf"]:before {
 .icon-file-zip:before {
 	content: "\e027";
 }
-.icon-file-openoffice:before {
-	content: "\e028";
-}
-.icon-file-powerpoint:before {
-	content: "\e029";
-}
 .icon-play:before {
 	content: "\e02a";
-	font-family: 'flagship-icon';
 }
 .icon-mobile:before {
 	content: "\e02b";
-	font-family: 'flagship-icon';
 }
 .icon-phone:before {
 	content: "\e012";
-	font-family: 'flagship-icon';
 }
 .icon-youtube:before {
 	content: "\e02c";
 }
-
 .icon-arrow-right-2:before {
 	content: "\e010";
-	font-family: 'flagship-icon';
 }
-
 .icon-comments:before {
 	content: "\e011";
 }
-
 .icon-camera:before {
 	content: "\e02d";
-	font-family: 'flagship-icon';
 }
 .icon-video:before {
 	content: "\e02e";
-	font-family: 'flagship-icon';
 }
 .icon-newspaper:before {
 	content: "\e02f";
-	font-family: 'flagship-icon';
 }
-
 .icon-calendar-2:before {
 	content: "\f073";
 }
-
 .icon-globe:before {
 	content: "\f0ac";
-	font-family: 'flagship-icon';
+}
+.icon-location:before {
+	content: "\e000";
+}
+.icon-arrow-right:before {
+	content: "\e01c";
 }
 
 /* #######################################################################
@@ -2258,6 +2165,7 @@ margin: 0;
 	border-radius: 0px !important;
 	-webkit-border-radius:0px !important;
 	-moz-border-radius: 0px !important;	
+	-webkit-appearance: none;
 }
 		#search-bar input[type="text"],
 		#fields_search input[type="text"] {
