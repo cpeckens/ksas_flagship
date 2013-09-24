@@ -1,5 +1,5 @@
 <?php				// Get a SimplePie feed object from the specified feed source.
-					$rss2 = fetch_feed('http://www.rssmix.com/u/3798813/rss.xml');
+					$rss2 = fetch_feed('http://www.rssmix.com/u/3812097/rss.xml');
 					if (!is_wp_error( $rss2 ) ) { // Checks that the object is created correctly 
 					    // Figure out how many total items there are, but limit it to 3. 
 					    $maxitems2 = $rss2->get_item_quantity(5); 
@@ -22,6 +22,10 @@
 										$source_name = 'Prometheus: Undergraduate Journal of Philosophy';
 										$subject = 'Philosophy';
 									break;
+									case 'www.jhupolitik.org' :
+										$source_name = 'The Politik Press';
+										$subject = 'Political Science';
+									break;
 									case 'jhucapetown.blogspot.com' :
 										$source_name = 'Public Health Studies in Capetown';
 										$subject = 'Public Health';
@@ -39,6 +43,11 @@
 										$source_name = 'Phage Hunters';
 										$subject = 'Biology';
 									break;
+									case 'hopkinscinemaddicts.typepad.com' :
+										$source_name = 'HopkinsCinemAddicts';
+										$subject = 'Film & Media Studies';
+										$student = 'Various';
+									break;	
 									case 'blogs.hopkins-interactive.com' :
 										$source_name = 'Hopkins Interactive';
 										$subject = '';
@@ -102,6 +111,46 @@
 											case 'Ruthie C.' :
 												$source_name = 'Ruth Be Told';
 												$subject = 'English';
+											break;
+											case 'Alex K.' :
+												$source_name = 'The Circus';
+												$subject = 'Computer Science';
+											break;
+											case 'Alexa C.' :
+												$source_name = 'Curto~sy of Alexa';
+												$subject = 'Cognitive Science';
+											break;
+											case 'Jordan M.' :
+												$source_name = 'Code. Coffee. Cortex.';
+												$subject = 'Computer Science and Neuroscience';
+											break;
+											case 'Jackie R.' :
+												$source_name = 'Measure Once, Cut Twice';
+												$subject = 'Mechanical Engineering';
+											break;
+											case 'Brian L.' :
+												$source_name = 'Tales from B-Lo the 49th Parallel';
+												$subject = 'Mechanical Engineering';
+											break;
+											case 'Jackie C.' :
+												$source_name = "Jackie hasn't chosen a blog title yet";
+												$subject = 'Chemical and Biomolecular Engineering';
+											break;
+											case 'Caleb B.' :
+												$source_name = 'Life Accordion to Caleb';
+												$subject = 'Math and Classics';
+											break;
+											case 'Laura G.' :
+												$source_name = '4,000 Reasons to Keep Going';
+												$subject = 'Neuroscience and Writing Seminars';
+											break;
+											case 'Madeline S.' :
+												$source_name = "Bird's Eye View";
+												$subject = 'International Studies';
+											break;
+											case 'Grace A.' :
+												$source_name = 'Graceland';
+												$subject = 'Writing Seminars';
 											break;
 											case 'Admissions_Shelly' :
 												$student = 'Admissions Staff';

@@ -18,7 +18,7 @@
 								'field' => 'slug',
 								'terms' => array('post-format-video', 'post-format-image'),
 								'operator' => 'NOT IN')),
-							'posts_per_page' => '3')); 
+							'posts_per_page' => '4')); 
 					set_transient( 'flagship_news_query', $flagship_news_query, 2592000 ); }
 					 ?>
 		
@@ -51,7 +51,7 @@
 		
 						<?php while ($flagship_video_query->have_posts()) : $flagship_video_query->the_post(); ?>
 							
-							<article class="offset-gutter offset-topgutter" id="video_section">
+							<article id="video_section">
 								<a href="#" data-reveal-id="modal_home_<?php the_id(); ?>_video">
 									<div class="video_thumb full">
 									<span class="icon-play"></span><?php the_post_thumbnail('full'); ?>
@@ -131,7 +131,7 @@
 				<div class="six columns" id="aggregate_section">
 					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://hub.jhu.edu/divisions/school-arts-and-sciences">From the Hub</a></h3></div>
 						<?php
-						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&key=bed3238d428c2c710a65d813ebfb2baa664a2fef&return_format=json&divisions=426&per_page=2';
+						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&key=bed3238d428c2c710a65d813ebfb2baa664a2fef&return_format=json&divisions=426&per_page=3';
 							$rCURL = curl_init();
 								curl_setopt($rCURL, CURLOPT_URL, $hub_url);
 								curl_setopt($rCURL, CURLOPT_HEADER, 0);
