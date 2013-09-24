@@ -4,7 +4,7 @@
 	<div class="eight columns wrapper radius-left offset-topgutter">
 		<section role="main">
 				<h5 class="uppercase no-margin">Dean's Newsletter <time class="floatright"><?php echo get_post_meta($post->ID, 'date_newsletter', true); ?></time></h4>
-				<p><b>A quarterly newslettter from Dean Katherine S. Newman</b></p>
+				<p><b>A newsletter from Dean Katherine S. Newman</b></p>
 				<h2><?php the_title();?></h2>
 				<?php the_content(); ?>
 		</section>
