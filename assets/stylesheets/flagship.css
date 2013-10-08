@@ -187,7 +187,8 @@ button,
 	-webkit-box-shadow: none;
 	-moz-box-shadow:none;
 	box-shadow: none;
-	display:inline;
+	display:inline-block;
+	*display:inline;
 }
 
 
