@@ -8,6 +8,7 @@ Template Name: Front Page Normal
 	$flagship_evergreen_query = new WP_Query(array(
 		'post_type' => 'evergreen',
 		'orderby' => 'rand',
+		'post_status' => 'publish',
 		'posts_per_page' => '1'));
 ?>		
 

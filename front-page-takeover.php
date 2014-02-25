@@ -20,7 +20,7 @@ Template Name: Front Page Takeover
 					@media only screen and (max-width: 420px) { body { background: #000; } }
 				</style>
 				<a href="#" data-reveal-id="modal_<?php the_id(); ?>_caption">
-					<h1 class="text-shadow">Takeover Test: <?php the_title(); ?></h1>
+					<h1 class="text-shadow"><?php the_title(); ?></h1>
 					<span class="text-shadow"><?php the_content();?></span>
 				</a>
 				<div id="modal_<?php the_id(); ?>_caption" class="reveal-modal radius10">
