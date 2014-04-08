@@ -75,7 +75,7 @@
 			<div class="row">
 				<div class="twelve columns no-gutter radius-topright" id="photo_section">
 				<?php 
-						if ( false === ( $flagship_photo_query = get_transient( 'flagship_photo_query' ) ) ) {
+					if ( false === ( $flagship_photo_query = get_transient( 'flagship_photo_query' ) ) ) {
 				// It wasn't there, so regenerate the data and save the transient
 				$flagship_photo_query = new WP_Query(array(
 							'category_name' => 'news',
@@ -132,14 +132,10 @@
 					<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://hub.jhu.edu/divisions/school-arts-and-sciences">From the Hub</a></h3></div>
 						<?php
 						$hub_url = 'http://api.hub.jhu.edu/articles?v=0&key=bed3238d428c2c710a65d813ebfb2baa664a2fef&return_format=json&divisions=426&per_page=3';
-							$rCURL = curl_init();
-								curl_setopt($rCURL, CURLOPT_URL, $hub_url);
-								curl_setopt($rCURL, CURLOPT_HEADER, 0);
-								curl_setopt($rCURL, CURLOPT_RETURNTRANSFER, 1);
-						
-						$hub_call = curl_exec($rCURL);
-						curl_close($rCURL);
-						$hub_results = json_decode ( $hub_call, true );
+						if ( false === ( $hub_call = get_transient( 'flagship_hub_query' ) ) ) {							
+							$hub_call = wp_remote_get($hub_url);
+						set_transient( 'flagship_hub_query', $hub_call, 86400 ); }
+						$hub_results = json_decode($hub_call['body'], true);
 						$hub_articles = $hub_results['_embedded'];						
 						foreach($hub_articles['articles'] as $hub_article) { ?>
 							<a href="<?php echo $hub_article['url']; ?>">
@@ -166,9 +162,8 @@
 		<div class="twelve columns" id="magazine_section">
 			<div class="banner blue_bg offset-gutter"><h3><a class="dark_blue_bg" href="http://krieger.jhu.edu/magazine/category/exclusive">Web Exclusives from Arts &amp; Sciences Magazine</a></h3></div>
 				<?php // Get RSS Feed(s)
-					
 					// Get a SimplePie feed object from the specified feed source.
-					$rss = fetch_feed('http://krieger.jhu.edu/magazine/exclusives-feed?2');
+						$rss = fetch_feed('http://krieger.jhu.edu/magazine/exclusives-feed?2');
 					if (!is_wp_error( $rss ) ) : // Checks that the object is created correctly 
 					    // Figure out how many total items there are, but limit it to 3. 
 					    $maxitems = $rss->get_item_quantity(3); 

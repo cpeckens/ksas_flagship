@@ -32,6 +32,6 @@
 		</div>
   </footer>
   
-  <?php locate_template('parts-script-initiators.php', true, false); ?>
+  <?php locate_template('parts-script-initiators.php', true, false); wp_footer();?>
 	</body>
 </html>
